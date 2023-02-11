@@ -1,0 +1,68 @@
+site_name: Informatique au lycée
+site_url: https://https://sebastiensauvage.github.io/
+theme:
+  name: material
+  language: fr
+  palette:
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default 
+      primary: brown
+      accent: blue grey
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: teal
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+
+  features:
+    # Pour afficher une barre de navigation
+    - navigation.tabs
+    # Pour que la barre soit toujours apprente durant un crolling vertical
+    - navigation.tabs.sticky
+    # Afficher le chemin de la page active sous la barre de navigation
+    - navigation.path
+    # Bulle info pour revenir en haut de la page lors d'un scroll vers le haut
+    - navigation.top
+
+    # Concerne la "Table Of Content"
+    - toc.follow
+    # Pour intégrer la table des matière à la navigation à gauche
+    - toc.integrate
+    
+    # Ajout d'un pieds de page pour la navigation
+#    - navigation.footer
+  
+extra:
+  social:
+    # Mastodonte
+#    - icon: fontawesome/brands/mastodon 
+#      link: https://fosstodon.org/@squidfunk
+    # Twitter
+#    - icon: fontawesome/brands/twitter 
+#      link: https://fosstodon.org/@squidfunk
+    # Github
+    - icon: fontawesome/brands/github 
+      link: https://github.com/SebastienSauvage/Informatique_au_lycee
+    # Facebook
+#    - icon: fontawesome/brands/facebook 
+#      link: https://fosstodon.org/@squidfunk
+    # Instagram
+#    - icon: fontawesome/brands/instagram 
+#      link: https://fosstodon.org/@squidfunk
+    # Linkedin
+#    - icon: fontawesome/brands/linkedin 
+#      link: https://fosstodon.org/@squidfunk
+
+copyright: Licence CC-BY-SA - Sébastien SAUVAGE
