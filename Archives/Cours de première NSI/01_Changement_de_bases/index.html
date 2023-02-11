@@ -1,0 +1,1566 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="['Sébastien SAUVAGE']">
+      
+      
+        <link rel="canonical" href="https://https:/sebastiensauvage.github.io/Archives/Cours%20de%20premi%C3%A8re%20NSI/01_Changement_de_bases/">
+      
+      
+        <link rel="prev" href="../00_Progression/">
+      
+      
+        <link rel="next" href="../NSI_1ere_02_BonnesPratiques/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.12">
+    
+    
+      
+        <title>Thème 1 - Chapitre 1 : Ecriture d'un nombre dans différentes bases - Informatique au lycée</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0d440cfe.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#elements-du-programme" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../../.." title="Informatique au lycée" class="md-header__button md-logo" aria-label="Informatique au lycée" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Informatique au lycée
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Thème 1 - Chapitre 1 : Ecriture d'un nombre dans différentes bases
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_3" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="brown" data-md-color-accent="blue-grey"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="teal"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_3">
+          
+            <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Welcome to MkDocs
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link md-tabs__link--active">
+        Archives
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Informatique au lycée" class="md-nav__button md-logo" aria-label="Informatique au lycée" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Informatique au lycée
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Archives
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Archives
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+          Cours de 2nde SNT
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Cours de 2nde SNT
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/" class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_donnees_01_DonneesBrutes_DonneesStructurees/" class="md-nav__link">
+        Thème Les donnees structurées et leur traitement - Chapitre 1 : Des données brutes aux données structurées
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_donnees_02_Traitement_Donnees_Structurees/" class="md-nav__link">
+        Thème Les donnees structurées et leur traitement - Chapitre 2 : Traitement des données structurées
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_donnees_03_Cloud/" class="md-nav__link">
+        Thème Les donnees structurées et leur traitement - Chapitre 3 : Le cloud
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_internet_01_ArchitectureReseaux/" class="md-nav__link">
+        Thème Internet - Chapitre 1 : Architecture des réseaux
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_internet_02_Protocoles_TCP_IP/" class="md-nav__link">
+        Thème Internet - Chapitre 2 : Protocoles TCP et IP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_internet_02_Protocoles_TCP_IP_eleves/" class="md-nav__link">
+        Thème Internet - Chapitre 2 : Protocoles TCP et IP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_internet_03_SimulationReseau/" class="md-nav__link">
+        Thème Internet - Chapitre 3 : Simulation d'un réseau à l'aide du logiciel Filius
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_web_02_TP_PageWeb/" class="md-nav__link">
+        Thème web - Chapitre 2 : Créer une page web
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_web_03_LeWeb/" class="md-nav__link">
+        Thème web - Chapitre 3 : Le Web
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_web_04_NotionsJuridiques/" class="md-nav__link">
+        Thème web - Chapitre 4 : Notions juridiques
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_web_05_MoteursDeRecherche/" class="md-nav__link">
+        Thème web - Chapitre 5 : Les moteurs de recherche
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/progression/" class="md-nav__link">
+        Progression de SNT
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/web_00_Sitographie/" class="md-nav__link">
+        web 00 Sitographie
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/web_01_Historique/" class="md-nav__link">
+        Thème web - Chapitre 1 : Historique du web
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+          Cours de Terminale NSI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Cours de Terminale NSI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/" class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_00_Epreuve_Bac/" class="md-nav__link">
+        Présentation des épreuves au baccalauréat
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_00_Progression/" class="md-nav__link">
+        Progressionde NSI en terminale
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_01_Recursivite/" class="md-nav__link">
+        Thème 1 - Chapitre 1 : Ecriture d'un nombre dans différentes bases
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_02_Modele_relationnel_eleves/" class="md-nav__link">
+        Thème 2 - Chapitre 1 : Modèle relationnel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_03_Modularite/" class="md-nav__link">
+        Thème 4 - Chapitre 2 : Modularité
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_04_Base_de_donnees_relationnelles/" class="md-nav__link">
+        Thème 2 - Chapitre 2 : Bases de donnée relationnelles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_05_Programmation_Objet/" class="md-nav__link">
+        Thème 1 - Chapitre 2 : La programmation orientée objet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_06_MiseAuPtPrgm_Bugs/" class="md-nav__link">
+        Thème 4 - Chapitre 5 : Mise au point de programmes et gestioins des bugs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_07_ListesPileFileDictionnaire/" class="md-nav__link">
+        Thème 1 - Chapitre 3 : Liste, pile, file et dictionnaire
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_08_ListesPileFileDictionnaire_TP/" class="md-nav__link">
+        Thème 1 - Chapitre 3 : Liste, pile, file et dictionnaire
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_09_Requetes_SQL/" class="md-nav__link">
+        Thème 2 - Chapitre 3 : Requêtes en langage SQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_10_Arbres/" class="md-nav__link">
+        Thème 1 - Chapitre 4 : Arbres
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_11_Processus/" class="md-nav__link">
+        Thème 3 - Chapitre 2 : Gestiondes processus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_12_Algo_arbres/" class="md-nav__link">
+        Thème 5 - Chapitre 1 : Algorithmes sur les arbres binaires et sur les ABR
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+          Cours de première NSI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Cours de première NSI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00_Progression/" class="md-nav__link">
+        Progression en 1ère NSI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Thème 1 - Chapitre 1 : Ecriture d'un nombre dans différentes bases
+      </a>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_1ere_02_BonnesPratiques/" class="md-nav__link">
+        Thème 1 - Chapitre 2 : Bonnes pratiques en programmation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_1ere_03_Representation_des_entiers/" class="md-nav__link">
+        Thème 1 - Chapitre 2 : Représentation des entiers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_1ere_05_Representation_des_reels/" class="md-nav__link">
+        Thème 1 - Chapitre 3 : Représentation des réels
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_1ere_08_AlgebreDeBool/" class="md-nav__link">
+        Thème 1 - Chapitre 4 : Algèbre de Bool
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_1ere_09_EncodageCaracteres/" class="md-nav__link">
+        Thème 1 - Chapitre 5 : Encodage des caractères
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_1ere_11_puplets_tableaux/" class="md-nav__link">
+        Thème 2 - Chapitre 1 : p-uplets et tableaux
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_1ere_13_Machine_debranchee/" class="md-nav__link">
+        Thème 5 - Chapitre 2 - Machine débranchée
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+          Liens
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Liens
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Liens/" class="md-nav__link">
+        Sites intéressants
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+          Projets de Terminale NSI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Projets de Terminale NSI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20Terminale%20NSI/NSI_Tale_Bubulle/" class="md-nav__link">
+        Projet : Bubulle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20Terminale%20NSI/NSI_Tale_Morpion/" class="md-nav__link">
+        Thème 1 - Chapitre 1 : Ecriture d'un nombre dans différentes bases
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20Terminale%20NSI/NSI_Tale_Pokedex/" class="md-nav__link">
+        Projet : Pokédex
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20Terminale%20NSI/NSI_Tale_Pygame/" class="md-nav__link">
+        Projet : Découverte de la bibliothèque Pygame
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20Terminale%20NSI/NSI_Tale_Pyxel/" class="md-nav__link">
+        Projet : Découverte de la bibliothèque Pyxel
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+          Projets de première NSI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Projets de première NSI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20premi%C3%A8re%20NSI/NSI_1ere_Bubulle/" class="md-nav__link">
+        Projet : Bubulle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20premi%C3%A8re%20NSI/NSI_1ere_Pyxel/" class="md-nav__link">
+        Projet : Découverte de la bibliothèque Pyxel
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p>\huge \textbf{Thème 1}\normalsize  </p>
+<p>\ </p>
+<p>\Large \textbf{Chapitre 1 : Ecriture d'un nombre dans différentes bases}\normalsize  </p>
+<p>[^hist-info.org]: François GUILLIER. <em>Histoire de l'informatique</em> [en ligne]. 2016 [consulté le 18 juillet 2019]. <a href="https://histoire-informatique.org/grandes_dates/">histoire-informatique.org</a>  </p>
+<p>[^hist-info.online]: Serge ROSSI. <em>Histoire de l'informatique</em> [en ligne]. 20 novembre 2004 [consulté le 18 juillet 2019]. <a href="http://histoire.info.online.fr/">histoire.info.online.fr</a>  </p>
+<p>[^NSI-Nathan]: L'ensemble des exercices de cette partie est issu de (c) PASQUET, Stéphane. <em>Numérique et Sciences Informatiques</em>. Nathan, 2019. 224p. ISBN 978-209-157465-3  </p>
+<h1 id="elements-du-programme">Eléments du programme</h1>
+<p><img alt="Programme" src="../01_Tab_Programme.png" /> \ </p>
+<h1 id="un-peu-dhistoire-hist-infoonline-hist-infoorg">Un peu d'histoire [^hist-info.online] [^hist-info.org]</h1>
+<p><strong><em>-3000</em></strong> : Période de l'empereur Chinois <code>Fu-Xi</code> dont le symbole magique, l'<code>octogone à trigramme</code> contient les 8 premiers nombres représentés sous forme binaire par des traits interrompus ou non : 000 001 010 011 etc ...<br />
+<img alt="Le ba gua ou bagua" src="../01_Trigrammes.png" />  </p>
+<p><strong><em>1000</em></strong> : Apparition du <code>zéro</code>. Inventé en Inde et rapporté en Occident par les invasions arabes, le zéro trouvera un ardent défenseur en la personne de Gerbert d'AURILLAC qui tentera de l'imposer lorsqu'il deviendra le pape Sylvestre II. Mais, ce n'est que vers le XIVème siècle, que le monde occidental l'acceptera définitivement.  </p>
+<p><strong><em>Fin du XVIIè siècle</em></strong> : Introduction du binaire en Europe par <code>Gottfried Wilhelm LEIBNITZ</code> (1646-1716). Il découvre et met au point une arithmétique binaire (et analyse les octogrammes de Fou-Xi).   </p>
+<h1 id="comment-comptons-nous-le-systeme-decimal">Comment comptons-nous ? ... le système décimal</h1>
+<p>Pourquoi <em>treize</em> s'écrit-il <em>13</em> ? Pourquoi ne s'écrit-il pas par exemple <em>M</em> ou encore <em>#</em> ?  </p>
+<h2 id="petites-explications">Petites explications</h2>
+<p>On pourrait imaginer un système qui attribue à chaque nombre un symbole, mais ça nécessite autant de symboles que de nombres, autant dire ... beaucoup ! Il faudrait en plus, les connaître par cœur ... Ca fait trop !!! Aussi limite-t-on le nombre de symboles. Le système utilisé quotidiennement est un <code>système décimal</code>, c'est à dire de <code>base dix</code>. Cela signifie que pour écrire les nombres, il faut utiliser exactement dix symboles, les <code>chiffres</code> qui servent à l'écriture de ces nombres.  </p>
+<p>En base dix, les chiffres utilisés sont : <code>0</code>, <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code>, <code>5</code>, <code>6</code>, <code>7</code>, <code>8</code> et <code>9</code>. On aurait pu prendre dix autres symboles, peut importe, tant que tout le monde utilise les mêmes !  </p>
+<p>Maintenant comptons ! 0 ... 1 ... 2 ... 3 ... 4 ... 5 ... 6 ... 7 ... 8 ... 9 ... et après ???  </p>
+<p>Après, il suffit de regrouper les dix éléments et cela fait 1 petit groupe. On a donc dans dix, 1 petit groupe (de dix) et 0 élément seul, on écrit donc : 10 !  </p>
+<p>Ensuite, on poursuit 10 ... 11 ... 12 ... 13 (tiens, voilà pourquoi treize s'écrit 13 !) ... 14 ... 15 ... 16 ... 17 ... 18 ... 19 ... Et ensuite ? Facile ! On a un deuxième groupe, d'où 20 ... 21 ... etc ...  </p>
+<p>En procédant ainsi, on arrive à 99. Et ensuite ? On fait un moyen groupe (de cent), comme il n'y en a qu'un, ça s'écrit 100 (1 moyen groupe et 0 petit groupe et 0 élément seul). On poursuit ainsi de suite.  </p>
+<p>A 999 ? On a alors un gros groupe de mille, noté donc 1000 ... 1001 ... etc ...  </p>
+<p>On construit ainsi une notation de l'ensemble des nombres entiers positifs avec seulement dix chiffres.  </p>
+<p>La position de chacun des chiffres s'appelle <code>le rang</code>.  </p>
+<h2 id="un-peu-de-mathematiques">Un peu de mathématiques ...</h2>
+<p>Maintenant que l'on sait écrire un nombre en base dix, on peut constater une chose : le nombre 1 654, c'est 1 gros groupe de mille, 6 moyens groupes de 100, 5 petits groupes de 10 et 4 éléments seuls.  </p>
+<p>On peut donc écrire :  </p>
+<p>$1654 = 1 \times 1000 + 6 \times 100 + 5 \times 10 + 4 \times 1$ ou encore : $1654 = 1 \times 10^3 + 6 \times 10^2 + 5 \times 10^1 + 4 \times10 ^ 0$  </p>
+<h2 id="notation">Notation</h2>
+<p>Comme le système décimal est très courant, il n'y a pas besoin de le préciser en général. Mais, dans certaines situations, il est nécessaire de préciser que l'écriture d'un nombre est effectuée en base dix. Pour cela, on trace un trait au-dessus du nombre et on indique la base en exposant.<br />
+Par exemple, le nombre 1654 (écrit en base dix) s'écrira alors $\overline{1654}^{10}$.<br />
+Par convention, si rien n'est précisé, il s'agit d'une notation en base dix.  </p>
+<h2 id="exercices">Exercices</h2>
+<ol>
+<li>
+<p><em>Décomposer comme ci-dessus les nombres suivants :</em><br />
+    $A = \overline{12465}^{10}$ 
+    $B = \overline{2063}^{10}$<br />
+    $C = \overline{230}^{10}$<br />
+    $D = \overline{255}^{10}$<br />
+    $E = \overline{1024}^{10}$  </p>
+</li>
+<li>
+<p><em>Quels sont les nombres décomposés suivants :</em><br />
+    $F = 1 \times 10^3 + 9 \times 10^2 + 1 \times 10^1 + 9 \times 10^0$<br />
+    $G = 5 \times 10^4 + 2 \times 10^3 + 7 \times 10^1 + 9 \times 10^0$<br />
+    $H = 3 \times 10^6 + 2 \times 10^1$  </p>
+</li>
+</ol>
+<h1 id="le-systeme-binaire">Le système binaire</h1>
+<h2 id="presentation">Présentation</h2>
+<p>Pour nous c'est assez simple de compter en base 10, mais pour un ordinateur, c'est compliqué, avec des composants électroniques, de le faire compter ainsi. Il est plus simple de compter pour lui en <code>base 2</code> (<code>système binaire</code>) puis que :  </p>
+<ul>
+<li>la tension aux bornes d'un transistor est <code>basse</code> (0) ou <code>haute</code> (1) ;</li>
+<li>un interrupteur est <code>ouvert</code> (0) ou <code>fermé</code> (1) ;</li>
+<li>c'est <code>false</code> (0) ou <code>true</code> (1).  </li>
+</ul>
+<h2 id="petites-explications-le-retour">Petites explications (le retour !)</h2>
+<p>Quand on travaille en base 10, il faut dix chiffres, donc quand on travaille en base deux, il faut ... deux chiffres ! On peut considérer par exemple les chiffres :  </p>
+<ul>
+<li><code>---</code> et <code>- -</code> comme dans l'octogone à trigramme ;</li>
+<li><code>O</code> (ouvert) et <code>F</code> (fermé) ;</li>
+<li><code>Noir</code> et <code>Blanc</code> ;</li>
+<li><code>0</code> et <code>1</code>.  </li>
+</ul>
+<p>Pour nous simplifier la tâche, on utilise généralement <code>0</code> et <code>1</code>. Mais alors ça donne quoi quand on compte ?  </p>
+<p><img alt="Decimal_binaire" src="../01_Tab_DecimalBinaire.png" /><br />
+\ </p>
+<h3 id="exercice">Exercice</h3>
+<p><em>Compléter le tableau en indiquant les écritures binaires des nombres jusqu'à 20 inclus.</em>  </p>
+<h2 id="conversion-du-decimal-en-binaire">Conversion du décimal en binaire</h2>
+<p>Evidemment, si l'on souhaite connaître comment s'écrit en binaire le nombre 2 019, ça peut prendre du temps, et ce, à chaque fois que l'on cherche à le savoir (sauf en l'apprenant par cœur ...).<br />
+Pour commencer, la connaissance des puissances de 2 permet de se faciliter la tâche !  </p>
+<h3 id="puissances-de-2-a-connaitre">Puissances de 2 à connaître</h3>
+<p>$2^0 = 1$<br />
+$2^1 = 2$<br />
+$2^2 = 4$<br />
+$2^3 = 8$<br />
+$2^4 = 16$<br />
+$2^5 = 32$<br />
+$2^6 = 64$<br />
+$2^7 = 128$<br />
+$2^8 = 256$<br />
+$2^9 = 512$<br />
+$2^{10} = 1 024$<br />
+$2^{11} = 2 048$<br />
+$2^{12} = 4 096$  </p>
+<p>Pour pouvoir déterminer l'écriture binaire d'un nombre écrit en base 10, deux méthodes peuvent être utilisées :  </p>
+<h3 id="methode-1-les-puissances-de-2">Méthode 1 : les puissances de 2</h3>
+<p>Au même titre que l'on peut écrire :<br />
+$1654 = 1 \times 10^3 + 6 \times 10^2 + 5 \times 10^1 + 4 \times10 ^ 0$<br />
+on pourrait décomposer 1 654 en <strong>somme de puissances de 2</strong> :<br />
+$1654 = 1 \times 1 024 + 1 \times 512 + 1 \times 64 + 1 \times 32 + 1 \times 16 + 1 \times 4 + 1 \times 2$<br />
+c'est à dire :<br />
+$1654 = 1 \times 2^{10} + 1 \times 2^9 + 1 \times 2^6 + 1 \times 2^5 + 1 \times 2^4 + 1\times 2^2 + 1 \times 2^1$<br />
+Finalement :<br />
+$\overline{1 654}^{10} = \overline{11001110110}^2$</p>
+<h3 id="methode-2-les-divisions-euclidiennes-par-2">Méthode 2 : les divisions euclidiennes par 2</h3>
+<p>Une autre méthode consiste à effectuer des <strong>divisions euclidiennes par 2</strong> successivement et de conserver les restes :  </p>
+<p><img alt="Division_binaire" src="../01_Tab_DivisionsBinaire.png" /> \ </p>
+<p>Ensuite, il faut écrire les restes en remontant la colonne :<br />
+$\overline{1654}^{10} = \overline{11001110110}^2$</p>
+<h3 id="exercice_1">Exercice</h3>
+<p><em>A l'aide de chacune des deux méthodes, convertir en base 2 les nombres suivants écrits en base 10 :</em><br />
+$I = \overline{46}^{10}$<br />
+$J = \overline{2 019}^{10}$<br />
+$K = \overline{1023}^{10}$  </p>
+<h2 id="conversion-du-binaire-en-decimal">Conversion du binaire en décimal</h2>
+<p>Pour convertir des nombres écrits en binaire en écriture décimale, c'est assez simple, il suffit d'utiliser la décomposition en somme de puissances de 2 :<br />
+$\overline{101011101}^{2} = 1 \times 2^8 + 1 \times 2 ^6 + 1 \times 2 ^4 + 1 \times 2^3 + 1 \times 2^2 + 1 \times 2^0$<br />
+$\overline{101011101}^{2} = 1 \times 256 + 1 \times 64 + 1 \times 16 + 1 \times 8 + 1 \times 4 + 1 \times 1$<br />
+$\overline{101011101}^{2} = \overline{349}^{10}$</p>
+<h3 id="exercice_2">Exercice</h3>
+<ol>
+<li>
+<p><em>Ecrire en base 10 les nombres suivants :</em><br />
+  $L = \overline{111010}^2$<br />
+  $M = \overline{00101101}^2$  </p>
+</li>
+<li>
+<p><em>Quel est le plus grand entier écrit en base 10 que l'on peut écrire avec huit chiffres en base 2 ?</em>  </p>
+</li>
+</ol>
+<h1 id="le-systeme-hexadecimal">Le système hexadécimal</h1>
+<h2 id="presentation_1">Présentation</h2>
+<p>Si le principe du système binaire est compris, le <code>système hexadécimal</code> (<code>base seize</code>) ne va pas vous poser de problème.  </p>
+<h2 id="petites-explications-le-retour-du-retour">Petites explications (le retour du retour !)</h2>
+<p>En effet, alors que le système binaires s'écrit à l'aide de deux symboles, le système décimal avec dix, il faut seize symboles pour écrire en système hexadécimal.<br />
+Afin de simplifier les choses, les dix premiers restent les chiffres utilisés pour le système décimal, auxquels il faut ajouter six nouveaux symboles :
+<code>0</code>, <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code>, <code>5</code>, <code>6</code>, <code>7</code>, <code>8</code>, <code>9</code>, <code>A</code>, <code>B</code>, <code>C</code>, <code>D</code>, <code>E</code>, <code>F</code>.  </p>
+<p><img alt="Decimal_Hexedécimal" src="../01_Tab_DecimalHexadecimal.png" /> \ </p>
+<h3 id="exercice_3">Exercice</h3>
+<p><em>Compléter le tableau en indiquant les écritures hexadécimales des nombres jusqu'à 40 inclus.</em>  </p>
+<h2 id="conversion-du-decimal-en-hexadecimal">Conversion du décimal en hexadécimal</h2>
+<p>Comme pour le système binaire, il est utile d'être capable de convertir d'une écriture à l'autre les nombres sans pour autant en connaître par coeur les valeurs.<br />
+Pour convertir un nombre écrit en base dix (système décimal) en base seize (système hexadécimal), on effectue les mêmes méthodes que pour les convertions liées au système binaire :   </p>
+<h3 id="puissances-de-16-a-connaitre">Puissances de 16 à connaître</h3>
+<p>$16^0 = 1$<br />
+$16^1 = 16$<br />
+$16^2 = 256$<br />
+$16^3 = 4096$  </p>
+<h3 id="methode-1-les-puissances-de-16">Méthode 1 : les puissances de 16</h3>
+<p>Au même titre que l'on peut écrire :<br />
+$1654 = 1 \times 10^3 + 6 \times 10^2 + 5 \times 10^1 + 4 \times10 ^ 0$<br />
+on pourrait décomposer 1 654 en <strong>somme de puissances de 16</strong> :<br />
+$1654 = 6 \times 256 + 7 \times 16 + 6 \times 1$<br />
+c'est à dire :<br />
+$1654 = 6 \times 16^{2} + 7 \times 16^1 + 6 \times 16^0$<br />
+Finalement :<br />
+$\overline{1 654}^{10} = \overline{676}^{16}$</p>
+<h3 id="methode-2-les-divisions-euclidiennes-par-16">Méthode 2 : les divisions euclidiennes par 16</h3>
+<p>Une autre méthode consiste à effectuer des <strong>divisions euclidiennes par 16</strong> successivement et de conserver les restes :  </p>
+<p><img alt="Division_Hexadecimal" src="../01_Tab_DivisionsHexadecimal.png" /> \ </p>
+<p>Ensuite, il faut écrire les restes, <em>écrits en base seize</em>, en remontant la colonne :<br />
+$\overline{1654}^{10} = \overline{676}^{16}$</p>
+<h3 id="exercice_4">Exercice</h3>
+<p><em>A l'aide de chacune des deux méthodes, convertir en base 16 les nombres suivants écrits en base 10 :</em><br />
+$N = \overline{46}^{10}$<br />
+$P = \overline{2019}^{10}$<br />
+$Q = \overline{4095}^{10}$  </p>
+<h2 id="conversion-de-lhexadecimal-en-decimal">Conversion de l'hexadécimal en décimal</h2>
+<p>La conversion du système hexadécimal vers le système décimal s'effectue en utilisant la décomposition en somme de puissances de 16 :<br />
+$\overline{A4F2}^{16} = 10 \times 16^3 + 4 \times 16^2 + 15 \times 16^1 + 2 \times 16^0$<br />
+<em>(Ne pas oublier que $\overline{A}^{16} = \overline{10}^{10}$ et que $\overline{F}^{16} = \overline{15}^{10}$)</em><br />
+$\overline{A4F2}^{16} = 10 \times 4096 + 4 \times 256 + 15 \times 16 + 2 \times 1$<br />
+$\overline{A4F2}^{16} = \overline{42226}^{10}$  </p>
+<h3 id="exercice_5">Exercice</h3>
+<p>A vous !  </p>
+<ol>
+<li>
+<p><em>Ecrire en base 10 les nombres suivants :</em><br />
+  $R = \overline{3482}^{16}$<br />
+  $S = \overline{10101}^{16}$<br />
+  $T = \overline{ABCD}^{16}$  </p>
+</li>
+<li>
+<p><em>Quel est le plus grand entier écrit en base 10 que l'on peut écrire avec deux chiffres en base 16 ?</em>  </p>
+</li>
+</ol>
+<h2 id="conversion-du-binaire-en-hexadecimal">Conversion du binaire en hexadécimal</h2>
+<p>Pour convertir du binaire en hexadécimal, on peut imaginer convertir d'abord le binaire en décimal puis le décimal en hexadécimal.<br />
+Mais, dans le cas présent, comme $2^4=16$, autrement dit, en retirant 1 de part et d'autre de l'égalité, on a $\overline{1111}^2 = \overline{F}^{16}$, pour convertir un nombre écrit en binaire en hexadécimal, il suffit de convertir par paquet de quatre chiffres en partant de la droite les nombres :<br />
+En voyant 11110100010111 comme 0011 1101 0001 0111 (on ajoute à gauche des 0 pour avoir des paquets de quatre chiffres), et comme : $\overline{0011}^2= \overline{3}^{16}$, $\overline{1101}^2= \overline{D}^{16}$, $\overline{0001}^2= \overline{1}^{16}$ et $\overline{0111}^2= \overline{7}^{16}$<br />
+$\overline{11110100010111}^2= \overline{3D17}^{16}$  </p>
+<h3 id="exercice_6">Exercice</h3>
+<p><em>Convertir en hexadécimal les nombres suivants écrits en binaire :</em><br />
+$U = \overline{101010101010}^2$<br />
+$V = \overline{10101101010}^2$</p>
+<h2 id="conversion-de-lhexadecimal-en-binaire">Conversion de l'hexadécimal en binaire</h2>
+<p>Pour convertir un nombre écrit en hexadécimal en binaire, on procède de manière inverse : chaque chiffre de 0 à F correspond à une écriture en binaire de 0000 à 1111.<br />
+Comme $\overline{A}^{16} = \overline{1010}^2$, $\overline{B}^{16} = \overline{1011}^2$, $\overline{3}^{16} = \overline{0011}^2$ et $\overline{9} = \overline{1001}^2$,<br />
+$\overline{AB39}^{16} = \overline{1010101100111001}^2$  </p>
+<h3 id="exercice_7">Exercice</h3>
+<p><em>Convertir en binaire les nombres suivants écrits en hexadécimal :</em><br />
+$W = \overline{C98}^{16}$<br />
+$X = \overline{4924}^{16}$  </p>
+<h1 id="generalisation-a-toutes-les-bases">Généralisation à toutes les bases</h1>
+<p>On peut très bien ne pas se limiter aux bases 2, 10 et 16. Une autre base utile en informatique est la base huit (octal) mais dans certaines situations, on pourrait très bien avoir besoin d'utiliser une base quelconque <em>N</em>. Par exemple, on pourrait utiliser la base 36 pour écrire un mot, écrit avec les dix chiffres et vingt-six lettres de l'alphabet.  </p>
+<h2 id="principe">Principe</h2>
+<p>Le principe reste toujours le même. Si on souhaite écrire un nombre écrit en base dix dans une base <em>N</em>, il faut dans un premier temps choisir <em>N</em> chiffres correspondant à l'écriture des nombres de 0 à <em>N</em> - 1.  </p>
+<p>Ensuite, soit en effectuant des divisions euclidiennes successives du nombre par <em>N</em>, soit en écrivant le nombre comme somme de puissances de <em>N</em>, on obtient l'écriture en base <em>N</em> du nombre initialement écrit en base dix.  </p>
+<p>Le passage d'une écriture en base <em>N</em> vers une écriture décimale s'effectue de la même manière que les bases deux et seize, c'est à dire en écrivant puis en calculant le résultat de l'écriture du nombre décomposé en somme de puissances de <em>N</em>.  </p>
+<p>Exemple, si un nombre s'écrit avec six chiffres en base <em>N</em>, on a :<br />
+$\overline{a_5a_4a_3a_2a_1a_0}^N = a_5 \times N^5 + a_4 \times N^4 + a_3 \times N^3 + a_2 \times N^2 + a_1 \times N^1 + a_0 \times N^0 = \sum_{k=0}^5a_k \times N^k$  </p>
+<h2 id="remarques">Remarques</h2>
+<ul>
+<li>
+<p>Si on souhaite convertir d'une base en une autre, le plus aisé, sauf situation particulière, est de convertir en base 10 entre deux.  </p>
+</li>
+<li>
+<p>Il n'y a aucun intérêt à connaître par cœur les conversions dans toutes les bases. Comprendre le principe général suffit amplement !  </p>
+</li>
+</ul>
+<h2 id="exemples">Exemples :</h2>
+<ol>
+<li><em>Ecrire 2019 en <code>base 8</code> (<code>système octal</code>)</em><br />
+  Pour écrire en base huit, on utilise les chiffres de 0 à 7.<br />
+  Utilisons sur cet exemple le calcul des restes successifs des divisions euclidiennes par huit :</li>
+</ol>
+<p><img alt="Division_Octal" src="../01_Tab_DivisionsOctal.png" /> \ </p>
+<ol>
+<li><em>Ecrire 600 000 en base 82</em><br />
+  Pour écrire en base 82, on doit utiliser 82 chiffres ... On peut choisir les dix chiffres habituels (0 à 9), ainsi que les vingt-six lettres de l'alphabet (A à Z) puis on peut compléter ensuite par les lettres de l'alphabet grec ou de l'alphabet cyrillique par exemple.  </li>
+</ol>
+<p>Cette fois, pour convertir 600 000 en base 82, utilisons la décomposition en puissances de 82 :<br />
+  $82^0 = 1$ ; $82^1 = 82$ ; $82^2 = 6724$ ; $82^3 = 551368$<br />
+  $\overline{600000}^{10} = 1 \times 551368 + 7 \times 6724 + 19 \times 82 + 6 \times 1$<br />
+  $\overline{600000}^{10} = 1 \times 82^3 + 7 \times 82^2 + 19 \times 82^1 + 6 \times 82^0$<br />
+  or $\overline{19}^{10} = \overline{J}^{82}$ (il suffit de compter tranquillement pour le vérifier : 0, 1, ..., 9, A, B, ..., J), donc :<br />
+  $\overline{600000}^{10} = \overline{17J6}^{82}$  </p>
+<h1 id="pour-sentrainer-nsi-nathan">Pour s'entraîner ...[^NSI-Nathan]</h1>
+<h2 id="du-decimal-au-binaire">Du décimal au binaire</h2>
+<p><em>Convertir en binaire les nombres suivants :</em><br />
+1. $\overline{458}^{10}$<br />
+2. $\overline{133}^{10}$<br />
+3. $\overline{47}^{10}$<br />
+4. $\overline{1024}^{10}$<br />
+5. $\overline{65}^{10}$  </p>
+<h2 id="du-binaire-au-decimal">Du binaire au décimal</h2>
+<p><em>Convertir en décimal les nombres suivants :</em><br />
+1. $\overline{101010101}^{2}$<br />
+2. $\overline{111000}^{2}$<br />
+3. $\overline{00110011}^{2}$<br />
+4. $\overline{1010010001}^{2}$  </p>
+<h2 id="du-binaire-a-lhexadecimal">Du binaire à l'hexadécimal</h2>
+<p><em>Convertir en hexadécimal les nombre suivants :</em><br />
+1. $\overline{10000000011001}^{2}$<br />
+2. $\overline{111000}^{2}$<br />
+3. $\overline{00110011}^{2}$<br />
+4. $\overline{1010010001}^{2}$  </p>
+<h2 id="du-decimal-a-lhexadecimal">Du décimal à l'hexadécimal</h2>
+<p><em>Convertir en hexadécimal les nombres suivants :</em><br />
+1. $\overline{2020}^{10}$<br />
+2. $\overline{1234}^{10}$<br />
+3. $\overline{56026}^{10}$<br />
+4. $\overline{59450}^{10}$  </p>
+<h2 id="de-lhexadecimal-au-binaire">De l'hexadécimal au binaire</h2>
+<p><em>Convertir en binaire les nombres suivants :</em><br />
+1. $\overline{A320}^{16}$<br />
+2. $\overline{FABE51}^{16}$<br />
+3. $\overline{101010}^{16}$<br />
+4. $\overline{59A75}^{16}$  </p>
+<h1 id="source">Source</h1>
+<p><strong>Site web</strong><br />
+Timo VAN NEERDEN. <em>Binaire et hexadécimal</em> [en ligne]. Page créée en avril 2009,  mise à jour le 13 septembre 2017 [Consulté le 18 juillet 2019]. <a href="https://lehollandaisvolant.net/tuto/bin/">Le Hollandais Vollant : lehollandaisvolant.net/tuto/bin/</a></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Retour en haut de la page
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Licence CC-BY-SA - Sébastien SAUVAGE
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/SebastienSauvage/Informatique_au_lycee" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.top", "toc.follow", "toc.integrate"], "search": "../../../assets/javascripts/workers/search.db81ec45.min.js", "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.4b2c34cd.min.js"></script>
+      
+    
+  </body>
+</html>

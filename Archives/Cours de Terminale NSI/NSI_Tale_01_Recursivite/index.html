@@ -1,0 +1,1844 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="['Sébastien SAUVAGE']">
+      
+      
+        <link rel="canonical" href="https://https:/sebastiensauvage.github.io/Archives/Cours%20de%20Terminale%20NSI/NSI_Tale_01_Recursivite/">
+      
+      
+        <link rel="prev" href="../NSI_Tale_00_Progression/">
+      
+      
+        <link rel="next" href="../NSI_Tale_02_Modele_relationnel_eleves/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.12">
+    
+    
+      
+        <title>Thème 1 - Chapitre 1 : Ecriture d'un nombre dans différentes bases - Informatique au lycée</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0d440cfe.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#definition" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../../.." title="Informatique au lycée" class="md-header__button md-logo" aria-label="Informatique au lycée" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Informatique au lycée
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Thème 1 - Chapitre 1 : Ecriture d'un nombre dans différentes bases
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_3" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="brown" data-md-color-accent="blue-grey"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="teal"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_3">
+          
+            <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Welcome to MkDocs
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link md-tabs__link--active">
+        Archives
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Informatique au lycée" class="md-nav__button md-logo" aria-label="Informatique au lycée" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Informatique au lycée
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Archives
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Archives
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+          Cours de 2nde SNT
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Cours de 2nde SNT
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/" class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_donnees_01_DonneesBrutes_DonneesStructurees/" class="md-nav__link">
+        Thème Les donnees structurées et leur traitement - Chapitre 1 : Des données brutes aux données structurées
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_donnees_02_Traitement_Donnees_Structurees/" class="md-nav__link">
+        Thème Les donnees structurées et leur traitement - Chapitre 2 : Traitement des données structurées
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_donnees_03_Cloud/" class="md-nav__link">
+        Thème Les donnees structurées et leur traitement - Chapitre 3 : Le cloud
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_internet_01_ArchitectureReseaux/" class="md-nav__link">
+        Thème Internet - Chapitre 1 : Architecture des réseaux
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_internet_02_Protocoles_TCP_IP/" class="md-nav__link">
+        Thème Internet - Chapitre 2 : Protocoles TCP et IP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_internet_02_Protocoles_TCP_IP_eleves/" class="md-nav__link">
+        Thème Internet - Chapitre 2 : Protocoles TCP et IP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_internet_03_SimulationReseau/" class="md-nav__link">
+        Thème Internet - Chapitre 3 : Simulation d'un réseau à l'aide du logiciel Filius
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_web_02_TP_PageWeb/" class="md-nav__link">
+        Thème web - Chapitre 2 : Créer une page web
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_web_03_LeWeb/" class="md-nav__link">
+        Thème web - Chapitre 3 : Le Web
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_web_04_NotionsJuridiques/" class="md-nav__link">
+        Thème web - Chapitre 4 : Notions juridiques
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_web_05_MoteursDeRecherche/" class="md-nav__link">
+        Thème web - Chapitre 5 : Les moteurs de recherche
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/progression/" class="md-nav__link">
+        Progression de SNT
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/web_00_Sitographie/" class="md-nav__link">
+        web 00 Sitographie
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/web_01_Historique/" class="md-nav__link">
+        Thème web - Chapitre 1 : Historique du web
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+          Cours de Terminale NSI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Cours de Terminale NSI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_Tale_00_Epreuve_Bac/" class="md-nav__link">
+        Présentation des épreuves au baccalauréat
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_Tale_00_Progression/" class="md-nav__link">
+        Progressionde NSI en terminale
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Thème 1 - Chapitre 1 : Ecriture d'un nombre dans différentes bases
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Thème 1 - Chapitre 1 : Ecriture d'un nombre dans différentes bases
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercice-1" class="md-nav__link">
+    Exercice 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercice-2" class="md-nav__link">
+    Exercice 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remarque" class="md-nav__link">
+    Remarque
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#definition_1" class="md-nav__link">
+    Définition
+  </a>
+  
+    <nav class="md-nav" aria-label="Définition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definition_2" class="md-nav__link">
+    Définition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#principe" class="md-nav__link">
+    Principe
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple" class="md-nav__link">
+    Exemple
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_Tale_02_Modele_relationnel_eleves/" class="md-nav__link">
+        Thème 2 - Chapitre 1 : Modèle relationnel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_Tale_03_Modularite/" class="md-nav__link">
+        Thème 4 - Chapitre 2 : Modularité
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_Tale_04_Base_de_donnees_relationnelles/" class="md-nav__link">
+        Thème 2 - Chapitre 2 : Bases de donnée relationnelles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_Tale_05_Programmation_Objet/" class="md-nav__link">
+        Thème 1 - Chapitre 2 : La programmation orientée objet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_Tale_06_MiseAuPtPrgm_Bugs/" class="md-nav__link">
+        Thème 4 - Chapitre 5 : Mise au point de programmes et gestioins des bugs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_Tale_07_ListesPileFileDictionnaire/" class="md-nav__link">
+        Thème 1 - Chapitre 3 : Liste, pile, file et dictionnaire
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_Tale_08_ListesPileFileDictionnaire_TP/" class="md-nav__link">
+        Thème 1 - Chapitre 3 : Liste, pile, file et dictionnaire
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_Tale_09_Requetes_SQL/" class="md-nav__link">
+        Thème 2 - Chapitre 3 : Requêtes en langage SQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_Tale_10_Arbres/" class="md-nav__link">
+        Thème 1 - Chapitre 4 : Arbres
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_Tale_11_Processus/" class="md-nav__link">
+        Thème 3 - Chapitre 2 : Gestiondes processus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_Tale_12_Algo_arbres/" class="md-nav__link">
+        Thème 5 - Chapitre 1 : Algorithmes sur les arbres binaires et sur les ABR
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+          Cours de première NSI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Cours de première NSI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/" class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/00_Progression/" class="md-nav__link">
+        Progression en 1ère NSI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/01_Changement_de_bases/" class="md-nav__link">
+        Thème 1 - Chapitre 1 : Ecriture d'un nombre dans différentes bases
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/NSI_1ere_02_BonnesPratiques/" class="md-nav__link">
+        Thème 1 - Chapitre 2 : Bonnes pratiques en programmation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/NSI_1ere_03_Representation_des_entiers/" class="md-nav__link">
+        Thème 1 - Chapitre 2 : Représentation des entiers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/NSI_1ere_05_Representation_des_reels/" class="md-nav__link">
+        Thème 1 - Chapitre 3 : Représentation des réels
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/NSI_1ere_08_AlgebreDeBool/" class="md-nav__link">
+        Thème 1 - Chapitre 4 : Algèbre de Bool
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/NSI_1ere_09_EncodageCaracteres/" class="md-nav__link">
+        Thème 1 - Chapitre 5 : Encodage des caractères
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/NSI_1ere_11_puplets_tableaux/" class="md-nav__link">
+        Thème 2 - Chapitre 1 : p-uplets et tableaux
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/NSI_1ere_13_Machine_debranchee/" class="md-nav__link">
+        Thème 5 - Chapitre 2 - Machine débranchée
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+          Liens
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Liens
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Liens/" class="md-nav__link">
+        Sites intéressants
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+          Projets de Terminale NSI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Projets de Terminale NSI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20Terminale%20NSI/NSI_Tale_Bubulle/" class="md-nav__link">
+        Projet : Bubulle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20Terminale%20NSI/NSI_Tale_Morpion/" class="md-nav__link">
+        Thème 1 - Chapitre 1 : Ecriture d'un nombre dans différentes bases
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20Terminale%20NSI/NSI_Tale_Pokedex/" class="md-nav__link">
+        Projet : Pokédex
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20Terminale%20NSI/NSI_Tale_Pygame/" class="md-nav__link">
+        Projet : Découverte de la bibliothèque Pygame
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20Terminale%20NSI/NSI_Tale_Pyxel/" class="md-nav__link">
+        Projet : Découverte de la bibliothèque Pyxel
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+          Projets de première NSI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Projets de première NSI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20premi%C3%A8re%20NSI/NSI_1ere_Bubulle/" class="md-nav__link">
+        Projet : Bubulle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20premi%C3%A8re%20NSI/NSI_1ere_Pyxel/" class="md-nav__link">
+        Projet : Découverte de la bibliothèque Pyxel
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p>\huge \textbf{Thème 4}\normalsize  </p>
+<p>\ </p>
+<p>\Large \textbf{Récursivité}\normalsize  </p>
+<h1 id="definition">Définition</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Soit $n$ un entier naturel. On souhaite écrire un script qui permette de calculer la somme des $n$ premiers entiers naturels.  </p>
+<p>\ </p>
+<p>Bien sûr, nous pourrions utiliser la formule générale : $\dfrac{n(n+1)}{2}$ mais l'objectif est de proposer un script qui soit plus proche de la somme définie, c'est à dire, ajouter un à un l'ensemble des sommes des $n$ premiers entiers.  </p>
+<h3 id="exercice-1">Exercice 1</h3>
+<p>1) Calculer la somme $0 + 1 + 2 + ... + 10$.
+2) Ecrire une fonction \textit{somme} en langage naturel puis en langage Python qui permette de répondre au problème. Cette fonction prendra un paramètre qui est la valeur de $n$.  </p>
+<p><strong>Solution</strong>  </p>
+<p>1) $\mathscr{S}_{10} = 0 + 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 = 55$
+2)   </p>
+<p><strong>En langage naturel</strong>  </p>
+<pre><code class="language-python">Fonction somme (n)
+    r &lt;- 0
+    Pour k allant de 0 à n
+        r &lt;- r + k
+    Fin du Pour
+    Retourner r
+    Fin de la fonction
+</code></pre>
+<p><strong>En langage Python</strong>  </p>
+<pre><code class="language-python">def somme (n):
+    r = 0
+    for k in range(0, n + 1):
+        r = r + k
+    return r
+</code></pre>
+<p>Cette première façon de procéder effectue le calcul en prenant les entiers de manière croissante.<br />
+Par exemple, si on cherche $\mathscr{S}_3$, on procède ainsi :  </p>
+<p>$somme(3) = 0 + \text{"somme des termes de 1 à 3"}$<br />
+$somme(3) = 0 + 1 + \text{"somme des termes de 2 à 3"}$<br />
+$somme(3) = 0 + 1 + 2 + \text{"somme des termes de 3 à 3"}$<br />
+$somme(3) = 0 + 1 + 2 + 3$  </p>
+<p>\ </p>
+<p>On peut voir ce calcul autrement. En effet, on peut imaginer la manière suivante :<br />
+  - $\text{ si } n = 0$, $\text{somme} (n) = 0$ ;<br />
+  - $\text{ si } n \geqslant 1$, $\text{somme} (n) = n + \text{somme}(n - 1)$.  </p>
+<p>\ </p>
+<p>Autrement dit, pour calculer la somme $\mathscr{S}_3$, cette fois, on effectue les calculs en prenant les entiers de manière décroissante :<br />
+$somme(3) = 3 + somme(2)$<br />
+$somme(3) = 3 + 2 + somme(1)$<br />
+$somme(3) = 3 + 2 + 1 + somme(0)$<br />
+$somme(3) = 3 + 2 + 1 + 0$  </p>
+<p>\ </p>
+<p>Sur notre exemple, cette manière ne modifie pas la complexité des calculs, par contre, elle est fondamentalement différente dans l'approche du problème initial.  </p>
+<p>\ </p>
+<p>Dans la seconde approche, on réduit notre problème à un problème plus simple, puisqu'au lieu de calculer la somme $somme(n)$, on le réduit à calculer $somme(n - 1)$.  </p>
+<p>Cette manière de procéder est simple à comprendre et permet de résoudre parfois plus facilement des situations difficilement envisageables avec les techniques vues jusqu'ici.  </p>
+<p>Comme on peut l'observer, on voit que la définition de $somme(n)$ va dépendre de $somme(n - 1)$. La fonction $somme$ va donc s'appeler elle-même. On appelle cela <strong>une fonction récursive</strong>.  </p>
+<p>\ </p>
+<p>Pour définir une fonction récursive, il faut donc prévoir de quelle manière on passe de l'état pour $n$ à l'état pour $n - 1$. Il faut également prévoir le cas simple, souvent pour $n = 0$ ou $n = 1$, situation appelée cas de base.  </p>
+<h3 id="exercice-2">Exercice 2</h3>
+<p>Rédiger en langage naturel puis en langage Python une fonction $somme_rec (n)$ qui cette fois est récursive.  </p>
+<p>\ </p>
+<p><strong>Solution</strong>  </p>
+<p><strong>En langage naturel</strong>  </p>
+<pre><code class="language-python">Fonction somme_rec (n)
+    Si n = 0
+        Retourner 0
+    Sinon
+        Retourner n + somme_rec(n - 1)
+    Fin du si
+    Fin de la fonction
+</code></pre>
+<p><strong>En langage Python</strong>  </p>
+<pre><code class="language-python">def somme_rec(n):
+    if n == 0 :
+        return 0
+    else:
+        return n + somme_rec(n - 1)
+</code></pre>
+<h3 id="remarque">Remarque</h3>
+<p>On peut observer le comportement de cette fonction à l'aide de l'outil en ligne <a href="http://pythontutor.com/">http://pythontutor.com/</a>  </p>
+<h2 id="definition_1">Définition</h2>
+<h3 id="definition_2">Définition</h3>
+<p><strong>Une fonction récursive</strong>** est une fonction qui fait appelle à elle-même.<br />
+On parle aussi d'algorithme récursif.  </p>
+<h3 id="principe">Principe</h3>
+<p>Pour bien écrire une fonction récursive, il faut :  </p>
+<ul>
+<li>traiter un (ou plusieurs) cas de base ;</li>
+<li>écrire un (ou plusieurs) cas général.</li>
+</ul>
+<h3 id="exemple">Exemple</h3>
+<p>On considère la suite définie par : $u_0 = 1,5$ et  $\forall n \in \mathbb{N}^\star$, $u_{n+1} = 2u_n - 1$<br />
+Ecrire en langage naturel, puis en langage Python deux algorithmes permettant de calculer un terme de la suite dont on considère le rang $n$ en paramètre.<br />
+Le premier algorithme utilisera une boucle, le second utilisera une fonction récursive.  </p>
+<p>\newpage</p>
+<p><strong>Solution</strong><br />
+<strong>En langage naturel</strong>  </p>
+<pre><code class="language-python">Fonction suite1 (n)
+    u &lt;- 1.5
+    Pour indice allant de 1 à n
+        u &lt;- 2 * u - 1
+    Fin du pour
+    Retourner u
+    Fin de la fonction
+</code></pre>
+<p><strong>En langage Python</strong>  </p>
+<pre><code class="language-python">def suite1(n):
+    u = 1.5
+    for indice in range (n):
+        u = 2 * u - 1
+    return u
+</code></pre>
+<p><strong>En langage naturel</strong>  </p>
+<pre><code class="language-python">Fonction suite2 (n)
+    Si n = 0
+        Retourner 1.5
+    Sinon
+        Retourner 2 * suite2(n - 1) - 1
+    Fin du si
+    Fin de la fonction
+</code></pre>
+<p><strong>En langage Python</strong>  </p>
+<pre><code class="language-python">def suite2(n):
+    if n == 0 :
+        return 1.5
+    else:
+        return 2 * suite2(n - 1) - 1
+</code></pre>
+<h1 id="formulations-recursives">Formulations récursives</h1>
+<h2 id="generalites">Généralités</h2>
+<p>Une formulation récursive d'une fonction est toujours constituée de plusieurs cas : <em><strong>des cas de bases</strong></em> et <em><strong>des cas récursifs</strong></em>.  </p>
+<p>Les cas de bases sont les cas où l'on peut avoir le résultat simplement sans avoir recours au cas récursif.  </p>
+<h3 id="exemple_1">Exemple</h3>
+<p>On considère la puissance $n$-ième d'un nombre$x$, c'est à dire le nombre : $x^n = \underbrace{x \times \text{...} \times x}_{n \text{ fois}}$.<br />
+On souhaite écrire une fonction \textit{puissance ($x$, $n$)} qui permet de déterminer le nombre $x^n$ en passant en paramètre les nombres $x$ et $n$.  </p>
+<p>1) Ecrire une formulation récursive de cette fonction.
+2) Ecrire en langage naturel puis en langage Python cette fonction récursive.</p>
+<p><strong>Solution</strong>  </p>
+<p>1) Si $n = 0$, <em>puissance ($x$, $n$)</em> = 1 ;<br />
+Si $n = 1$, <em>puissance ($x$, $n$)</em> = 1 ;<br />
+Si $n \geqslant 2$, <em>puissance ($x$, $n$)</em> = $x \times$ <em>puissance ($x$, $n - 1$)</em><br />
+2) <br />
+<strong>En langage naturel</strong>  </p>
+<pre><code class="language-python">Fonction puissance (x, n)
+    Si n = 0
+        Retourner 1
+    Sinon
+        Si n = 1
+            Retourner x
+        Sinon
+            Retourner x * puissance(x, n - 1)
+        Fin du si
+    Fin du si
+    Fin de la fonction
+</code></pre>
+<p><strong>En langage Python</strong>  </p>
+<pre><code class="language-python">def puissance(x, n):
+    if n == 0 :
+        return 1
+    elif n == 1 :
+        return x
+    else:
+        return x * puissance(x, n - 1)
+</code></pre>
+<h2 id="double-recursion">Double récursion</h2>
+<p>Les expressions qui définissent une fonction peuvent aussi dépendre de <em>plusieurs</em> appels à la fonction en cours de définition.  </p>
+<h3 id="exemple-suite-de-fibonacci">Exemple : Suite de Fibonacci</h3>
+<p>La fonction de Fibonacci, qui doit sont nom au mathématicien Léonardo Fibonacci, est définie récursivement, pour tout entier naturel $n$, de la manière suivante :  </p>
+<ul>
+<li>le premier terme est 0 ;</li>
+<li>le deuxième terme est 1 ;</li>
+<li>pour tous les autres termes, ils sont la somme des deux précédents.</li>
+</ul>
+<p>1) Calculer à la main les 12 premiers termes de la suite de Fibonacci.
+2) Ecrire une formulation récursive de la fonction <em>Fibonacci ($n$)</em> qui retourne le terme de rang $n$ de la suite.
+3) Ecrire en langage naturel, puis en langage Python une fonction permettant de calculer le terme de rang $n$, $n$ étant un entier passé en paramètre.</p>
+<p>\   </p>
+<p><strong>Solution</strong>  </p>
+<p>1) 0 ; 1 ; 1 ; 2 ; 3 ; 5 ; 8 ; 13 ; 21 ; 34 ; 55 ; 89.
+2) Si $n = 0$, fibonacci ($n$) = 0<br />
+Si $n = 1$, fibonacci ($n$) = 1<br />
+Si $n\geqslant 2$, fibonacci ($n$) = fibonacci ($n - 1$) + fibonacci ($n - 2$)
+3) \   </p>
+<p><strong>En langage naturel</strong></p>
+<pre><code class="language-python">Fonction fibonacci (n)
+    Si n = 0
+        Retourner 0
+    Sinon
+        Si n = 1
+            Retourner 1
+        Sinon
+            Retourner fibonacci(n - 1) + fibonacci (n - 2)
+        Fin du si
+    Fin du si
+    Fin de la fonction
+</code></pre>
+<p>\newpage</p>
+<p><strong>En langage Python</strong></p>
+<pre><code class="language-python">def fibonacci(n):
+    if n == 0 :
+        return 0
+    elif n == 1 :
+        return 1
+    else:
+        return fibonacci(n - 1) + fibonacci(n - 2)
+</code></pre>
+<h2 id="definitions-recursives-bien-formees">Définitions récursives bien formées</h2>
+<h3 id="regles-elementaires">Règles élémentaires</h3>
+<p>Il est important de respecter quelques règles élémentaires lorsque l'on écrit une définition récursive.  </p>
+<ul>
+<li>Tout d'abord, il faut s'assurer que <strong>la récursion va bien se terminer</strong>, c'est-à-dire que l'on va finir par "retomber" sur un cas de base de la définition ;</li>
+<li>ensuite, il faut que <strong>les valeurs utilisées</strong> pour appeler la fonction soient toujours <strong>dans le domaine de la fonction</strong> ;</li>
+<li>enfin, il convient de vérifier qu'il y a bien <strong>une définition pour toutes les valeurs du domaine</strong>.</li>
+</ul>
+<h1 id="complexite-et-solution-dun-algorithme-recursif">Complexité et Solution d'un algorithme récursif</h1>
+<h2 id="complexite">Complexité</h2>
+<h3 id="propriete">Propriété</h3>
+<p>La complexité d'un programme récursif est linéaire ou exponentielle.<br />
+Autrement dit, $\mathscr{C}(n) = \mathscr{O}(n)$ ou $\mathscr{C}(n) = \mathscr{O}(e^n)$</p>
+<h3 id="exemple_2">Exemple</h3>
+<p>On reprend l'algorithme récursif permettant de calculer la somme des $n$ premiers termes.<br />
+Quelle est la complexité de ce dernier ?  </p>
+<p>\   </p>
+<p><strong>Solution</strong><br />
+Si $n= 0$, il n'y a que le test \textit{n == 0} qui est effectué, donc $\mathscr{C}(0) = 1$<br />
+Sinon, il y a le test, ainsi que la somme donc $\mathscr{C}(n) = 2 + \mathscr{C}(n - 1)$.<br />
+La complexité de notre algorithme est une suite arithmétique, autrement dit, $\mathscr{C}(n) = \mathscr{C}(0) + n \times r = 1 + 2n$ donc ici, $\mathscr{C}(n) = \mathscr{O}(n)$, la complexité est linéaire.</p>
+<h2 id="correction">Correction</h2>
+<h3 id="propriete_1">Propriété</h3>
+<p>Pour qu'un algorithme récursif fonctionne correctement, il est nécessaire de vérifier deux propriétés :  </p>
+<ul>
+<li>l'algorithme doit se terminer (c'est ce qu'on appelle <strong>le problème de la terminaison</strong>) ;</li>
+<li>si l'algorithme se termine, il faut qu'il donne ce que l'on souhaite (c'est ce qu'on appelle \textbf{la correction partielle}).</li>
+</ul>
+<h3 id="terminaison">Terminaison</h3>
+<p>Sur l'exemple du calcul de la somme des $n$ premiers entiers naturel, la fonction récursive prend pour paramètre $n$, puis $n - 1$, puis $n - 2$, etc ... Autrement dit, la suit des paramètres est une suite d'entiers positifs strictement décroissante, donc elle va valoir 0 à un  moment donné,ce qui correspond au cas de base ce qui assure que la fonction se termine.</p>
+<h3 id="correction-partielle">Correction partielle</h3>
+<p>Dans ce même exemple, pour $n = 0$, la valeur retournée est correcte, et dans le cas $n &gt; 0$, la partie récursive <em>n + somme(n - 1)</em> est bien égale à <em>somme(n)</em>, ce qui correspond à la formulation récursive du problème. La fonction est bien correcte.</p>
+<h1 id="programmer-avec-des-fonctions-recursives">Programmer avec des fonctions récursives</h1>
+<p>Une fois que l'on dispose d'une définition récursive pour une fonction, il est relativement simple d'implémenter le programme en langage naturel ou dans tout autre langage.  </p>
+<p>\ </p>
+<p>Cependant, il faut faire attention à deux points importants :  </p>
+<ul>
+<li>le domaine mathématiques d'une fonction n'est pas toujours celui utilisé par la fonction implémenté dans un langage donné ;</li>
+<li>le choix de la définition récursive engendre des modèle d'exécution qui sont alors plus ou moins efficace.</li>
+</ul>
+<h2 id="domaine-mathematiques-et-type-de-donnees">Domaine mathématiques et type de données</h2>
+<p>Si on considère la somme des $n$ premiers entiers naturels, la définition mathématiques peut s'écrire :<br />
+- Si $n = 0$, somme($n$) = 0,<br />
+- si $n &gt; 0$, somme($n$) = $n$ + somme($n - 1$)  </p>
+<p>\   </p>
+<p>Cette définition est définie uniquement pour les entiers positifs (entiers naturels).  </p>
+<p>Dans le cas de l'implémentation en Python, cette fois, le paramètre peut être quelconque, en particulier, un entier négatif :  </p>
+<pre><code class="language-python">def somme_rec(n):
+    if n == 0 :
+        return 0
+    else:
+        return n + somme_rec(n - 1)
+</code></pre>
+<p>Ainsi, <em>somme_rec(-1)</em> ne provoque pas d'erreur immédiate, et appelle <em>somme_rec(-2)</em> qui lui-même appelle <em>somme_rec(-3)</em> etc ...  </p>
+<p>\   </p>
+<p>Pour éviter ce comportement, la première façon est de remplacer le cas de base <em>n == 0</em> par <em>$n \leqslant 0$</em>. Cette solution a pour avantage de garantir la terminaison, même pour les entiers négatifs, mais elle impose de manière arbitraire la valeur retournée pour ces valeurs de paramètres négatifs.  </p>
+<p>\   </p>
+<p>Une autre solution est de restreindre les appels à la fonction aux entiers positifs, c'est-à-dire de vérifier dès le début de l'appel de <em>somme(n)</em> que le paramètre $n$ est bien un entier naturel.<br />
+Pour cela, nous allons utiliser l'instruction <strong>assert</strong> :  </p>
+<pre><code class="language-python">def somme_rec(n):
+    assert isinstance(n, int) and n &gt;= 0, 'Le paramètre doit être un entier naturel.'
+    if n == 0 :
+        return 0
+    else:
+        return n + somme_rec(n - 1)
+</code></pre>
+<p>De cette manière, une erreur sera déclenchée pour tout appel de la fonction <em>somme_rec(n)</em> lorsque $n$ n'est pas un entier et que celui-ci n'est pas positif.  </p>
+<p>Le texte <em>'Le paramètre doit être un entier naturel.'</em> n'est pas obligatoire.  </p>
+<h3 id="remarque_1">Remarque</h3>
+<p>Bien que cette solution soit correcte, la vérification du paramètre s'effectue à chaque appel de la fonction, alors que si lors du premier appel, le paramètre est valide, il est ensuite inutile de procéder à une vérification à chaque fois. La solution consiste à écrire deux fonctions, l'une qui sera appelée par l'utilisateur et qui appellera la seconde, qui elle, sera récursive :  </p>
+<pre><code class="language-python">def somme_rec(n):
+    if n == 0 :
+        return 0
+    else:
+        return n + somme_rec(n - 1)
+
+def somme_bis(n):
+    assert isinstance(n, int) and n &gt;= 0, 'Le paramètre doit être un entier naturel.'
+    return somme_rec(n)
+</code></pre>
+<p>Il faut alors appeler <em>somme_bis(5)</em> pour obtenir la somme des entiers inférieurs ou égaux à 5.  </p>
+<h2 id="modele-dexecution">Modèle d'exécution</h2>
+<p>A chaque appel d'une fonction récursive, un nouvel environnement d'exécution se crée et vient s'empiler aux précédents. Ce procédé prend de la place en mémoire, et peut donc générer des dépassement de capacité !  </p>
+<p>Pour contourner ce problème, il faut alors trouver une autre formulation récursive, qui, pour un paramètre donné, effectuera moins d'appels et donc aura un coût mémoire plus faible.  </p>
+<p>On peut reprendre par exemple le calcul d'une puissance d'un nombre réel :<br />
+Si $n$ = 0 ou si $n$ = 1, puissance ($x$, $n$) = 1<br />
+si $n \geqslant 2$, puissance ($x$, $n$) = $x \times$ puissance ($x$, $n - 1$)  </p>
+<p>\   </p>
+<p>On peut remarquer que pour les valeurs de $n \geqslant 2$:<br />
+si $n$ est pair, $x^n = x^2 \times x^{n / 2}$<br />
+si $n$ est impair, $x^n = x \times \left(x^{(n - 1) / 2}\right)^2$  </p>
+<p>\   </p>
+<p>Ainsi, à chaque appel de la fonction \textit{puissance}, on divise par 2 le nombre de récursion.  </p>
+<h3 id="exercice-3">Exercice 3</h3>
+<p>Ecrire en langage naturel puis en langage Python une nouvelle implémentation de la fonction puissance en prenant cette fois la nouvelle formulation récursive.  </p>
+<p>\   </p>
+<p><strong>Solution</strong><br />
+<strong>En langage naturel</strong>  </p>
+<pre><code class="language-python">Fonction puissance (x, n)
+    Si n = 0
+        Retourner 1
+    Sinon
+        Si n = 1
+            Retourner x
+        Sinon
+            Si n est pair
+                Retourner (puissance(x, n / 2))^2
+                # Attention à faire en sorte que n / 2
+                # soit de type entier
+            Sinon
+                Retourner x * puissance(x, (n - 1) / 2))^2
+                # Attention à faire en sorte que (n-1)/2
+                # soit de type entier
+            Fin du si
+        Fin du si
+    Fin du si
+    Fin de la fonction
+</code></pre>
+<p><strong>En langage Python</strong>  </p>
+<pre><code class="language-python">def puissance(x, n):
+    if n == 0 :
+        return 1
+    elif n == 1:
+        return x
+    elif n % 2 :
+        return (puissance(x, n // 2)) ** 2
+    else:
+        return x * ((puissance(x, n // 2)) ** 2)
+</code></pre>
+<h3 id="remarque_2">Remarque</h3>
+<p>Python limite explicitement le nombre d'appels récursifs dans une fonction. Cette valeur par défaut est 1 000.  </p>
+<p>Il est possible de modifier cette valeur à l'aide de la fonction <em>sys.setrecursionlimite</em>. Par exemple pour limiter à 2000 récursion, on écrira :  </p>
+<pre><code class="language-python">import sys  
+sys.setrecursionlimit(2000)
+</code></pre>
+<h3 id="remarque_3">Remarque</h3>
+<p>Certains langages de programmation, plus spécialisés que Python dans l'écriture de fonction récursives, permettent alors d'éviter de placer de trop nombreux environnements dans la pile d'appel. C'est le cas des langages fonctionnels comme par exemple \textit{OCaml}.</p>
+<h3 id="remarque_4">Remarque</h3>
+<p>D'autres problèmes de mémoire peuvent subvenir en raison de calculs suspendus trop important.<br />
+Pour optimiser l'espace mémoire, on stocke les résultats intermédiaires dans <strong>des accumulateurs</strong> que l'on passe alors en paramètre de la fonction. Cela nécessite alors de définir une valeur par défaut de cet accumulateur, puisqu'il n'y a pas nécessité de la part de l'utilisateur de le définir.  </p>
+<h3 id="exemple-avec-accumulateur">Exemple avec accumulateur</h3>
+<p>Pour calculer la puissance d'un nombre, on peut écrire en langage python la fonction suivante :  </p>
+<pre><code class="language-python">def puissance(x, n, acc = 1):
+    if n == 0:
+        return acc
+    else:
+        return puissance(x, n - 1, acc * x)
+</code></pre>
+<h1 id="exercices">Exercices</h1>
+<h2 id="exercice">Exercice</h2>
+<p>1) Donner une définition récursive qui correspond au calcul de la fonction factorielle $n!$ définie par $n! = 1 \times 2 \times ... \times n$, si $n &gt; 0$ et $0! = 1$.
+2) Ecrire un code en langage naturel puis en langage Python d'une fonction \textit{fact($n$)} qui implémente cette définition.</p>
+<h2 id="exercice_1">Exercice</h2>
+<p>Soit $u_n$ la suite d'entiers définie par :<br />
+- $u_0 = k$, où $k$ est un entier strictement supérieur à 1<br />
+- si $u_n$ est pair, $u_{n+1} = u_n / 2$<br />
+- si $u_n$ est impair, $u_{n + 1} = 3 \times u_n + 1$  </p>
+<p>\   </p>
+<p>Ecrire une fonction récursive <em>syracuse(u)</em> qui affiche les valeurs successives de la suite $u_n$ tant que $u_n$ est plus grand que 1.<br />
+<em>La conjecture de Syracuse affirme que, quelle que soit la valeur de $u_0$, il existe un indice $n$ dans la suite tel que $u_n = 1$. Cette conjecture défie toujours les mathématiciens.</em>  </p>
+<h2 id="exercice_2">Exercice</h2>
+<p>On considère la suite $(u_n)$ définie par la relation de récurrence suivante, où $a$ et $b$ sont des réels quelconques :<br />
+- si $n$ = 0, $u_n$ = $a$, un nombre réel<br />
+- si $n$ = 1, $u_n$ = $b$, un nombre réel<br />
+- si $n &gt; 1$, $u_{n} = 3 \times u_{n - 1} + 2 \times u_{n - 2} + 5$  </p>
+<p>\   </p>
+<p>Ecrire une fonction récursive <em>serie($n$, $a$, $b$)</em> qui retourne le $n$-ième terme de cette suite pour des valeurs $a$ et $b$ données en paramètres.  </p>
+<h2 id="exercice_3">Exercice</h2>
+<p>Ecrire une fonction récursive <em>pgcd($a$, $b$)</em> qui renvoie le PGCD de deux entiers $a$ et $b$.</p>
+<h2 id="exercice_4">Exercice</h2>
+<p>Que font les fonctions suivantes, implémentées en Python ? (répondre à la question sans tester le programme)  </p>
+<pre><code class="language-python">def mystere1(L):
+    assert isinstance(L, list)
+    if len(L) == 1:
+        return L[0]
+    if L[0] &lt; L[1]:
+        L.pop(1)
+    else:
+        L.pop(0)
+    return mystere1(L)
+</code></pre>
+<pre><code class="language-python">def mystere2(L, M = []):
+    assert isinstance(L, list)
+    if not(L):
+        return M
+    a = L.pop(0)
+    if a not in M:
+        M.append(a)
+    return mystere2(L, M)
+</code></pre>
+<pre><code class="language-python">def mystere3(a, b):
+    assert (
+        isinstance(a, int) and
+        isinstance(a, int) and
+        a &gt;= 0 and
+        b &gt;= 0
+        )
+    if b == 1:
+        return a
+    return a + mystere3(a, b - 1)
+</code></pre>
+<h2 id="exercice_5">Exercice</h2>
+<p>Ecrire une fonction récursive <em>nombre_de_chiffres($n$)</em> qui prend un entier positif ou nul $n$ en paramètre et renvoie son nombre de chiffres.<br />
+Par exemple :  </p>
+<pre><code class="language-python">&gt;&gt;&gt; nombre_de_chiffres(238966)
+6
+</code></pre>
+<h2 id="exercice_6">Exercice</h2>
+<p>Reprendre l'exercice 1, mais cette fois, en utilisant un accumulateur.  </p>
+<h2 id="exercice_7">Exercice</h2>
+<p>1) Ecrire une fonction récursive \textit{boucle($i$, $k$)} qui affiche les entiers entre $i$ et $k$.<br />
+Par exemple, \textit{boucle(2, 5)} doit afficher : 2 3 4 5.<br />
+2) Ecrire une fonction récursive \textit{boucle2($i$, $k$, t = [])} qui retourne un tableau (objet de type list) contenant tous les entiers entre $i$ et $k$.<br />
+    \textit{Le tableau sera passé en troisième paramètre (accumulateur) et aura pour valeur [] par défaut.}</p>
+<h2 id="exercice_8">Exercice</h2>
+<p>Ecrire une version récursive du programme ci-dessous implémenté en Python :  </p>
+<pre><code class="language-python">from turtle import *
+
+couleurs = ['blue', 'green', 'yellow', 'orange', 'red', 'purple']
+bgcolor('black')
+
+def dessin():
+    for i in range(180):
+        color(couleurs[i % 6])
+        forward(i)
+        right(59)
+
+dessin()
+</code></pre>
+<h2 id="exercice_9">Exercice</h2>
+<p>La courbe de Koch, du nom du mathématicien suédois Niels Fabian Helge von Koch, est une figure qui s'obtient de manière récursive.  </p>
+<p>Le cas de base à l'ordre 0 de la récurrence est simplement le dessin d'un segment d'une certaine longueur <em>l</em>.  </p>
+<p><img alt="Cas_0" src="../NSI_Tale_01_koch0.png" /> \  </p>
+<p>Le cas récursif d'ordre $n$ s'obtient en divisant ce segment en trois morceaux de même longueur $l / 3$, puis en dessinant un triangle équilatéral dont la base est le morceau du milieu, en prenant soin de ne pas dessiner cette base. Cela forme une sorte de chapeau comme dessiné sur la figure ci-dessous.  </p>
+<p><img alt="Cas_1" src="../NSI_Tale_01_koch1.png" /> \  </p>
+<p>On réitère ce processus à l'ordre $n - 1$ pour chaque segment de ce chapeau (qui sont tous de longueur $l / 3$).  </p>
+<p>Par exemple, les courbes obtenues à l'ordre 2 et 3 sont données ci-dessous.  </p>
+<p><img alt="Cas_2" src="../NSI_Tale_01_koch2.png" /> \ <img alt="Cas_3" src="../NSI_Tale_01_koch3.png" /> \  </p>
+<p>\   </p>
+<p>1) Ecrire une fonction <em>koch(n , l)</em> (documentation comprise) qui dessine avec le module <em>turtle</em> un flocon de Koch de profondeur $n$ à partir d'un segment de longueur $l$.
+2) <strong>Méthodes de Turtle utiles</strong> <em>(liste non exhaustive)</em> : <em>hideturtle(), penup(), pendown(), setpos(..., ...), forward(...), left(...), right(...), exitonclick().</em>
+3) Si l'on trace trois fois cette figure, on obtient successivement un triangle, une étoile, puis un flocon de plus en plus complexe :<br />
+<img alt="Flocon_0" src="../NSI_Tale_01_flocon0.png" /> \ <img alt="Flocon_1" src="../NSI_Tale_01_flocon1.png" /> \ <img alt="Flocon_2" src="../NSI_Tale_01_flocon2.png" /> \ <img alt="Flocon_3" src="../NSI_Tale_01_flocon3.png" /><br />
+Ecrire une fonction \textit{flocon(n, l)} (pas forcément récursive) permettant de faire le flocon complet à partir de la fonction réalisée dans la question précédente.</p>
+<p>\underline{{\textit{\textbf{Sources}}}}  </p>
+<ul>
+<li><em>numérique et sciences informatiques, Tle</em>, Ed. ellipses. p3 à 17. ISBN 978-2-340-03855-4.</li>
+<li><em>numérique et sciences informatiques, Term</em>, Collection INTERROS des LYCEES, Ed. Nathan. p46-47, 51-52. ISBN 978-2-091-57543-8.</li>
+<li>Serge Bays, <em>numérique et sciences informatiques, Tle</em>, Ed. ellipses. p35. ISBN 978-2-340-03844-8.  </li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Retour en haut de la page
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Licence CC-BY-SA - Sébastien SAUVAGE
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/SebastienSauvage/Informatique_au_lycee" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.top", "toc.follow", "toc.integrate"], "search": "../../../assets/javascripts/workers/search.db81ec45.min.js", "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.4b2c34cd.min.js"></script>
+      
+    
+  </body>
+</html>
