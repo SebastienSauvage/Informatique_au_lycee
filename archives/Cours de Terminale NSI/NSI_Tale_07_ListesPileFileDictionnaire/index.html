@@ -1,0 +1,1637 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="['Sébastien SAUVAGE']">
+      
+      
+        <link rel="canonical" href="https://https:/sebastiensauvage.github.io/archives/Cours%20de%20Terminale%20NSI/NSI_Tale_07_ListesPileFileDictionnaire/">
+      
+      
+        <link rel="prev" href="../NSI_Tale_06_MiseAuPtPrgm_Bugs/">
+      
+      
+        <link rel="next" href="../NSI_Tale_08_ListesPileFileDictionnaire_TP/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.12">
+    
+    
+      
+        <title>Thème 1 - Chapitre 3 : Liste, pile, file et dictionnaire - Informatique au lycée</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0d440cfe.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#les-listes" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../../.." title="Informatique au lycée" class="md-header__button md-logo" aria-label="Informatique au lycée" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Informatique au lycée
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Thème 1 - Chapitre 3 : Liste, pile, file et dictionnaire
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_3" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="brown" data-md-color-accent="blue-grey"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="teal"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_3">
+          
+            <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SebastienSauvage/Informatique_au_lycee" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    SebastienSauvage/Informatique_au_lycee
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Accueil
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link md-tabs__link--active">
+        Archives
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../liens/liens/" class="md-tabs__link">
+        Liens
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Informatique au lycée" class="md-nav__button md-logo" aria-label="Informatique au lycée" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Informatique au lycée
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SebastienSauvage/Informatique_au_lycee" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    SebastienSauvage/Informatique_au_lycee
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Accueil
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Archives
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Archives
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        Accueil - Archives
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+          Cours de 2nde SNT
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Cours de 2nde SNT
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/" class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_donnees_01_DonneesBrutes_DonneesStructurees/" class="md-nav__link">
+        Thème Les donnees structurées et leur traitement - Chapitre 1 : Des données brutes aux données structurées
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_donnees_02_Traitement_Donnees_Structurees/" class="md-nav__link">
+        Thème Les donnees structurées et leur traitement - Chapitre 2 : Traitement des données structurées
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_donnees_03_Cloud/" class="md-nav__link">
+        Thème Les donnees structurées et leur traitement - Chapitre 3 : Le cloud
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_internet_01_ArchitectureReseaux/" class="md-nav__link">
+        Thème Internet - Chapitre 1 : Architecture des réseaux
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_internet_02_Protocoles_TCP_IP/" class="md-nav__link">
+        Thème Internet - Chapitre 2 : Protocoles TCP et IP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_internet_02_Protocoles_TCP_IP_eleves/" class="md-nav__link">
+        Thème Internet - Chapitre 2 : Protocoles TCP et IP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_internet_03_SimulationReseau/" class="md-nav__link">
+        Thème Internet - Chapitre 3 : Simulation d'un réseau à l'aide du logiciel Filius
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_web_02_TP_PageWeb/" class="md-nav__link">
+        Thème web - Chapitre 2 : Créer une page web
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_web_03_LeWeb/" class="md-nav__link">
+        Thème web - Chapitre 3 : Le Web
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_web_04_NotionsJuridiques/" class="md-nav__link">
+        Thème web - Chapitre 4 : Notions juridiques
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_web_05_MoteursDeRecherche/" class="md-nav__link">
+        Thème web - Chapitre 5 : Les moteurs de recherche
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/progression/" class="md-nav__link">
+        Progression de SNT
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/web_00_Sitographie/" class="md-nav__link">
+        web 00 Sitographie
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/web_01_Historique/" class="md-nav__link">
+        Thème web - Chapitre 1 : Historique du web
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+          Cours de Terminale NSI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Cours de Terminale NSI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_Tale_00_Epreuve_Bac/" class="md-nav__link">
+        Présentation des épreuves au baccalauréat
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_Tale_00_Progression/" class="md-nav__link">
+        Progressionde NSI en terminale
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_Tale_01_Recursivite/" class="md-nav__link">
+        Thème 1 - Chapitre 1 : Ecriture d'un nombre dans différentes bases
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_Tale_02_Modele_relationnel_eleves/" class="md-nav__link">
+        Thème 2 - Chapitre 1 : Modèle relationnel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_Tale_03_Modularite/" class="md-nav__link">
+        Thème 4 - Chapitre 2 : Modularité
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_Tale_04_Base_de_donnees_relationnelles/" class="md-nav__link">
+        Thème 2 - Chapitre 2 : Bases de donnée relationnelles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_Tale_05_Programmation_Objet/" class="md-nav__link">
+        Thème 1 - Chapitre 2 : La programmation orientée objet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_Tale_06_MiseAuPtPrgm_Bugs/" class="md-nav__link">
+        Thème 4 - Chapitre 5 : Mise au point de programmes et gestioins des bugs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Thème 1 - Chapitre 3 : Liste, pile, file et dictionnaire
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Thème 1 - Chapitre 3 : Liste, pile, file et dictionnaire
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#exemple" class="md-nav__link">
+    Exemple
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercice-1" class="md-nav__link">
+    Exercice 1
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_Tale_08_ListesPileFileDictionnaire_TP/" class="md-nav__link">
+        Thème 1 - Chapitre 3 : Liste, pile, file et dictionnaire
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_Tale_09_Requetes_SQL/" class="md-nav__link">
+        Thème 2 - Chapitre 3 : Requêtes en langage SQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_Tale_10_Arbres/" class="md-nav__link">
+        Thème 1 - Chapitre 4 : Arbres
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_Tale_11_Processus/" class="md-nav__link">
+        Thème 3 - Chapitre 2 : Gestiondes processus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_Tale_12_Algo_arbres/" class="md-nav__link">
+        Thème 5 - Chapitre 1 : Algorithmes sur les arbres binaires et sur les ABR
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+          Cours de première NSI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Cours de première NSI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/" class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/00_Progression/" class="md-nav__link">
+        Progression en 1ère NSI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/01_Changement_de_bases/" class="md-nav__link">
+        Thème 1 - Chapitre 1 : Ecriture d'un nombre dans différentes bases
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/NSI_1ere_02_BonnesPratiques/" class="md-nav__link">
+        Thème 1 - Chapitre 2 : Bonnes pratiques en programmation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/NSI_1ere_03_Representation_des_entiers/" class="md-nav__link">
+        Thème 1 - Chapitre 2 : Représentation des entiers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/NSI_1ere_05_Representation_des_reels/" class="md-nav__link">
+        Thème 1 - Chapitre 3 : Représentation des réels
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/NSI_1ere_08_AlgebreDeBool/" class="md-nav__link">
+        Thème 1 - Chapitre 4 : Algèbre de Bool
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/NSI_1ere_09_EncodageCaracteres/" class="md-nav__link">
+        Thème 1 - Chapitre 5 : Encodage des caractères
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/NSI_1ere_11_puplets_tableaux/" class="md-nav__link">
+        Thème 2 - Chapitre 1 : p-uplets et tableaux
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/NSI_1ere_13_Machine_debranchee/" class="md-nav__link">
+        Thème 5 - Chapitre 2 - Machine débranchée
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+          Liens
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Liens
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Liens/" class="md-nav__link">
+        Sites intéressants
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+          Projets de Terminale NSI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Projets de Terminale NSI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20Terminale%20NSI/NSI_Tale_Bubulle/" class="md-nav__link">
+        Projet : Bubulle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20Terminale%20NSI/NSI_Tale_Morpion/" class="md-nav__link">
+        Thème 1 - Chapitre 1 : Ecriture d'un nombre dans différentes bases
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20Terminale%20NSI/NSI_Tale_Pokedex/" class="md-nav__link">
+        Projet : Pokédex
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20Terminale%20NSI/NSI_Tale_Pygame/" class="md-nav__link">
+        Projet : Découverte de la bibliothèque Pygame
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20Terminale%20NSI/NSI_Tale_Pyxel/" class="md-nav__link">
+        Projet : Découverte de la bibliothèque Pyxel
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+          Projets de première NSI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Projets de première NSI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20premi%C3%A8re%20NSI/NSI_1ere_Bubulle/" class="md-nav__link">
+        Projet : Bubulle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20premi%C3%A8re%20NSI/NSI_1ere_Pyxel/" class="md-nav__link">
+        Projet : Découverte de la bibliothèque Pyxel
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Liens
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Liens
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../liens/liens/" class="md-nav__link">
+        Liens externes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../liens/mkdocs/" class="md-nav__link">
+        MkDocs et Material for MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+
+<p>\huge \textbf{Thème 1}\normalsize  </p>
+<p>\ </p>
+<p>\Large \textbf{Chapitre 3 : Liste, pile, file et dictionnaire}\normalsize  </p>
+<p>\  </p>
+<p>\  </p>
+<p>De nombreux algorithmes "classiques" manipulent des structures de données plus complexes que des simples nombres (nous aurons l'occasion d'en voir plusieurs cette année). Nous allons ici voir quelques-unes de ces structures de données. Nous allons commencer par des types de structures relativement simples : \textbf{les listes, les piles et les files}. Ces trois types de structures sont qualifiés de \textbf{linéaires}.  </p>
+<h1 id="les-listes">Les listes</h1>
+<p>Une liste est une structure de données permettant de regrouper des données. Une liste L est composée de 2 parties : sa tête (souvent noté \textit{car}), qui correspond au dernier élément ajouté à la liste, et sa queue (souvent noté <em>cdr</em>) qui correspond au reste de la liste. Le langage de programmation Lisp (inventé par John McCarthy en 1958) a été un des premiers langages de programmation à introduire cette notion de liste (Lisp signifie "list processing").  </p>
+<p>Voici les opérations qui peuvent être effectuées sur une liste :  </p>
+<ul>
+<li>créer une liste vide (\texttt{L = vide()} on a créé une liste L vide)</li>
+<li>tester si une liste est vide (\texttt{estVide(L)} renvoie vrai si la liste L est vide)</li>
+<li>ajouter un élément en tête de liste (\texttt{ajouteEnTete (x,L)} avec L une liste et x l'élément à ajouter)</li>
+<li>supprimer la tête x d'une liste L et renvoyer cette tête x (\texttt{supprEnTete(L)})</li>
+<li>Compter le nombre d'éléments présents dans une liste (\texttt{compte(L)} renvoie le nombre d'éléments présents dans la liste L)</li>
+</ul>
+<p>Une dernière fonction \texttt{cons} permet d'obtenir une nouvelle liste à partir d'une liste et d'un élément (\texttt{L1 = cons(x,L)}). Il est possible "d'enchaîner" les \texttt{cons} et d'obtenir ce genre de structure : \texttt{cons(x, cons(y, cons(z,L)))}  </p>
+<h3 id="exemple">Exemple</h3>
+<p>Voici une série d'instructions (les instructions ci-dessous s'enchaînent) :  </p>
+<p>\begin{tabular}{lllll}
+    \textbf{Instruction} &amp; \  &amp; \textbf{Que se passe-t-il ?}\
+    \hline
+    \texttt{L=vide()} &amp; \ &amp; On a créé une liste vide\
+    \hline
+    \texttt{estVide(L)} &amp; \ &amp; Renvoie vrai\
+    \hline
+    \texttt{ajoutEnTete(3,L)} &amp; \ &amp; La liste L contient maintenant l'élément 3\
+    \hline
+    \texttt{estVide(L)} &amp; \ &amp; Renvoie faux\
+    \hline
+    \texttt{ajoutEnTete(5,L)} &amp; \ &amp; La tête de la liste L correspond à 5, la queue contient l'élément 3\
+    \hline
+    \texttt{ajoutEnTete(8,L)} &amp; \ &amp; la tête de la liste L correspond à 8, la queue contient les éléments 3 et 5\
+    \hline
+    \texttt{t = supprEnTete(L)} &amp; \ &amp; la variable t vaut 8, la tête de L correspond à 5 et la queue contient l'élément 3\
+    \hline
+    \texttt{L1 = vide()} &amp; \ &amp; \
+    \hline
+    \texttt{L2 = cons(8, cons(5, cons(3, L1)))} &amp; \ &amp; La tête de L2 correspond à 8 et la queue contient les éléments 3 et 5\
+\end{tabular}</p>
+<h3 id="exercice-1">Exercice 1</h3>
+<p>Voici une série d'instructions (les instructions ci-dessous s'enchaînent), expliquez ce qui se passe à chacune des étapes :  </p>
+<p>\texttt{L = vide()}<br />
+\texttt{ajoutEnTete(10,L)}<br />
+\texttt{ajoutEnTete(9,L)}<br />
+\texttt{ajoutEnTete(7,L)}<br />
+\texttt{L1 = vide()}<br />
+\texttt{L2 = cons(5, cons(4, cons(3, cons (2, cons(1, cons(0,L1))))))}  </p>
+<h1 id="les-piles">Les piles</h1>
+<p>On retrouve dans les piles (\textbf{stack} en anglais) une partie des propriétés vues sur les listes. Dans les piles, il est uniquement possible de manipuler le dernier élément introduit dans la pile. On prend souvent l'analogie avec une pile d'assiettes : dans une pile d'assiettes la seule assiette directement accessible et la dernière assiette qui a été déposée sur la pile.  </p>
+<p><img alt="Piles" src="../NSI_Tale_07_ListesPileFileDictionnaire_Piles.png" />\   </p>
+<p>Les piles sont basées sur le principe \textbf{LIFO (\textit{Last In First Out : le dernier rentré sera le premier à sortir})}. On retrouve souvent ce principe LIFO en informatique.  </p>
+<p>Voici les opérations que l'on peut réaliser sur une pile :  </p>
+<ul>
+<li>on peut savoir si une pile est vide (\texttt{pile_vide})</li>
+<li>on peut empiler un nouvel élément sur la pile (\texttt{push})</li>
+<li>on peut récupérer l'élément au sommet de la pile tout en le supprimant. On dit que l'on dépile (\texttt{pop})</li>
+<li>on peut accéder à l'élément situé au sommet de la pile sans le supprimer de la pile (\texttt{sommet})</li>
+<li>on peut connaître le nombre d'éléments présents dans la pile (\texttt{taille})</li>
+</ul>
+<h3 id="exemples">Exemples</h3>
+<p>Soit une pile P composée des éléments suivants : 12, 14, 8, 7, 19 et 22 (le sommet de la pile est 22). Pour chaque exemple ci-dessous on repart de la pile d'origine :  </p>
+<p>\begin{tabular}{lllll}
+    \textbf{Instruction} &amp; \  &amp; \textbf{Que se passe-t-il ?}\
+    \hline
+    \texttt{pop(P)} &amp; \ &amp; renvoie 22 \
+    &amp;&amp; et la pile P est maintenant composée des éléments suivants : 12, 14, 8, 7 et 19 (le sommet de la pile est 19)\
+    \hline
+    \texttt{push(P,42)} &amp; \ &amp; la pile P est maintenant composée des éléments suivants : 12, 14, 8, 7, 19, 22 et 42\
+    \hline
+    \texttt{sommet(P)} &amp; \ &amp; renvoie 22, la pile P n'est pas modifiée\
+    \hline
+    \texttt{pop(P)} &amp; \ &amp; \
+    \texttt{pop(P)} &amp; \ &amp; \
+    \texttt{pop(P)} &amp; \ &amp; \
+    \texttt{pop(P)} &amp; \ &amp; \
+    \texttt{pop(P)} &amp; \ &amp; \
+    \texttt{pop(P)} &amp; \ &amp; \texttt{pile_vide(P)} renvoie vrai\
+    \hline
+    \texttt{pop(P)} &amp; \ &amp; \
+    \texttt{taille(P)} &amp; \ &amp; renvoie 5\
+    \hline
+    \texttt{} &amp; \ &amp; \
+\end{tabular}</p>
+<h3 id="exercice-2">Exercice 2</h3>
+<p>Soit une pile P composée des éléments suivants : 15, 11, 32, 45 et 67 (le sommet de la pile est 67). Quel est l'effet de l'instruction pop(P) ?  </p>
+<h1 id="les-files">Les files</h1>
+<p>Comme les piles, les files(\textbf{queue} en anglais) ont des points communs avec les listes. Différences majeures : dans une file on ajoute des éléments à une extrémité de la file et on supprime des éléments à l'autre extrémité. On prend souvent l'analogie de la file d'attente devant un magasin pour décrire une file de données.  </p>
+<p><img alt="Files" src="../NSI_Tale_07_ListesPileFileDictionnaire_Files.png" />\ \   </p>
+<p>Les files sont basées sur le principe \textbf{FIFO (\textit{First In First Out} : le premier qui est rentré sera le premier à sortir)}. Ici aussi, on retrouve souvent ce principe FIFO en informatique.  </p>
+<p>Voici les opérations que l'on peut réaliser sur une file :  </p>
+<ul>
+<li>on peut savoir si une file est vide (\texttt{file_vide})</li>
+<li>on peut ajouter un nouvel élément à la file (\texttt{ajout})</li>
+<li>on peut récupérer l'élément situé en bout de file tout en le supprimant (\texttt{retire})</li>
+<li>on peut accéder à l'élément situé en bout de file sans le supprimer de la file (\texttt{premier})</li>
+<li>on peut connaître le nombre d'éléments présents dans la file (\texttt{taille})</li>
+</ul>
+<h3 id="exemples_1">Exemples</h3>
+<p>Soit une file F composée des éléments suivants : 12, 14, 8, 7, 19 et 22 (le premier élément rentré dans la file est 22 ; le dernier élément rentré dans la file est 12). Pour chaque exemple ci-dessous on repart de la file d'origine :  </p>
+<p>\begin{tabular}{lllll}
+    \textbf{Instruction} &amp; \  &amp; \textbf{Que se passe-t-il ?}\
+    \hline
+    \texttt{ajout(F,42)} &amp; \ &amp; la file F est maintenant composée des éléments suivants : 42, 12, 14, 8, 7, 19 et 22 \
+    &amp;&amp; (le premier élément rentré dans la file est 22 ; le dernier élément rentré dans la file est 42) \
+    \hline
+    \texttt{retire(F)} &amp; \ &amp; la file F est maintenant composée des éléments suivants : 12, 14, 8, 7, et 19 \
+    &amp;&amp; (le premier élément rentré dans la file est 19 ; le dernier élément rentré dans la file est 12) \
+    \hline
+    \texttt{premier(F)} &amp; \ &amp;  renvoie 22, la file F n'est pas modifiée\
+    \hline
+    \texttt{retire(F)} &amp; \ &amp;  \
+    \texttt{retire(F)} &amp; \ &amp;  \
+    \texttt{retire(F)} &amp; \ &amp;  \
+    \texttt{retire(F)} &amp; \ &amp;  \
+    \texttt{retire(F)} &amp; \ &amp;  \
+    \texttt{retire(F)} &amp; \ &amp; \texttt {file_vide(F)} renvoie vrai \
+    \hline
+    \texttt{retire(F)} &amp; \ &amp; \texttt{taille(F)} renvoie 5\
+\end{tabular}</p>
+<h3 id="exercice-3">Exercice 3</h3>
+<p>Soit une file F composée des éléments suivants : 1, 12, 24, 17, 21 et 72 (le premier élément rentré dans la file est 72 ; le dernier élément rentré dans la file est 1). Quel est l'effet de l'instruction \texttt{ajout(F,25)}  </p>
+<h1 id="types-abstraits-et-representation-concrete-des-donnees">Types abstraits et représentation concrète des données</h1>
+<p>Nous avons évoqué ci-dessus la manipulation des types de données (liste, pile et file) par des algorithmes, mais, au-delà de la beauté intellectuelle de réfléchir sur ces algorithmes, le but de l'opération est souvent, à un moment ou un autre, de "traduire" ces algorithmes dans un langage compréhensible pour un ordinateur (Python, Java, C,...). On dit alors que l'on implémente un algorithme. Il est donc aussi nécessaire d'implémenter les types de données comme les listes, les piles ou les files afin qu'ils soient utilisables par les ordinateurs. Les listes, les piles ou les files sont des "vues de l'esprit" présent uniquement dans la tête des informaticiens, on dit que ce sont des types abstraits de données (ou plus simplement <strong>des types abstraits</strong>). L'implémentation de ces types abstrait, afin qu'ils soient utilisables par une machine, est loin d'être une chose triviale. L'implémentation d'un type de données dépend du langage de programmation. Il faut, quel que soit le langage utilisé, que le programmeur retrouve les fonctions qui ont été définies pour le type abstrait (pour les listes, les piles et les files cela correspond aux fonctions définies ci-dessus). Certains types abstraits ne sont pas forcément implémentés dans un langage donné, si le programmeur veut utiliser ce type abstrait, il faudra qu'il le programme par lui-même en utilisant les "outils" fournis par son langage de programmation.  </p>
+<p>Pour implémenter les listes (ou les piles et les files), beaucoup de langages de programmation utilisent 2 structures : les tableaux et les listes chaînées.  </p>
+<h2 id="les-tableaux">les tableaux</h2>
+<p><strong>Un tableau</strong> est une suite contiguë de cases mémoires (les adresses des cases mémoire se suivent) :  </p>
+<p><img alt="Memoire" src="../NSI_Tale_07_ListesPileFileDictionnaire_Memoire.png" />\   </p>
+<p>Le système réserve une plage d'adresse mémoire afin de stocker des éléments.  </p>
+<p><img alt="Memoire" src="../NSI_Tale_07_ListesPileFileDictionnaire_Memoire2.png" />\   </p>
+<p>La taille d'un tableau est fixe : une fois que l'on a défini le nombre d'éléments que le tableau peut accueillir, il n'est pas possible modifier sa taille. Si l'on veut insérer une donnée, on doit créer un nouveau tableau plus grand et déplacer les éléments du premier tableau vers le second tout en ajoutant la donnée au bon endroit !  </p>
+<p>Dans certains langages de programmation, on trouve une version "évoluée" des tableaux : les tableaux dynamiques. Les tableaux dynamiques ont une taille qui peut varier. Il est donc relativement simple d'insérer des éléments dans le tableau. Ce type de tableaux permet d'implémenter facilement le type abstrait liste (de même pour les piles et les files)  </p>
+<p>À noter que les "<code>list</code> Python"\footnote{<a href="https://docs.python.org/fr/3/tutorial/datastructures.html">https://docs.python.org/fr/3/tutorial/datastructures.html</a>} sont des tableaux dynamiques. Attention de ne pas confondre avec le type abstrait <code>liste</code> défini ci-dessus, ce sont de "faux amis".  </p>
+<p><img alt="Tableau dynamique" src="../NSI_Tale_07_ListesPileFileDictionnaire_Tableau_dynamique.png" />\   </p>
+<h2 id="les-listes-chainees">les listes chaînées</h2>
+<p>Autre type de structure que l'on rencontre souvent et qui permet d'implémenter les listes, les piles et les files : <strong>les listes chaînées</strong>.  </p>
+<p>Dans une liste chaînée, à chaque élément de la liste on associe 2 cases mémoire : la première case contient l'élément et la deuxième contient l'adresse mémoire de l'élément suivant.  </p>
+<p><img alt="Listes chaînées" src="../NSI_Tale_07_ListesPileFileDictionnaire_Liste_chainee.png" />\   </p>
+<p>Il est relativement facile d'insérer un élément dans une liste chaînée :  </p>
+<p><img alt="Listes chaînées" src="../NSI_Tale_07_ListesPileFileDictionnaire_Liste_chainee2.png" />\   </p>
+<p>Il est aussi possible d'implémenter les types abstraits en utilisant des structures plus complexes que les tableaux et les listes chaînées. Par exemple, en Python, il est possible d'utiliser les tuples pour implémenter le type abstrait liste :  </p>
+<h3 id="exercice-4">Exercice 4</h3>
+<p>Étudiez attentivement les fonctions suivantes, c'est-à-dire, pour chacune d'entre elle, expliquer quel est son rôle :  </p>
+<pre><code class="language-Python">def vide():
+    return tuple()
+def cons(x,L):
+    return(x,L)
+def ajouteEnTete(L,x):
+    return cons(x,L)
+def supprEnTete(L):
+    return (L[0],L[1])
+def estVide(L):
+    return L is None
+def compte(L):
+    if estVide(L):
+        return 0
+    return 1 + compte(L[1])
+</code></pre>
+<h3 id="exercice-5">Exercice 5</h3>
+<p>Après avoir saisi et exécuté le programme étudié à l'exercice 4, tapez successivement les commandes suivantes dans une console Python et deviner la réponse :  </p>
+<pre><code class="language-Python">L = vide()
+estVide(L)
+L = cons(5, cons(4, cons(3, cons(2, cons(1, cons(0,L))))))
+estVide(L)
+compte(L)
+L = ajouteEnTete(L,6)
+compte(L)
+x, L = supprEnTete(L)
+x
+compte(L)
+x, L = supprEnTete(L)
+x
+compte(L)
+</code></pre>
+<h1 id="les-dictionnaires">Les dictionnaires</h1>
+<p>Voir cours de première.  </p>
+<p>\   </p>
+<p>\   </p>
+<p>\underline{{\textit{\textbf{Sources}}}}  </p>
+<ul>
+<li>ROCHE D. (2020, 17 septembre). \textit{Structures de données : les listes, les piles et les files}. Informatique au lycée.   <a href="https://pixees.fr/informatiquelycee/n_site/nsi_term_structDo_liste.html">https://pixees.fr/informatiquelycee/n_site/nsi_term_structDo_liste.html</a></li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Retour en haut de la page
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Licence CC-BY-SA - Sébastien SAUVAGE
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/gricoo59" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/SebastienSauvage/Informatique_au_lycee" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.top", "toc.follow", "toc.integrate"], "search": "../../../assets/javascripts/workers/search.db81ec45.min.js", "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.4b2c34cd.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1702 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="['Sébastien SAUVAGE']">
+      
+      
+        <link rel="canonical" href="https://https:/sebastiensauvage.github.io/archives/Cours%20de%20Terminale%20NSI/NSI_Tale_03_Modularite/">
+      
+      
+        <link rel="prev" href="../NSI_Tale_02_Modele_relationnel_eleves/">
+      
+      
+        <link rel="next" href="../NSI_Tale_04_Base_de_donnees_relationnelles/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.12">
+    
+    
+      
+        <title>Thème 4 - Chapitre 2 : Modularité - Informatique au lycée</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0d440cfe.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../../.." title="Informatique au lycée" class="md-header__button md-logo" aria-label="Informatique au lycée" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Informatique au lycée
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Thème 4 - Chapitre 2 : Modularité
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_3" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="brown" data-md-color-accent="blue-grey"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="teal"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_3">
+          
+            <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SebastienSauvage/Informatique_au_lycee" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    SebastienSauvage/Informatique_au_lycee
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Accueil
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link md-tabs__link--active">
+        Archives
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../liens/liens/" class="md-tabs__link">
+        Liens
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Informatique au lycée" class="md-nav__button md-logo" aria-label="Informatique au lycée" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Informatique au lycée
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SebastienSauvage/Informatique_au_lycee" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    SebastienSauvage/Informatique_au_lycee
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Accueil
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Archives
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Archives
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        Accueil - Archives
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+          Cours de 2nde SNT
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Cours de 2nde SNT
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/" class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_donnees_01_DonneesBrutes_DonneesStructurees/" class="md-nav__link">
+        Thème Les donnees structurées et leur traitement - Chapitre 1 : Des données brutes aux données structurées
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_donnees_02_Traitement_Donnees_Structurees/" class="md-nav__link">
+        Thème Les donnees structurées et leur traitement - Chapitre 2 : Traitement des données structurées
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_donnees_03_Cloud/" class="md-nav__link">
+        Thème Les donnees structurées et leur traitement - Chapitre 3 : Le cloud
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_internet_01_ArchitectureReseaux/" class="md-nav__link">
+        Thème Internet - Chapitre 1 : Architecture des réseaux
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_internet_02_Protocoles_TCP_IP/" class="md-nav__link">
+        Thème Internet - Chapitre 2 : Protocoles TCP et IP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_internet_02_Protocoles_TCP_IP_eleves/" class="md-nav__link">
+        Thème Internet - Chapitre 2 : Protocoles TCP et IP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_internet_03_SimulationReseau/" class="md-nav__link">
+        Thème Internet - Chapitre 3 : Simulation d'un réseau à l'aide du logiciel Filius
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_web_02_TP_PageWeb/" class="md-nav__link">
+        Thème web - Chapitre 2 : Créer une page web
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_web_03_LeWeb/" class="md-nav__link">
+        Thème web - Chapitre 3 : Le Web
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_web_04_NotionsJuridiques/" class="md-nav__link">
+        Thème web - Chapitre 4 : Notions juridiques
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_web_05_MoteursDeRecherche/" class="md-nav__link">
+        Thème web - Chapitre 5 : Les moteurs de recherche
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/progression/" class="md-nav__link">
+        Progression de SNT
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/web_00_Sitographie/" class="md-nav__link">
+        web 00 Sitographie
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/web_01_Historique/" class="md-nav__link">
+        Thème web - Chapitre 1 : Historique du web
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+          Cours de Terminale NSI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Cours de Terminale NSI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_Tale_00_Epreuve_Bac/" class="md-nav__link">
+        Présentation des épreuves au baccalauréat
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_Tale_00_Progression/" class="md-nav__link">
+        Progressionde NSI en terminale
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_Tale_01_Recursivite/" class="md-nav__link">
+        Thème 1 - Chapitre 1 : Ecriture d'un nombre dans différentes bases
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_Tale_02_Modele_relationnel_eleves/" class="md-nav__link">
+        Thème 2 - Chapitre 1 : Modèle relationnel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Thème 4 - Chapitre 2 : Modularité
+      </a>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_Tale_04_Base_de_donnees_relationnelles/" class="md-nav__link">
+        Thème 2 - Chapitre 2 : Bases de donnée relationnelles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_Tale_05_Programmation_Objet/" class="md-nav__link">
+        Thème 1 - Chapitre 2 : La programmation orientée objet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_Tale_06_MiseAuPtPrgm_Bugs/" class="md-nav__link">
+        Thème 4 - Chapitre 5 : Mise au point de programmes et gestioins des bugs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_Tale_07_ListesPileFileDictionnaire/" class="md-nav__link">
+        Thème 1 - Chapitre 3 : Liste, pile, file et dictionnaire
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_Tale_08_ListesPileFileDictionnaire_TP/" class="md-nav__link">
+        Thème 1 - Chapitre 3 : Liste, pile, file et dictionnaire
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_Tale_09_Requetes_SQL/" class="md-nav__link">
+        Thème 2 - Chapitre 3 : Requêtes en langage SQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_Tale_10_Arbres/" class="md-nav__link">
+        Thème 1 - Chapitre 4 : Arbres
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_Tale_11_Processus/" class="md-nav__link">
+        Thème 3 - Chapitre 2 : Gestiondes processus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_Tale_12_Algo_arbres/" class="md-nav__link">
+        Thème 5 - Chapitre 1 : Algorithmes sur les arbres binaires et sur les ABR
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+          Cours de première NSI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Cours de première NSI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/" class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/00_Progression/" class="md-nav__link">
+        Progression en 1ère NSI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/01_Changement_de_bases/" class="md-nav__link">
+        Thème 1 - Chapitre 1 : Ecriture d'un nombre dans différentes bases
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/NSI_1ere_02_BonnesPratiques/" class="md-nav__link">
+        Thème 1 - Chapitre 2 : Bonnes pratiques en programmation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/NSI_1ere_03_Representation_des_entiers/" class="md-nav__link">
+        Thème 1 - Chapitre 2 : Représentation des entiers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/NSI_1ere_05_Representation_des_reels/" class="md-nav__link">
+        Thème 1 - Chapitre 3 : Représentation des réels
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/NSI_1ere_08_AlgebreDeBool/" class="md-nav__link">
+        Thème 1 - Chapitre 4 : Algèbre de Bool
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/NSI_1ere_09_EncodageCaracteres/" class="md-nav__link">
+        Thème 1 - Chapitre 5 : Encodage des caractères
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/NSI_1ere_11_puplets_tableaux/" class="md-nav__link">
+        Thème 2 - Chapitre 1 : p-uplets et tableaux
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/NSI_1ere_13_Machine_debranchee/" class="md-nav__link">
+        Thème 5 - Chapitre 2 - Machine débranchée
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+          Liens
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Liens
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Liens/" class="md-nav__link">
+        Sites intéressants
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+          Projets de Terminale NSI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Projets de Terminale NSI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20Terminale%20NSI/NSI_Tale_Bubulle/" class="md-nav__link">
+        Projet : Bubulle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20Terminale%20NSI/NSI_Tale_Morpion/" class="md-nav__link">
+        Thème 1 - Chapitre 1 : Ecriture d'un nombre dans différentes bases
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20Terminale%20NSI/NSI_Tale_Pokedex/" class="md-nav__link">
+        Projet : Pokédex
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20Terminale%20NSI/NSI_Tale_Pygame/" class="md-nav__link">
+        Projet : Découverte de la bibliothèque Pygame
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20Terminale%20NSI/NSI_Tale_Pyxel/" class="md-nav__link">
+        Projet : Découverte de la bibliothèque Pyxel
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+          Projets de première NSI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Projets de première NSI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20premi%C3%A8re%20NSI/NSI_1ere_Bubulle/" class="md-nav__link">
+        Projet : Bubulle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20premi%C3%A8re%20NSI/NSI_1ere_Pyxel/" class="md-nav__link">
+        Projet : Découverte de la bibliothèque Pyxel
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Liens
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Liens
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../liens/liens/" class="md-nav__link">
+        Liens externes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../liens/mkdocs/" class="md-nav__link">
+        MkDocs et Material for MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+
+<p>\huge \textbf{Thème 4}\normalsize  </p>
+<p>\ </p>
+<p>\Large \textbf{Chapitre 2 : Modularité}\normalsize  </p>
+<h1 id="introduction">Introduction</h1>
+<p><strong>Exercice</strong>  </p>
+<p>Dans cet exercice, l'ensemble des fichiers <code>PY</code> seront placés dans le même dossier.  </p>
+<p>On considère une suite géométrique de raison $q$ ($q &gt;1$) et de premier terme $U_0$, positif, donnés.  </p>
+<p>On note $S_n$ la somme $U_0 + U_1 + \ldots + U_n$.  </p>
+<ol>
+<li>\ <br />
+    a. On sait (pour ceux qui ont suivi la spécialité Mathématiques en première) que pour tout entier naturel $n$, $U_n = U_0 \times q^n$.  <pre><code>En vous appuyant sur cette définition, écrire, en langage Python, dans un fichier nommé `terme3.py` une fonction `terme`.
+
+Cette fonction aura trois paramètres : $q$, la raison (type `float`), $u$, la valeur du premier terme (type `float`) et $n$,le rang de la suite dont on cherche la valeur (type `integer`).
+
+Cette fonction retournera la valeur de $U_n$ (type `float`).
+
+Par exemple, `terme(2, 1, 5)` signifie que l'on cherche le terme $u_5$, lorsque $q = 2$ et $u_0 = 1$. Cette instruction renvoie 32.
+
+Ainsi :
+
+```python
+&gt;&gt;&gt; terme(2, 1, 5)
+32
+```
+
+Vous penserez à bien documenter votre fonction ...
+</code></pre>
+<p>b. On sait également (toujours pour les mêmes raisons), que $S_n = U_0 \times \dfrac{1 - q^{n + 1}}{1 - q}$.  </p>
+<pre><code>En vous appuyant sur cette définition, écrire, en langage Python, dans un fichier nommé `somme3.py`, une fonction `somme`.
+
+Cette fonction a trois paramètres : `q`, la raison (type `float`), `u`, la valeur du premier terme (type `float`) et `n`, le rang de la somme dont on cherche la valeur (type `integer`).
+
+Cette fonction renvoie la valeur de $S_n$ calculée selon la formule ci-dessus.
+
+Par exemple, `somme(2, 1, 5)` renvoie 63.
+</code></pre>
+<p>c. On considère un nombre $A$ réel. Ecrire, en langage Python, dans un fichier nommé <code>calcul_de_seuil.py</code> une fonction <code>seuil</code>.  </p>
+<pre><code>Cette fonction aura trois paramètres, tous de type `float` : `A`, la valeur du seuil à atteindre , `q`, la raison de la suite géométrique et `u`, la valeur du premier terme de la suite.
+
+La fonction retournera alors la première valeur $n$ du rang de la suite pour lequel la somme $S_n$ est strictement supérieure à $A$.
+
+Par exemple, `seuil(60, 2, 1)` renvoie 5.
+
+Comme la fonction nécessitera les calculs des sommes $S_n$, il sera nécessaire de commencer le programme par `import somme3 as mod1` et ensuite d'utiliser la fonction `mod1.somme`.
+</code></pre>
+<ol>
+<li>
+<p>\ <br />
+a. En considérant uniquement que $U_{n + 1} = q \times U_n$, écrire deux fonctions, nommées <code>terme</code>, répondant aux mêmes contraintes que la fonction <code>terme</code> de la question 1.a., l'une utilisant une boucle, l'autre étant une fonction récursives.  </p>
+<p>Sauvegarder les deux fonctions dans deux fichiers différents nommés <code>terme1.py</code> et <code>terme2.py</code>.
+    b. En considérant uniquement que $S_n = U_0 + U_1 + \ldots + U_n$, écrire deux fonctions <code>somme</code>, l'une utilisant une boucle, l'autre étant une fonction récursives répondant au même contraintes que la fonction <code>somme</code> de la question 1.b..  </p>
+<p>Sauvegarder les deux fonctions dans deux fichiers différents nommés <code>somme1.py</code> et <code>somme2.py</code>  </p>
+<p>Ces deux fonctions feront appel à l'une des fonctions <code>somme</code>, précédemment écrite.
+3. \ <br />
+- Que se passe-t-il en changeant la première ligne <code>import somme3 as mod1</code> par <code>import somme1 as mod1</code> ou <code>import somme2 as mod1</code> ?<br />
+- Procéder de même au sein des fichiers contenant les fonctions <code>somme</code> nécessitant l'importation de la fonction <code>terme</code>.<br />
+- Conclusion : quelles sont les éléments nécessaires à connaître pour coder une fonction ?</p>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="modularite">Modularité</h1>
+<p>Un programme écrit en Python ou en Java commence souvent par des lignes de type <code>import ...</code>, en C++ par <code>include ...</code>.  </p>
+<p>Il s'agit de fonctions déjà écrite (par soi-même ou une autre personne) dont nous souhaitons disposer pour un projet donné.  </p>
+<p><strong>Définition</strong>  </p>
+<p>Un module est un fichier regroupant un ensemble de fonctions écrites auparavant dans un langage donné dans le but d'être réutilisées par d'autres programmes.  </p>
+<h1 id="modules">Modules</h1>
+<p>En Python, un module peut être un simple fichier. Ce fichier contient principalement des définitions de fonctions et de constantes destinées à être utilisées à l'aide d'une documentation. Il n'y a pas besoin de savoir comme les fonctions sont codées, mais il est nécessaire de connaître la façon de les utiliser et ce qu'elles produisent. Pour créer un module, il suffit donc d'écrire ces définitions dans un fichier dont le nom a pour extension <code>PY</code>.  </p>
+<p>\   </p>
+<h2 id="exercice">Exercice</h2>
+<p>Recopier et compléter le module ci-dessous, appelé <code>aires</code>, contenant quatre fonctions : <code>disque</code>, <code>rectangle</code>, <code>carre</code> et <code>triangle</code> permettant de calculer les aires des figures géométriques fréquemment rencontrées au collège.  </p>
+<pre><code class="language-python">'''
+Ce module contient différentes fonctions permettant de calculer les aires des figures usuelles
+vues collège.
+'''
+... #  &lt;--- A compléter
+
+def disque(...): #  &lt;--- A compléter
+    ... #  &lt;--- A compléter
+
+def rectangle(longueur: float, largeur: float) -&gt; float:
+    '''
+    Fonction qui renvoie l'aire d'un rectangle dont la longueur et la largeur
+    sont passées en paramètres.
+    :param:
+    longueur, largeur : longueur de deux côtés consécutifs du rectangle
+    :effets de bord:
+    aucun
+    :exemple:
+    &gt;&gt;&gt; rectangle(5, 6) == 30
+    True
+    '''
+    assert (longueur &gt;= 0) and (largeur &gt;= 0), &quot;longueur et largeur doivent être des nombres positifs&quot;
+    return ... #  &lt;--- A compléter
+
+... #  &lt;--- A compléter
+</code></pre>
+<h2 id="exemple-dutilisation">Exemple d'utilisation</h2>
+<p>Ainsi, maintenant, pour utiliser les fonctions du module <code>aires</code>, il suffit de saisir <code>import aires</code>.  </p>
+<p>Dans le terminal, on peut utiliser le module de la manière suivante :  </p>
+<pre><code class="language-python">&gt;&gt;&gt; import aires
+&gt;&gt;&gt; aires.rectangle(5, 9)
+45
+</code></pre>
+<h2 id="astuces">Astuces</h2>
+<p>Le contenu d'un module s'obtient à l'aide de l'instruction <code>dir</code>.  </p>
+<p>La documentation d'une fonction s'obtient à l'aide de l'instruction <code>help</code>.</p>
+<h2 id="exemple">Exemple</h2>
+<p>Dans le terminal, on peut donc obtenir les documentations :  </p>
+<pre><code>&gt;&gt;&gt; import test
+&gt;&gt;&gt; dir (test)
+['__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__',
+ '__spec__', 'carre', 'disque', 'rectangle', 'triangle']
+&gt;&gt;&gt; help(test.rectangle)
+Help on function rectangle in module test:
+
+rectangle(longueur: float, largeur: float) -&gt; float
+    Fonction qui renvoie l'aire d'un rectangle dont la longueur et la largeur
+    sont passées en paramètres.
+    :param:
+    longueur, largeur : longueur de deux côtés consécutifs du rectangle
+    :effets de bord:
+    aucun
+    :exemple:
+    &gt;&gt;&gt; rectangle(5, 6) == 30
+    True
+
+</code></pre>
+<h1 id="bibliotheques">Bibliothèques</h1>
+<h2 id="definitions">Définitions</h2>
+<p><strong>Un package</strong> est un ensemble de modules.  </p>
+<p><strong>Une bibliothèque</strong> est un ensemble de un ou plusieurs packages.  </p>
+<h2 id="exemples">Exemples</h2>
+<ul>
+<li>La bibliothèque <code>Matplotlib</code> contient différents modules : <code>pylab</code>, <code>pyplot</code>, ...<br />
+Pour appeler l'un des module, il suffit d'écrire : <code>import matplotlib.pylab</code> par exemple.</li>
+<li><code>Numpy</code> et <code>Scipy</code> sont des bibliothèques pour le calcul scientifique ;</li>
+<li><code>PIL</code> est une bilbiothèque pour la manipulation et le traitement d'images ;</li>
+<li><code>Pygame</code> est une bibliothèque pour la création de jeux en 2D ;</li>
+<li><code>Django</code> est une bibliothèque pour le développement WEB.</li>
+</ul>
+<h1 id="api">API</h1>
+<h2 id="definition">Définition</h2>
+<h3 id="definition_1">Définition</h3>
+<p><strong>Une API (<em>Application Programming Interface</em>)</strong> est une interface de programmation d'application.  </p>
+<p>Elle est destinée à être utilisée par des programmes. Le principe de ce type d'interface est le même que celui des UI (<em>User Interface</em>) ou des GUI (<em>Graphical User Interface</em>) destinées, elles, à un utilisateur humain.</p>
+<h3 id="remarque">Remarque</h3>
+<p>Le principe de base est que le fonctionnement interne, la logique sous-jacente, n'a pas besoin d'être connue du programme utilisateur. Par contre, cela nécessite une documentation fournie décrivant son utilisation.  </p>
+<h3 id="definition_2">Définition</h3>
+<p><strong>Une interface</strong> est ce qu'il suffit de connaître d'une fonction, d'une classe, etc pour pouvoir l'utiliser.  </p>
+<h3 id="propriete">Propriété</h3>
+<p>En général, l'interface d'une fonction est constituée de :  </p>
+<ul>
+<li>Son nom ;</li>
+<li>ses paramètres : leur sens et leur type ;</li>
+<li>le type de ce qui est renvoyé en sortie, effets de bord compris.</li>
+</ul>
+<h3 id="exemple_1">Exemple</h3>
+<p>Pour la fonction <code>rectangle</code> du module <code>aires</code>, son interface est donnée par :  </p>
+<ul>
+<li>NOM : <code>rectangle</code> ;</li>
+<li>Paramètres : <code>longueur</code> et <code>largeur</code> de type <code>float</code> tous les deux correspondant aux dimensions du rectangle ;</li>
+<li>Renvoie, sans effet de bord : l'aire du rectangle, objet de type <code>Float</code>.</li>
+</ul>
+<h3 id="astuce">Astuce</h3>
+<p>L'interface d'une fonction est la première chose à déterminer (donc écrire sa documentation) avant l'écriture du code, afin d'être bien certain des attentes de celui qui l'utilisera dans le but de répondre à ses souhaits.  </p>
+<h2 id="la-variable-__name__">La variable <code>__name__</code></h2>
+<p>Dans chaque module, une variable <code>__main__</code> est créée automatiquement à l'exécution d'un programme. Cette variable contient le nom du programme courant quand on importe un programme. Mais le nom du programme principal est toujours <code>__main__</code>. Donc la fonction <code>main</code> est exécutée seulement si le fichier module constitue le programme principal.  </p>
+<p>Afin de n'exécuter un code que lorsque le module est le programme principal, il suffit d'ajouter en fin de module les lignes :  </p>
+<pre><code class="language-python">if __name__ == '__main__':
+    ... # &lt;--- Partie des instructions à n'exécuter que si le module est le programme principal.
+</code></pre>
+<h2 id="les-api-web">Les API Web</h2>
+<p>Il existe différents types d'API. Parmi elles, <strong>les API Web</strong> sont les plus nombreuses. Les réseaux sociaux par exemple, proposent des API permettant d'accéder à des données. Pour ce type d'API, les demandes ne sont pas codées dans le même langage que le code de l'API. Une méthode est d'<strong>émettre une requête vers un serveur distant qui renvoie alors les données demandées</strong>. De nombreux services Web proposent ainsi des API basées sur le protocole HTTP et utilisent le réseau. Il suffit donc d'utiliser n'importe quel langage capable d'envoyer une requête HTTP pour accéder au service Web.  </p>
+<p>Les API disponibles sur le Web peuvent être libres et gratuites ou payantes. Celles qui sont libres peuvent nécessiter une clé d'authentification.  </p>
+<p>Par exemple, on trouve sur la page <a href="http://openweathermap.org/api">http://openweathermap.org/api</a> diverses API concernant le climat et la météo. La plupart sont payantes mais <em>Current weather data</em> est gratuite. Elle nécessite cependant de s'enregistrer pour obtenir une clé d'authentification.  </p>
+<p>\   </p>
+<p>Quelques sites intéressants à visiter :  </p>
+<ul>
+<li><a href="https://fr.openfoodfacts.org/data">https://fr.openfoodfacts.org/data</a> qui se revendique "<em>base de données collaborative, libre et ouverte des produits alimentaires du monde entier</em>".</li>
+<li><a href="https://www.openstreetmap.fr">https://www.openstreetmap.fr</a> où se trouve le site OpenStreetMap France.</li>
+<li>
+<p><a href="https://api.gouv.fr/rechercher-api">https://api.gouv.fr/rechercher-api</a> référence plusieurs API disponibles et gratuites, en particulier l'API <code>Géo</code> :  </p>
+<ul>
+<li>à l'adresse <a href="https://api.gouv.fr/api/api-geo">https://api.gouv.fr/api/api-geo</a> on trouve une description ;</li>
+<li>à l'adresse <a href="https://geo.api.gouv.fr/decoupage-administratif">https://geo.api.gouv.fr/decoupage-administratif</a> la documentation technique.  </li>
+</ul>
+</li>
+</ul>
+<p>Pour effectuer des requêtes en langage Python, le plus simple est d'utiliser une bibliothèque comme <code>requests</code>, installable par exemple via la commande <code>pip install requests</code>.  </p>
+<p>Après importation de la bibliothèque, afin de récupérer des données, il faut émettre une requête de type <code>get</code> :  </p>
+<pre><code class="language-python">&gt;&gt;&gt; import requests
+&gt;&gt;&gt; rep = requests.get('https://www.education.gouv.fr/test')
+</code></pre>
+<p>Afin de connaître le code réponse à la requête, un affichage de la variable <code>rep</code> suffit, mais on peut aussi utiliser <code>rep.status_code</code> qui renvoie uniquement la valeur du code réponse à la requête :  </p>
+<pre><code class="language-python">&gt;&gt;&gt; rep
+&lt;Response [404]&gt;
+&gt;&gt;&gt; rep.status_code
+404
+</code></pre>
+<p>Ici, le code 404 signifie que la page n'existe pas !  </p>
+<p>\newpage</p>
+<p>Les types de code réponses les plus fréquents à une requête GET sont :  </p>
+<ul>
+<li>200 : tout est ok, le résultat est renvoyé ;</li>
+<li>301 : le serveur est redirigé vers une autre adresse ;</li>
+<li>400 : la requête ne semble pas correcte pour le serveur ;</li>
+<li>401 : il y a un problème d'authentification ;</li>
+<li>403 : l'accès à la ressource n'est pas autorisée ;</li>
+<li>404 : la ressource n'a pas été trouvée.</li>
+</ul>
+<p>Voici une requête valide pour obtenir le nom, le code et la population des communes du département 59 (voir la documentation précédemment citée) :  </p>
+<pre><code class="language-python">&gt;&gt;&gt; import requests
+&gt;&gt;&gt; url = &quot;&quot;&quot;https://geo.api.gouv.fr/departements/59/communes?fields=nom,code,population&amp;format=json&quot;&quot;&quot;
+&gt;&gt;&gt; rep = requests.get(url)
+&gt;&gt;&gt; rep
+&lt;Response [200]&gt;
+&gt;&gt;&gt; rep.status_code
+200
+</code></pre>
+<p>Les données renvoyées sont au format <code>JSON</code>. Pour les afficher, la méthode <code>json</code> produit une liste de dictionnaires dont nous n'affichons que les quatre premiers éléments :  </p>
+<pre><code class="language-python">&gt;&gt;&gt; rep.json()
+[{'nom': 'Abancourt', 'code': '59001', 'population': 469}, 
+{'nom': 'Abscon', 'code': '59002', 'population': 4309}, 
+{'nom': 'Aibes', 'code': '59003', 'population': 372}, 
+{'nom': 'Aix-en-Pévèle', 'code': '59004', 'population': 1320},
+...
+</code></pre>
+<h2 id="exercice_1">Exercice</h2>
+<p>Effectuer une recherche des communes du Nord par code postal puis une seconde recherche de ces mêmes villes par coordonnées géographiques.  </p>
+<p>\   </p>
+<p>\   </p>
+<p>Une autre API avec GéoDataMine <a href="[https://geodatamine.fr](https://geodatamine.fr)">^GéoDataMine</a> permet d'extraire des données de OpenStreetMap France <a href="[https://www.openstreetmap.fr/](https://www.openstreetmap.fr/)">^Openstreetmap_France</a> :  </p>
+<pre><code class="language-python">&gt;&gt;&gt; import requests
+&gt;&gt;&gt; url = &quot;&quot;&quot;https://geodatamine.fr/boundaries&quot;&quot;&quot;
+&gt;&gt;&gt; rep = requests.get(url)
+&gt;&gt;&gt; data = rep.json()
+&gt;&gt;&gt; for d in data:
+        k = d['name']
+        if k =='Douai':
+            print(d)
+
+{'id': -1643921, 'name': 'Douai', 'ref': '593', 'type': 'admin_7'}
+{'id': -56243, 'name': 'Douai', 'ref': '59178', 'type': 'admin_8'}
+{'id': -4260196, 'name': 'Douai', 'ref': '5915', 'type': 'political'}
+</code></pre>
+<p>On peut utiliser alors l'identifiant obtenu -56243, par exemple, pour trouver par exemple les bibliothèques à Douai :  </p>
+<pre><code class="language-python">&gt;&gt;&gt; url = '''https://geodatamine.fr/data/library/-56243?format=geojson'''
+&gt;&gt;&gt; rep = requests.get(url)
+&gt;&gt;&gt; rep.json()
+{'type': 'FeatureCollection', 'name': 'sql_statement', 'crs': {'type': 'name', 'properties': {'name': 'urn:ogc:def:crs:OGC:1.3:CRS84'}}, 'features': [{'type': 'Feature', 'properties': {'osm_id': 'node/1584907282', 'type': 'library', 'name': 'Bibliothèque Municipale', 'ref_isil': None, 'operator': None, 'wheelchair': None, 'opening_hours': None, 'com_insee': '59178', 'com_nom': 'Douai'}, 'geometry': {'type': 'Point', 'coordinates': [3.0736988, 50.367642999371625]}}, {'type': 'Feature', 'properties': {'osm_id': 'way/101423464', 'type': 'library', 'name': 'Bibliothèque La Micheline', 'ref_isil': None, 'operator': None, 'wheelchair': None, 'opening_hours': None, 'com_insee': '59178', 'com_nom': 'Douai'}, 'geometry': {'type': 'Polygon', 'coordinates': [[[3.081319, 50.35417699937445], [3.081369, 50.35411399937449], [3.081567, 50.35418099937446], [3.081515, 50.35424399937444], [3.081319, 50.35417699937445]]]}}, {'type': 'Feature', 'properties': {'osm_id': 'way/101636376', 'type': 'library', 'name': 'Bibliothèque La Péniche', 'ref_isil': None, 'operator': None, 'wheelchair': None, 'opening_hours': None, 'com_insee': '59178', 'com_nom': 'Douai'}, 'geometry': {'type': 'Polygon', 'coordinates': [[[3.083737, 50.39405099936605], [3.083743, 50.39404799936606], [3.083822, 50.39399899936607], [3.083857, 50.39401699936608], [3.08385, 50.39402299936606], [3.08391, 50.39405499936606], [3.083843, 50.39410399936604], [3.083737, 50.39405099936605]]]}}]}
+&gt;&gt;&gt; rep.json()['features']
+[{'type': 'Feature', 'properties': {'osm_id': 'node/1584907282', 'type': 'library', 'name': 'Bibliothèque Municipale', 'ref_isil': None, 'operator': None, 'wheelchair': None, 'opening_hours': None, 'com_insee': '59178', 'com_nom': 'Douai'}, 'geometry': {'type': 'Point', 'coordinates': [3.0736988, 50.367642999371625]}}, {'type': 'Feature', 'properties': {'osm_id': 'way/101423464', 'type': 'library', 'name': 'Bibliothèque La Micheline', 'ref_isil': None, 'operator': None, 'wheelchair': None, 'opening_hours': None, 'com_insee': '59178', 'com_nom': 'Douai'}, 'geometry': {'type': 'Polygon', 'coordinates': [[[3.081319, 50.35417699937445], [3.081369, 50.35411399937449], [3.081567, 50.35418099937446], [3.081515, 50.35424399937444], [3.081319, 50.35417699937445]]]}}, {'type': 'Feature', 'properties': {'osm_id': 'way/101636376', 'type': 'library', 'name': 'Bibliothèque La Péniche', 'ref_isil': None, 'operator': None, 'wheelchair': None, 'opening_hours': None, 'com_insee': '59178', 'com_nom': 'Douai'}, 'geometry': {'type': 'Polygon', 'coordinates': [[[3.083737, 50.39405099936605], [3.083743, 50.39404799936606], [3.083822, 50.39399899936607], [3.083857, 50.39401699936608], [3.08385, 50.39402299936606], [3.08391, 50.39405499936606], [3.083843, 50.39410399936604], [3.083737, 50.39405099936605]]]}}]
+&gt;&gt;&gt; rep.json()['features'][0]
+{'type': 'Feature', 'properties': {'osm_id': 'node/1584907282', 'type': 'library', 
+'name': 'Bibliothèque Municipale', 'ref_isil': None, 'operator': None, 'wheelchair': None,
+ 'opening_hours': None, 'com_insee': '59178', 'com_nom': 'Douai'}, 
+ 'geometry': {'type': 'Point', 'coordinates': [3.0736988, 50.367642999371625]}}
+</code></pre>
+<h1 id="exercices">Exercices</h1>
+<h2 id="exercice_2">Exercice</h2>
+<ol>
+<li>Créer un module <code>stats</code> qui contient deux fonctions <code>somme</code> et <code>moyenne</code>. Ces deux fonctions prennent en paramètre un objet de type <code>list</code> non vide. La fonction <code>somme</code> renvoie la somme des éléments de la liste et la fonction <code>moyenne</code> renvoie la moyenne des éléments de la liste.</li>
+<li>Tester ce module en l'important dans un autre fichier où les deux fonctions sont utilisées.</li>
+<li>Compléter ce module par d'autres fonctions statistiques : minimum, maximum, étendue, etc.</li>
+</ol>
+<h2 id="exercice_3">Exercice</h2>
+<ol>
+<li>En utilisation la documentation du module nommé <code>statistics</code>, inclus dans la bibliothèque standard, trouver une fonction permettant le calcul de moyenne de plusieurs nombres ainsi qu'une fonction calculant la médiane.</li>
+<li>Comment utiliser ces fonctions ? Ecrire plusieurs exemples.</li>
+</ol>
+<h2 id="exercice_4">Exercice</h2>
+<p>Consulter le site à l'adresse <a href="http://api.open-notify.org">http://api.open-notify.org</a> qui concerne l'ISS, la Station Spatiale Internationale.  </p>
+<p>Ecrire des requêtes en langage Python pour obtenir :  </p>
+<ol>
+<li>les personnes à bord de l'ISS ;</li>
+<li>la position de l'ISS.</li>
+</ol>
+<p>Les passages de l'ISS au dessus d'un point donné n'est plus disponible.  </p>
+<p>\   </p>
+<p>\   </p>
+<p>\underline{{\textit{\textbf{Sources}}}}  </p>
+<ul>
+<li>Serge Bays, <em>numérique et sciences informatiques, Tle</em>, Ed. ellipses. p53 à 64, 88 et 89. ISBN 978-2-340-03844-8.</li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Retour en haut de la page
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Licence CC-BY-SA - Sébastien SAUVAGE
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/gricoo59" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/SebastienSauvage/Informatique_au_lycee" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.top", "toc.follow", "toc.integrate"], "search": "../../../assets/javascripts/workers/search.db81ec45.min.js", "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.4b2c34cd.min.js"></script>
+      
+    
+  </body>
+</html>

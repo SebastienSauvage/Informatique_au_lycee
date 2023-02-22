@@ -1,0 +1,1582 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="['Sébastien SAUVAGE']">
+      
+      
+        <link rel="canonical" href="https://https:/sebastiensauvage.github.io/archives/Cours%20de%20premi%C3%A8re%20NSI/NSI_1ere_09_EncodageCaracteres/">
+      
+      
+        <link rel="prev" href="../NSI_1ere_08_AlgebreDeBool/">
+      
+      
+        <link rel="next" href="../NSI_1ere_11_puplets_tableaux/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.12">
+    
+    
+      
+        <title>Thème 1 - Chapitre 5 : Encodage des caractères - Informatique au lycée</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0d440cfe.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#elements-du-programme" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../../.." title="Informatique au lycée" class="md-header__button md-logo" aria-label="Informatique au lycée" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Informatique au lycée
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Thème 1 - Chapitre 5 : Encodage des caractères
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_3" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="brown" data-md-color-accent="blue-grey"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="teal"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_3">
+          
+            <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SebastienSauvage/Informatique_au_lycee" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    SebastienSauvage/Informatique_au_lycee
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Accueil
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link md-tabs__link--active">
+        Archives
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../liens/liens/" class="md-tabs__link">
+        Liens
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Informatique au lycée" class="md-nav__button md-logo" aria-label="Informatique au lycée" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Informatique au lycée
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SebastienSauvage/Informatique_au_lycee" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    SebastienSauvage/Informatique_au_lycee
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Accueil
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Archives
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Archives
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        Accueil - Archives
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+          Cours de 2nde SNT
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Cours de 2nde SNT
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/" class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_donnees_01_DonneesBrutes_DonneesStructurees/" class="md-nav__link">
+        Thème Les donnees structurées et leur traitement - Chapitre 1 : Des données brutes aux données structurées
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_donnees_02_Traitement_Donnees_Structurees/" class="md-nav__link">
+        Thème Les donnees structurées et leur traitement - Chapitre 2 : Traitement des données structurées
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_donnees_03_Cloud/" class="md-nav__link">
+        Thème Les donnees structurées et leur traitement - Chapitre 3 : Le cloud
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_internet_01_ArchitectureReseaux/" class="md-nav__link">
+        Thème Internet - Chapitre 1 : Architecture des réseaux
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_internet_02_Protocoles_TCP_IP/" class="md-nav__link">
+        Thème Internet - Chapitre 2 : Protocoles TCP et IP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_internet_02_Protocoles_TCP_IP_eleves/" class="md-nav__link">
+        Thème Internet - Chapitre 2 : Protocoles TCP et IP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_internet_03_SimulationReseau/" class="md-nav__link">
+        Thème Internet - Chapitre 3 : Simulation d'un réseau à l'aide du logiciel Filius
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_web_02_TP_PageWeb/" class="md-nav__link">
+        Thème web - Chapitre 2 : Créer une page web
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_web_03_LeWeb/" class="md-nav__link">
+        Thème web - Chapitre 3 : Le Web
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_web_04_NotionsJuridiques/" class="md-nav__link">
+        Thème web - Chapitre 4 : Notions juridiques
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_web_05_MoteursDeRecherche/" class="md-nav__link">
+        Thème web - Chapitre 5 : Les moteurs de recherche
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/progression/" class="md-nav__link">
+        Progression de SNT
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/web_00_Sitographie/" class="md-nav__link">
+        web 00 Sitographie
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/web_01_Historique/" class="md-nav__link">
+        Thème web - Chapitre 1 : Historique du web
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+          Cours de Terminale NSI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Cours de Terminale NSI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/" class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_00_Epreuve_Bac/" class="md-nav__link">
+        Présentation des épreuves au baccalauréat
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_00_Progression/" class="md-nav__link">
+        Progressionde NSI en terminale
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_01_Recursivite/" class="md-nav__link">
+        Thème 1 - Chapitre 1 : Ecriture d'un nombre dans différentes bases
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_02_Modele_relationnel_eleves/" class="md-nav__link">
+        Thème 2 - Chapitre 1 : Modèle relationnel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_03_Modularite/" class="md-nav__link">
+        Thème 4 - Chapitre 2 : Modularité
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_04_Base_de_donnees_relationnelles/" class="md-nav__link">
+        Thème 2 - Chapitre 2 : Bases de donnée relationnelles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_05_Programmation_Objet/" class="md-nav__link">
+        Thème 1 - Chapitre 2 : La programmation orientée objet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_06_MiseAuPtPrgm_Bugs/" class="md-nav__link">
+        Thème 4 - Chapitre 5 : Mise au point de programmes et gestioins des bugs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_07_ListesPileFileDictionnaire/" class="md-nav__link">
+        Thème 1 - Chapitre 3 : Liste, pile, file et dictionnaire
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_08_ListesPileFileDictionnaire_TP/" class="md-nav__link">
+        Thème 1 - Chapitre 3 : Liste, pile, file et dictionnaire
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_09_Requetes_SQL/" class="md-nav__link">
+        Thème 2 - Chapitre 3 : Requêtes en langage SQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_10_Arbres/" class="md-nav__link">
+        Thème 1 - Chapitre 4 : Arbres
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_11_Processus/" class="md-nav__link">
+        Thème 3 - Chapitre 2 : Gestiondes processus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_12_Algo_arbres/" class="md-nav__link">
+        Thème 5 - Chapitre 1 : Algorithmes sur les arbres binaires et sur les ABR
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+          Cours de première NSI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Cours de première NSI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00_Progression/" class="md-nav__link">
+        Progression en 1ère NSI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_Changement_de_bases/" class="md-nav__link">
+        Thème 1 - Chapitre 1 : Ecriture d'un nombre dans différentes bases
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_1ere_02_BonnesPratiques/" class="md-nav__link">
+        Thème 1 - Chapitre 2 : Bonnes pratiques en programmation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_1ere_03_Representation_des_entiers/" class="md-nav__link">
+        Thème 1 - Chapitre 2 : Représentation des entiers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_1ere_05_Representation_des_reels/" class="md-nav__link">
+        Thème 1 - Chapitre 3 : Représentation des réels
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_1ere_08_AlgebreDeBool/" class="md-nav__link">
+        Thème 1 - Chapitre 4 : Algèbre de Bool
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Thème 1 - Chapitre 5 : Encodage des caractères
+      </a>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_1ere_11_puplets_tableaux/" class="md-nav__link">
+        Thème 2 - Chapitre 1 : p-uplets et tableaux
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_1ere_13_Machine_debranchee/" class="md-nav__link">
+        Thème 5 - Chapitre 2 - Machine débranchée
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+          Liens
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Liens
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Liens/" class="md-nav__link">
+        Sites intéressants
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+          Projets de Terminale NSI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Projets de Terminale NSI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20Terminale%20NSI/NSI_Tale_Bubulle/" class="md-nav__link">
+        Projet : Bubulle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20Terminale%20NSI/NSI_Tale_Morpion/" class="md-nav__link">
+        Thème 1 - Chapitre 1 : Ecriture d'un nombre dans différentes bases
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20Terminale%20NSI/NSI_Tale_Pokedex/" class="md-nav__link">
+        Projet : Pokédex
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20Terminale%20NSI/NSI_Tale_Pygame/" class="md-nav__link">
+        Projet : Découverte de la bibliothèque Pygame
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20Terminale%20NSI/NSI_Tale_Pyxel/" class="md-nav__link">
+        Projet : Découverte de la bibliothèque Pyxel
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+          Projets de première NSI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Projets de première NSI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20premi%C3%A8re%20NSI/NSI_1ere_Bubulle/" class="md-nav__link">
+        Projet : Bubulle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20premi%C3%A8re%20NSI/NSI_1ere_Pyxel/" class="md-nav__link">
+        Projet : Découverte de la bibliothèque Pyxel
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Liens
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Liens
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../liens/liens/" class="md-nav__link">
+        Liens externes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../liens/mkdocs/" class="md-nav__link">
+        MkDocs et Material for MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+
+<p>[^hist-info.org]: François GUILLIER. <em>Histoire de l'informatique</em> [en ligne]. 2016 [consulté le 18 juillet 2019]. <a href="https://histoire-informatique.org/grandes_dates/">histoire-informatique.org</a><br />
+[^hist-info.online]: Serge ROSSI. <em>Histoire de l'informatique</em> [en ligne]. 20 novembre 2004 [consulté le 18 juillet 2019]. <a href="http://histoire.info.online.fr/">histoire.info.online.fr</a>  </p>
+<p>\huge \textbf{Thème 1}\normalsize  </p>
+<p>\ </p>
+<p>\Large \textbf{Chapitre 5 : Encodage des caractères}\normalsize  </p>
+<h1 id="elements-du-programme">Eléments du programme</h1>
+<p><img alt="Programme" src="../NSI_1ere_09_EncodageCaracteres_Tab_Programme.png" />\   </p>
+<h1 id="un-peu-dhistoire-hist-infoonline-hist-infoorg">Un peu d'histoire [^hist-info.online] [^hist-info.org]</h1>
+<p><strong><em>1623</em></strong> : Le philosophe Francis Bacon invente le <code>Code Bilitère</code> à deux lettres qui permet en utilisant 5 caractères de coder les lettres de l'Alphabet.<br />
+<strong><em>1832</em></strong> : Le peintre Américain Samuel <code>Morse</code> invente le code qui porte son nom utilisant des points et des traits pour représenter les caractères à transmettre.<br />
+<strong><em>1867</em></strong> : Inventée par deux américains et commercialisée par la firme <code>Remington</code>, la machine à écrire mettra beaucoup de temps à se développer. La disposition des lettres (QWERTY ...) vient du fait que les premières machines ne suivaient pas la cadence de certaines secrétaires ; on a donc placé les lettres les plus utilisées sous les doigts les plus faibles.<br />
+<strong><em>1964</em></strong> : Création du <code>code ASCII</code> (American Standard Code for Information Interchange), normalisé en 1966 par l'ISO pour simplifier l'échange de données entre ordinateurs. Malgré cela, IBM maintient sa propre norme propriétaire EBCDIC (Extended Binary Coded Decimal Interchange Code).<br />
+<strong><em>1991</em></strong> : Afin de résoudre une fois pour toute les problèmes de codage de caractères et de ses différents jeux (ex: ISO 8859-1/Latin 1 etc...) incompatibles, l'Unicode a été créé pour être un sur-ensemble de tous les autres. Il est capable, en théorie, de supporter tous les langages existants (et disparus) avec leurs particularités. Il existe plusieurs formats de représentation : <code>UTF-8</code> est de plus en plus utilisé pour les transmissions de documents (par exemple cette page web) et sur les serveurs UNIX. Il a l'inconvénient d'avoir une longueur par caractère qui est variable (1 caractère = 1,2,3 ou 4 octets) mais il a l'avantage d'être très compact pour l'alphabet occidental non accentué et n'a pas le problème d'ordre des octets comme <code>UTF-16</code> (utilisé par Windows). Si la première version de la norme a été publiée en 1991, sa complexité rend son adoption très lente.  </p>
+<h1 id="lascii">L'ASCII ...</h1>
+<h2 id="pourquoi-encoder-les-caracteres">Pourquoi encoder les caractères ?</h2>
+<p>L'ordinateur ne fonctionne qu'avec des 0 et des 1. Que ce soit pour le stockage ou pour le traitement, il faut donc représenter les caractères par des suites de 0 et de 1. La solution immédiate est de construire une table de correspondance entre chaque caractère et une valeur binaire. Une telle table est appelée <code>système de codage des caractères</code>.  </p>
+<h2 id="lencodage-ascii">L'encodage ASCII</h2>
+<p>Jusqu'en 1960, chacun utilisait son propre système d'encodage, rendant difficile la lisibilité des documents échangés.  En 1960, l'ISO (Organisation internationale de normalisation) crée la norme ASCII (American Standard Code for Information Interchange). A chaque caractère correspond un nombre codé en binaire sur 8 bits, dont seulement 7 étaient réellement utilisés pour le codage à proprement parlé du caractère. En effet, le stockage et la transmission n'étant pas à l'époque aussi fiable qu'aujourd'hui, le bit de poids fort servait à indiquer si le nombre de 1 sur les sept autres bits était pair ou impair.  Comme $\overline{10000000}^2 = \overline{80}^{16} = 128$, il n'est alors possible de coder que 128 caractères, codés de 0 à 127 (ou encore $\overline{7F}^{16}$, c'est à dire $\overline{1111111}^2$) :  </p>
+<p>\newpage</p>
+<p><img alt="Table ASCII" src="../NSI_1ere_09_EncodageCaracteres_ASCII.png" />\   <br />
+Les caractères codés de 0 à 31 $\left( \overline{1F}^{16} \right)$, ainsi que le caractère codé par 127 $\left( \overline{7F}^{16} \right)$ ne sont pas des caractères imprimables (comme par exemple, le <code>retour à la ligne</code>, la touche <code>ESC</code>, etc ...). Les autres valeurs correspondent à des caractères imprimables. Par exemple, le caractère A correspond au code 65 $\left( \overline{41}^{16} \right)$.  </p>
+<h2 id="exercice">Exercice</h2>
+<ol>
+<li>Quel est le code correspondant au caractère <em>r</em> ? Au caractère <em>R</em> ?<br />
+\ \  </li>
+<li>Quel est le caractère codé par $3F$ ?<br />
+\ \  </li>
+<li>Coder en ASCII le mot <em>Codage</em>. Les codes seront écrits en hexadécimal.<br />
+\ \  </li>
+<li>Quel est l'expression codée en ASCII ci-dessous ? (les valeurs sont écrite en hexadécimal)<br />
+"50 72 65 6E 65 7A 20 75 6E 20 63 68 65 77 69 6E 67 2D 67 75 6D 20 45 6D 69 6C 65 20 21"<br />
+\ \  </li>
+</ol>
+<h1 id="lisocei-8859-1">... l'ISO/CEI 8859-1 ...</h1>
+<h2 id="les-limites-de-lascii">Les limites de l'ASCII</h2>
+<p>Ce codage des caractères est créé par dans anglophone, pour des anglophones ! En effet, comment coder les caractères accentués de l'alphabet d'Europe occidentale ?<br />
+Ainsi, en 1986 apparaît la <code>norme ISO/CEI 8859-1</code>, couramment appelé <code>Latin-1</code> ou encore <code>Europe occidentale</code>.  </p>
+<h2 id="lisocei-8859-1_1">L'ISO/CEI 8859-1</h2>
+<p>L'ISO/CEI 8859-1 s'effectue cette fois sur un octet complet (les mémoires étant bien plus sûres qu'auparavant) et permet alors de disposer de 256 caractères allant de 0 à 255 (c'est à dire de 0 à $\overline{11111111}^2$, ou encore $\overline{FF}^{16}$).<br />
+Afin d'éviter tout problème de compatibilité avec l'ASCII, les 128 premiers caractères de la norme ISO/CEI 8859-1 reprennent exactement les caractères encodé par la norme ASCII, même si beaucoup des caractères non imprimables ne sont plus tellement utilisés :<br />
+<strong>Table ASCII</strong><br />
+<img alt="Table ASCII" src="../NSI_1ere_09_EncodageCaracteres_tableau_ASCII.png" />\   </p>
+<p><strong>Table Latin-1</strong><br />
+<img alt="Table ISO/CEI 8859-1 c'est à dire Latin-1 ou encore Europe occidentale" src="../NSI_1ere_09_EncodageCaracteres_tableau_ISO-8859-1.png" />\   </p>
+<h2 id="exercice_1">Exercice</h2>
+<ol>
+<li>Quel est le code correspondant à la lettre <em>à</em> ?<br />
+\ \  </li>
+<li>Coder avec la norme Latin-1 les deux phrases suivantes : "On veut pas y aller ! On préfère rester couché !" (Chanson <em>Pour louper l'école</em> d'Aldebert).  </li>
+</ol>
+<p>\ \  </p>
+<p>\ \  </p>
+<p>\ \  </p>
+<ol>
+<li>Décoder les phrases suivantes :<br />
+4C 65 73 20 63 61 68 69 65 72 73 20 61 75 20 66 61 75 20 21 20 4C 61 20 6D 61 EE 74 72 65 73 73 65 2C 20 61 75 20 6D 69 6C 69 65 75 20 21  </li>
+</ol>
+<p>\ \  </p>
+<p>\ \  </p>
+<h1 id="et-lunicode">... et l'Unicode !</h1>
+<h2 id="la-multiplication-des-normes-tue-les-normes">La multiplication des normes tue les normes ...</h2>
+<p>La norme <code>ISO/CEI 8859-1</code> utilise essentiellement des caractères des langues occidentales, et chaque zone géographie va créer sa norme correspondant à son alphabet. Ainsi, la norme GB2312 sera celle pour le chinois simplifié, la norme JIS_X_0208, celle du japonnais.<br />
+La multiplication de ces normes va créer de nombreux problèmes, puisqu'un européen qui écrit en Latin-1 verra son document décodé dans une autre norme si ce dernier est lue dans des pays asiatiques ou de certains pays d'Europe orientale (qui utilisent l'alphabet cyrillique).  </p>
+<p>\newpage</p>
+<h2 id="exercice_2">Exercice</h2>
+<ol>
+<li>Coder en Latin-1 la phrase : "N’avez vous jamais réfléchi à la vraie liberté ?"(<em>Apocalypse now</em> de Francis Ford Coppola).  </li>
+</ol>
+<p>\ \   </p>
+<p>\ \ <br />
+2. Décoder le résultat de la question précédente à l'aide de la norme ISO 8895-4 correspondant à l'alphabet cyrillique :<br />
+<img alt="Norme ISO 8895-5" src="../NSI_1ere_09_EncodageCaracteres_iso8859-5.png" />\   </p>
+<p>\ \  </p>
+<p>\ \  </p>
+<h2 id="mais-donne-naissance-a-dautres">... mais donne naissance à d'autres !</h2>
+<p>En 1991, une nouvelle norme voit le jour : <code>l'Unicode</code>. Le but est de rassembler l'ensemble des caractères existant afin de ne pas devoir changer de table pour lire un document, quel qu'en soit sa provenance.<br />
+Afin de répondre à cette norme et afin de tenir compte de la fréquence d'utilisation de certains caractères, furent créés plusieurs systèmes d'encodage : <code>UTF-8</code>, <code>UTF-16</code>, <code>UTF-32</code>.<br />
+L'UTF-8 est actuellement le plus utilisé, en particulier sur le web. Il code sur un, deux, trois voir quatre octets les caractères selon le besoin. La taille occupé par l'encodage permet d'être le plus économe en terme de mémoire.<br />
+L'UTF-16, codage fixe sur deux octets, et l'UTF-32, codage fixe sur 4 octets sont bien plus gourmands en ressources mémoire mais permettent de disposer de manière rapide à de nombreux caractères, même rares (hiéroglyphe égyptiens, etc ...).  </p>
+<h2 id="exercice_3">Exercice</h2>
+<p>Un texte codé en ASCII se code de la même manière sur 7 bits en UTF-8. A ce code, on ajoute un 0 sur le bit de poids fort pour compléter à l'octet.<br />
+Le caractère <em>é</em> se code C3 A9.<br />
+Quelle est la taille d'un fichier TXT contenant uniquement la phrase : "Quand les types de 130 kilos disent certaines choses, ceux de 60 kilos les écoutent." ? (<em>100 000 dollars au soleil</em>, Michel Audiard)  </p>
+<p>\ \  </p>
+<p>\ \  </p>
+<h2 id="exercice_4">Exercice</h2>
+<p>L’encodage UTF-8 utilise 1, 2, 3 ou 4 octets en respectant certaines règles :  </p>
+<ul>
+<li>un texte en ASCII de base (appelé aussi US-ASCII) est codé de manière identique en UTF-8. On utilise un octet commençant par un bit de poids fort égale à 0.<br />
+Par exemple, le caractère "A" est codé par $\overline{41}^{16}$ (65) ou encore $\overline{1000001}^2$.<br />
+En UTF-8, le binaire devient alors 0100001 sur un octet.  </li>
+<li>Les octets ne sont pas remplis entièrement. Les bits de poids fort du premier octet forment une suite de 1 indiquant le nombre d'octets utilisés pour coder le caractère. Les octets suivants commencent tous par le bloc binaire 10.<br />
+<img alt="Codage en UTF-8" src="../NSI_1ere_09_EncodageCaracteres_codage_en_utf8_bis.png" />\ <br />
+<img alt="Codage en UTF-8" src="../NSI_1ere_09_EncodageCaracteres_codage_en_utf8.png" />\   </li>
+</ul>
+<p>Par exemple, le caractère "é" correspond à la valeur 233, c'est à dire 11101001, ou encore E9 selon la base utilisée.<br />
+EN UTF-8, il sera donc codé sur 2 octets (entre 0080 et 07FF) : <strong>110</strong>00011 <strong>10</strong>101001 c'est à dire C3 A9.  </p>
+<p>Le symbole € correspond à la valeur décimale 8 364 en UTF-8.  </p>
+<ol>
+<li>Convertir 8 364 en binaire et en hexadécimal.  </li>
+</ol>
+<p>\ \  </p>
+<p>\ \  </p>
+<p>\ \  </p>
+<p>\ \  </p>
+<p>\ \  </p>
+<p>\ \  </p>
+<p>\ \  </p>
+<p>\ \  </p>
+<p>\ \  </p>
+<ol>
+<li>Donner le codage UTF-8 de ce caractère.  </li>
+</ol>
+<p>\ \  </p>
+<p>\ \  </p>
+<ol>
+<li>Etant donné un caractère codé en binaire sur <em>n</em> bits, combien d'octets sont nécessaires pour le coder en UTF-8 ?  </li>
+</ol>
+<p>\ \  </p>
+<p>\ \  </p>
+<p>\ \  </p>
+<p>\ \  </p>
+<ol>
+<li>Ecrire un programme en python qui permet, à partir de la valeur décimale d'un caractère, de trouver le nombre d'octets nécessaires pour coder ce caractère en UTF-8.  </li>
+</ol>
+<p>\ \  </p>
+<p>\ \  </p>
+<p>\ \  </p>
+<p>\ \  </p>
+<p>\ \  </p>
+<p>\ \  </p>
+<p>\ \  </p>
+<p>\ \  </p>
+<p>\ \  </p>
+<p>\ \  </p>
+<p>\ \  </p>
+<p>\ \  </p>
+<p>\ \  </p>
+<p>\ \  </p>
+<p>\ \  </p>
+<p>\ \  </p>
+<p>\ \  </p>
+<p>\ \  </p>
+<h1 id="et-en-langage-python">Et en langage python ?</h1>
+<h2 id="obtenir-le-code-dun-caractere">Obtenir le code d'un caractère</h2>
+<p>Pour obtenir le code d'un caractère, il suffit d'utiliser la fonction <code>chr</code> :  </p>
+<pre><code class="language-python">&gt;&gt;&gt; chr(65)
+'A'
+</code></pre>
+<h2 id="obtenir-le-caractere-correspondant-a-un-code">Obtenir le caractère correspondant à un code</h2>
+<p>Pour effectuer l'opération contraire, on utilise la fonction <code>ord</code> :  </p>
+<pre><code class="language-python">&gt;&gt;&gt; ord('A')
+65
+</code></pre>
+<p>\   </p>
+<p>\   </p>
+<p>\   </p>
+<p><strong>Sources</strong>  </p>
+<ul>
+<li>PASQUET, Stéphane. <em>Numérique et Sciences Informatiques</em>. Nathan, 2019. 224p. ISBN 978-209-157465-3</li>
+<li>David Roche. <em>Représentation d'un texte en machine</em> [en ligne]. Page créée en 2019 [Consulté le 4 novembre 2019]. <a href="https://pixees.fr/informatiquelycee/n_site/nsi_prem_texte.html">https://pixees.fr/informatiquelycee/n_site/nsi_prem_texte.html</a></li>
+<li>S. Aicardi. <em>Codages de caractères ASCII, latin-1, UTF-8, etc.</em> [en ligne]. Page créée en mars 2006 [Consulté le 31 octobre 2019]. <a href="http://mathrice.org/rencontres/mars.2006/codages.pdf">http://mathrice.org/rencontres/mars.2006/codages.pdf</a></li>
+<li><a href="https://fr.wikipedia.org/wiki/ISO/CEI_8859-1">https://fr.wikipedia.org/wiki/ISO/CEI_8859-1</a></li>
+<li><a href="https://fr.wikipedia.org/wiki/UTF-8">https://fr.wikipedia.org/wiki/UTF-8</a></li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Retour en haut de la page
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Licence CC-BY-SA - Sébastien SAUVAGE
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/gricoo59" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/SebastienSauvage/Informatique_au_lycee" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.top", "toc.follow", "toc.integrate"], "search": "../../../assets/javascripts/workers/search.db81ec45.min.js", "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.4b2c34cd.min.js"></script>
+      
+    
+  </body>
+</html>
