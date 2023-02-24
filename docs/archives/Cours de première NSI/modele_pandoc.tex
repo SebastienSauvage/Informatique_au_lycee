@@ -1,0 +1,105 @@
+\documentclass[a4paper]{report}%,12pt]{report}
+%\title{\Huge \textbf{Cours de NSI de première}}
+\author{Sébastien SAUVAGE}
+\date{\textit{sept 2022 - juin 2023}}
+
+\usepackage[T1]{fontenc} 
+\usepackage[utf8]{inputenc}
+%\usepackage[french]{babel}
+\usepackage{fourier}
+\usepackage[scaled=0.875]{helvet} 
+
+\usepackage{nccmath}
+
+
+% Pour les liens internet
+\usepackage{hyperref}
+
+% Pour encadrer les paragraphes
+%\usepackage{pst-grad, pst-coil, pst-blur}
+%\usepackage{bclogo}
+% Pour encadrer du texte
+%\usepackage{fancybox}
+% Pour la couleur
+%\usepackage{xcolor}
+% Pour écrire sur plusieurs colonnes et plusieurs lignes
+%\usepackage{multicol}
+%\usepackage{multirow}
+% Pour scinder des cellules d'un tableau
+%\usepackage{tabularx}
+%Pour colorier les cellules d'un tableau
+%\usepackage{colortbl}
+%Pour partager une cellule en diagonale
+%\usepackage{diagbox}
+
+%\usepackage{eurosym} % Pour le symbole euro
+%\usepackage{mathrsfs} % Pour les majuscules liées
+%\usepackage{amsmath, amssymb}
+
+% Pour modifier les puces
+\usepackage{enumitem}
+\setitemize[0]{label = \textbullet}
+
+% Pour écrire du code
+%\usepackage{minted}
+
+% Pour écrire des systèmes d'équations
+%\usepackage{systeme}
+
+% Pour écrire des diagramme, des tableaux de signes et variation
+%\usepackage{tikz, tkz-tab}
+
+%Pour les graphiques
+%\usepackage{pst-plot,pst-text,pst-tree}
+%\usepackage{pstricks}
+%\usepackage{pstricks-add}
+
+%% Mise en page
+\usepackage[left=1cm, right=1cm, top=1.7cm, bottom=1.7cm, headsep=0.5cm, footskip=0.8cm]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\lhead{$discipline$ - 2022-2023}
+\rhead{\textbf{\leftmark}}
+\cfoot{\thepage}
+\lfoot{$author$ - Lycée A.Rimbaud}
+\rfoot{Licence CC-BY-SA}
+
+\setlength{\parindent}{0 cm}
+
+
+\usepackage{graphicx}
+\usepackage{longtable}
+
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+
+%%%%%%%%%%%%
+%% Personnalisation
+%%%%%%%%%%%%
+
+%% Style de la numérotation des sections et subsection
+\makeatletter\@addtoreset{chapter}{part}\makeatother
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\alph{subsubsection}}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\newcommand{\chap}[2]{
+    \vspace{0.5cm}
+        \begin{center}
+            \setlength{\fboxsep}{10pt}
+            \shadowbox {\Huge{\bf #1}}\par
+            \LARGE {\it #2}
+        \end{center}
+    \vspace{0.5cm}
+}
+\begin{document}
+$body$
+\end{document}
