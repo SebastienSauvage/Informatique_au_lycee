@@ -1,0 +1,1889 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="['Sébastien SAUVAGE']">
+      
+      
+        <link rel="canonical" href="https://https:/sebastiensauvage.github.io/archives/Cours%20de%20premi%C3%A8re%20NSI/NSI_1ere_02_BonnesPratiques/">
+      
+      
+        <link rel="prev" href="../01_Changement_de_bases/">
+      
+      
+        <link rel="next" href="../NSI_1ere_03_Representation_des_entiers/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.12">
+    
+    
+      
+        <title>Thème 1 - Chapitre 2 : Bonnes pratiques en programmation - Informatique au lycée</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0d440cfe.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#elements-du-programme" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../../.." title="Informatique au lycée" class="md-header__button md-logo" aria-label="Informatique au lycée" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Informatique au lycée
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Thème 1 - Chapitre 2 : Bonnes pratiques en programmation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_3" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="brown" data-md-color-accent="blue-grey"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="teal"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_3">
+          
+            <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SebastienSauvage/Informatique_au_lycee" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    SebastienSauvage/Informatique_au_lycee
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Accueil
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link md-tabs__link--active">
+        Archives
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../liens/liens/" class="md-tabs__link">
+        Liens
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Informatique au lycée" class="md-nav__button md-logo" aria-label="Informatique au lycée" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Informatique au lycée
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SebastienSauvage/Informatique_au_lycee" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    SebastienSauvage/Informatique_au_lycee
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Accueil
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Archives
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Archives
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        Accueil - Archives
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+          Cours de 2nde SNT
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Cours de 2nde SNT
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/" class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_donnees_01_DonneesBrutes_DonneesStructurees/" class="md-nav__link">
+        Thème Les donnees structurées et leur traitement - Chapitre 1 : Des données brutes aux données structurées
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_donnees_02_Traitement_Donnees_Structurees/" class="md-nav__link">
+        Thème Les donnees structurées et leur traitement - Chapitre 2 : Traitement des données structurées
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_donnees_03_Cloud/" class="md-nav__link">
+        Thème Les donnees structurées et leur traitement - Chapitre 3 : Le cloud
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_internet_01_ArchitectureReseaux/" class="md-nav__link">
+        Thème Internet - Chapitre 1 : Architecture des réseaux
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_internet_02_Protocoles_TCP_IP/" class="md-nav__link">
+        Thème Internet - Chapitre 2 : Protocoles TCP et IP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_internet_02_Protocoles_TCP_IP_eleves/" class="md-nav__link">
+        Thème Internet - Chapitre 2 : Protocoles TCP et IP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_internet_03_SimulationReseau/" class="md-nav__link">
+        Thème Internet - Chapitre 3 : Simulation d'un réseau à l'aide du logiciel Filius
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_web_02_TP_PageWeb/" class="md-nav__link">
+        Thème web - Chapitre 2 : Créer une page web
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_web_03_LeWeb/" class="md-nav__link">
+        Thème web - Chapitre 3 : Le Web
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_web_04_NotionsJuridiques/" class="md-nav__link">
+        Thème web - Chapitre 4 : Notions juridiques
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/SNT_web_05_MoteursDeRecherche/" class="md-nav__link">
+        Thème web - Chapitre 5 : Les moteurs de recherche
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/progression/" class="md-nav__link">
+        Progression de SNT
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/web_00_Sitographie/" class="md-nav__link">
+        web 00 Sitographie
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%202nde%20SNT/web_01_Historique/" class="md-nav__link">
+        Thème web - Chapitre 1 : Historique du web
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+          Cours de Terminale NSI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Cours de Terminale NSI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/" class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_00_Epreuve_Bac/" class="md-nav__link">
+        Présentation des épreuves au baccalauréat
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_00_Progression/" class="md-nav__link">
+        Progressionde NSI en terminale
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_01_Recursivite/" class="md-nav__link">
+        Thème 1 - Chapitre 1 : Ecriture d'un nombre dans différentes bases
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_02_Modele_relationnel_eleves/" class="md-nav__link">
+        Thème 2 - Chapitre 1 : Modèle relationnel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_03_Modularite/" class="md-nav__link">
+        Thème 4 - Chapitre 2 : Modularité
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_04_Base_de_donnees_relationnelles/" class="md-nav__link">
+        Thème 2 - Chapitre 2 : Bases de donnée relationnelles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_05_Programmation_Objet/" class="md-nav__link">
+        Thème 1 - Chapitre 2 : La programmation orientée objet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_06_MiseAuPtPrgm_Bugs/" class="md-nav__link">
+        Thème 4 - Chapitre 5 : Mise au point de programmes et gestioins des bugs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_07_ListesPileFileDictionnaire/" class="md-nav__link">
+        Thème 1 - Chapitre 3 : Liste, pile, file et dictionnaire
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_08_ListesPileFileDictionnaire_TP/" class="md-nav__link">
+        Thème 1 - Chapitre 3 : Liste, pile, file et dictionnaire
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_09_Requetes_SQL/" class="md-nav__link">
+        Thème 2 - Chapitre 3 : Requêtes en langage SQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_10_Arbres/" class="md-nav__link">
+        Thème 1 - Chapitre 4 : Arbres
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_11_Processus/" class="md-nav__link">
+        Thème 3 - Chapitre 2 : Gestiondes processus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_12_Algo_arbres/" class="md-nav__link">
+        Thème 5 - Chapitre 1 : Algorithmes sur les arbres binaires et sur les ABR
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+          Cours de première NSI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Cours de première NSI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00_Progression/" class="md-nav__link">
+        Progression en 1ère NSI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_Changement_de_bases/" class="md-nav__link">
+        Thème 1 - Chapitre 1 : Ecriture d'un nombre dans différentes bases
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Thème 1 - Chapitre 2 : Bonnes pratiques en programmation
+      </a>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_1ere_03_Representation_des_entiers/" class="md-nav__link">
+        Thème 1 - Chapitre 2 : Représentation des entiers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_1ere_05_Representation_des_reels/" class="md-nav__link">
+        Thème 1 - Chapitre 3 : Représentation des réels
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_1ere_08_AlgebreDeBool/" class="md-nav__link">
+        Thème 1 - Chapitre 4 : Algèbre de Bool
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_1ere_09_EncodageCaracteres/" class="md-nav__link">
+        Thème 1 - Chapitre 5 : Encodage des caractères
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_1ere_11_puplets_tableaux/" class="md-nav__link">
+        Thème 2 - Chapitre 1 : p-uplets et tableaux
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NSI_1ere_13_Machine_debranchee/" class="md-nav__link">
+        Thème 5 - Chapitre 2 - Machine débranchée
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+          Liens
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Liens
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Liens/" class="md-nav__link">
+        Sites intéressants
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+          Projets de Terminale NSI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Projets de Terminale NSI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20Terminale%20NSI/NSI_Tale_Bubulle/" class="md-nav__link">
+        Projet : Bubulle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20Terminale%20NSI/NSI_Tale_Morpion/" class="md-nav__link">
+        Thème 1 - Chapitre 1 : Ecriture d'un nombre dans différentes bases
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20Terminale%20NSI/NSI_Tale_Pokedex/" class="md-nav__link">
+        Projet : Pokédex
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20Terminale%20NSI/NSI_Tale_Pygame/" class="md-nav__link">
+        Projet : Découverte de la bibliothèque Pygame
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20Terminale%20NSI/NSI_Tale_Pyxel/" class="md-nav__link">
+        Projet : Découverte de la bibliothèque Pyxel
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+          Projets de première NSI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Projets de première NSI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20premi%C3%A8re%20NSI/NSI_1ere_Bubulle/" class="md-nav__link">
+        Projet : Bubulle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20premi%C3%A8re%20NSI/NSI_1ere_Pyxel/" class="md-nav__link">
+        Projet : Découverte de la bibliothèque Pyxel
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Liens
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Liens
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../liens/liens/" class="md-nav__link">
+        Liens externes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../liens/mkdocs/" class="md-nav__link">
+        MkDocs et Material for MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+
+<p>\huge \textbf{Thème 6}\normalsize  </p>
+<p> </p>
+<p>\Large \textbf{Chapitre 1 : Quelques bonnes pratiques en programmation}\normalsize  </p>
+<h1 id="elements-du-programme">Eléments du programme<a class="headerlink" href="#elements-du-programme" title="Permanent link">⚓︎</a></h1>
+<p><img alt="NSI_1ere_02_BonnesPratiques" src="../NSI_1ere_02_BonnesPratiques_Tab_Programme.png" />    </p>
+<h1 id="un-peu-voir-plus-si-affinite-dhistoire-1-2">Un peu (voir plus si affinité !) d'histoire <sup id="fnref:hist-info.org"><a class="footnote-ref" href="#fn:hist-info.org">1</a></sup> <sup id="fnref:hist-info.online"><a class="footnote-ref" href="#fn:hist-info.online">2</a></sup><a class="headerlink" href="#un-peu-voir-plus-si-affinite-dhistoire-1-2" title="Permanent link">⚓︎</a></h1>
+<p><strong><em>1947</em></strong> : Apparition de <code>l'assembleur</code> (utilisation de mnémoniques). Inventé par Maurice V.Wilkes de l'Université de Cambridge, ce langage est le premier langage de ce type a être mis au point afin de faciliter l'usage des ordinateurs. Chaque instruction machine est codée sous forme de symboles dans un style proche du langage naturel. Par exemple: " début ", " stop ", " aller en " ... Avant la programmation s'effectuait directement en binaire.<br />
+<strong><em>1951</em></strong> : Premier langage compilé: le <code>A0</code> par Grace Hopper. Cela permet de générer du code binaire à partir d'un code source.<br />
+<strong><em>1956</em></strong> : Création du premier langage de programmation universel, le <code>FORTRAN</code> (FORmula TRANslator) par John Backus d'IBM. Mis au point sur un IBM 701, c'est le premier langage informatique de haut niveau, c'est à dire qu'il nécessite un programme intermédiaire (le compilateur) qui le traduit en instructions compréhensibles par l'ordinateur. L'avantage est que le programme en FORTRAN est indépendant de la machine, il suffit d'avoir le compilateur adapté. Il est encore utilisé dans les domaines scientifiques et techniques.<br />
+<strong><em>1958</em></strong> : John Mc Carthy, mathématicien au MIT (Massachusetts Institute of Technology) qui y a fondé en 1957 le département d'Intelligence Artificielle, crée le langage de programmation <code>LISP</code> (LISt Processing) qui va avoir une grande influence sur le développement de la programmation objet. Ce langage sera initialement développé sur IBM 7090.<br />
+<strong><em>1960</em></strong> : Création de l'<code>ALGOL</code> par Edsger Dijkstra. Très théorique, ce langage sera très peu utilisé mais sera très étudié comme modèle. Sa création est l'issue d'une conférence quelques années avant entre américains et européens durant laquelle a été lancée l'idée d'un langage standard universel.<br />
+<strong><em>1960</em></strong> : Publication du cahier des charges du langage de programmation <code>COBOL</code> (COmmon Business Oriented Language) par Grace Hopper. Il devient, après le FORTRAN, le second grand langage de programmation universel, faisant ainsi rapidement disparaître l'ALGOL. Sa consécration par le Département de la Défense Américain qui l'a déclaré indispensable, l'accent qu'il met sur les structures de données et sa syntaxe proche de l'anglais en ont fait un langage largement utilisé, particulièrement dans les applications commerciales.<br />
+<strong><em>1964</em></strong> : Thomas Kurtz et John Kemeny créent le langage <code>BASIC</code> (Beginner's All-purpose Symbolic Instruction Code) au Dartmouth College pour leurs étudiants. Ses versions initiales n'étaient ni structurées ni compilées, alors que les plus récentes sont toujours structurées et souvent compilées.<br />
+<strong><em>1966</em></strong> : Le langage de programmation <code>LOGO</code> est crée par une équipe chez BBN (Bolt Beranek &amp; Newman) dirigée par Wally Fuerzeig dont faisait partie Seymour Papert. Ce langage très graphique est basé sur le principe d'une tortue que l'on pilote à l'écran en lui donnant des ordres (tourner, avancer, etc...).<br />
+<strong><em>1968</em></strong> : Création du <code>FORTH</code> par Charles Moore. C'est un langage informatique basé sur l'utilisation de piles de données. De par son status entre langage de bas-niveau (très proche du matériel) et de haut niveau, il est extrêmement compact et rapide. Il a longtemps été utilisé comme 'Open Firmware' (logiciel chargé de charger le système d'exploitation) par les machines d'Apple et de Sun.<br />
+<strong><em>1968</em></strong> : Création du PASCAL par Nikhlaus Wirth. La rigueur nécessaire pour utiliser ce langage de haut niveau fait qu'il est très apprécié dans l'enseignement. Il a été très largement popularisé par sa version développée par Philippe Kahn: <code>Turbo Pascal</code> (1983) de BORLAND.<br />
+<strong><em>1970</em></strong> : Ken Thompson, pensant qu'UNIX ne serait pas complet sans un langage de programmation de haut niveau commence à porter le Fortran sur le PDP 7 mais change rapidement d'avis et crée en fait un nouveau langage, le <code>B</code> (en référence au BCPL dont il s'inspire).<br />
+<strong><em>1972</em></strong> : Successeur du langage B, le <code>C</code>, créé par Dennis Ritchie a pour objectif premier d'aider au développement d'Unix. Il fait évoluer le langage et le dote d'un vrai compilateur générant du code machine PDP/11 (le B était un langage interprété). Le langage C est à la fois proche du matériel, permettant ainsi de réécrire le noyau UNIX en C (Cf. été 1973) et suffisamment généraliste, le rendant ainsi facilement portable. Les développements et les succès du langage C et d'UNIX sont intimement liés. Brian Kernighan écrit en 1978 un livre au sujet de la programmation en langage C devenu LA référence au point que ce livre est surtout connu sous le nom : "Le Kernighan &amp; Ritchie".<br />
+<strong><em>1972</em></strong> : Création du premier langage orienté objet, SmallTalk par Alan Kay au Xerox PARC.<br />
+<strong><em>1972</em></strong> : Conçu par le Français Alain Colmeraurer, le <code>PROLOG</code> (PROgrammation en LOGique) est un langage dit "descriptif de l'Intelligence Artificielle".<br />
+<strong><em>1983</em></strong> : Bjarn Stroustrup développe une extension orientée objet au langage C : le <code>C++</code>.<br />
+<strong><em>20 février 1991</em></strong> : Apparition du langage <code>PYTHON</code> (le nom provient de la série TV Monty Python's Flying Circus dont l'auteur, Guido Van Rossum, était fan). C'est un langage de programmation interprété, placé sous licence libre. Il fonctionne sur la plupart des plateformes informatiques (windows, unix, macOS, android, iOS). Sa syntaxe simple permet de faciliter le travail des programmeurs.<br />
+<img alt="Logo Python" src="../NSI_1ere_02_BonnesPratiques_python-logo.png" /> <sup id="fnref:logopython"><a class="footnote-ref" href="#fn:logopython">3</a></sup><br />
+<strong><em>1995</em></strong> : Le langage <code>JAVA</code> (signifie "café" en argot américain - en argot français on dit "Kawa" ), développé par la firme Sun Microsystems, fait son apparition. Ce langage objet est principalement utilisé sous forme d'applet en symbiose avec un client Web. Il a pour cela une particularité: le programme est d'abord compilé en "p-code" (byte-code) totalement indépendant de l'architecture. Puis ce p-code est interprété (c'est à dire transformé au fur et à mesure en code spécifique à l'ordinateur) lors de l'exécution du programme.<br />
+<strong><em>1995</em></strong> : Brendan Eich crée le <code>JAVA SCRIPT</code>. Initialement appelé LiveScript, ce langage a été créé en s'inspirant de nombreux langages (dont Java) mais en simplifiant la syntaxe. Ce langage va connaître différentes implémentations par Microsoft (JScript) ou Adobe (LiveScript) mais c'est au milieu des années 2000 que sont utilisation va devenir indissociable des pages Web, en particulier pour les actions asynchrones (AJAX).<br />
+<strong><em>2000</em></strong> : Le <code>C#</code> est un langage développé par Microsoft, inspiré par le langage Java.<br />
+<img alt="Famille Algol et Fortran" src="../NSI_1ere_02_BonnesPratiques_AlgolFortran_family-by-Borkowski.png" /> <sup id="fnref:algolfortran"><a class="footnote-ref" href="#fn:algolfortran">4</a></sup>  </p>
+<h1 id="preambule">Préambule<a class="headerlink" href="#preambule" title="Permanent link">⚓︎</a></h1>
+<p>Sur les premiers ordinateurs, les premiers programmes étaient écrits en langage machine, le seul langage qu'un ordinateur est capable de comprendre. C'était des suites d'instructions écrites en binaire, dont avec une multitude de 0 et de 1. Très peu pratique, le langage assembleur est alors apparu : il s'agit alors de coder les instructions par des mots (mnémoniques) comme par exemple <code>ADD</code> pour ajouter. Malgré tout, ce langage est très proche du langage machine puisqu'il suffit de traduire les instructions en code binaire pour que l'ordinateur comprenne. Au fil du temps, des langages plus évolués sont apparus selon les besoins d'utilisation de l'ordinateur. Ainsi, les langages qui apparaissent ensuite sont de plus en plus simples à utiliser puisqu'une instruction dans ce nouveau langage regroupe parfois de nombreuses instructions en langage machine. Ces langages sont plus ou moins <code>évolués</code> et on les classe en deux grandes catégories : les langages interprétés et les langages compilés.<br />
+Il existe de nombreux langages de programmation et chacun répond à des besoins souvent différents : traitement de grandes quantités de données, graphisme, pages web, ...<br />
+Par exemples, pour programmer dans une page web, les langages php ou javascript seront souvent choisis. Ensuite, le C ou le C++ sont des langages assez proches du système mais plus délicat à maîtriser. Le java ou le python sont des langages plus évolués, plus accessibles.<br />
+Dans le cadre de l'enseignement NSI, tout comme la plupart des enseignements du lycée, le langage Python sera souvent le langage utilisé. Malgré tout, dans le cadre de la spécialité NSI, nous étudierons également quelques aspects d'autres langages afin d'en dégager les points communs et les différences pour notre usage.  </p>
+<h1 id="decouverte-de-python">Découverte de Python<a class="headerlink" href="#decouverte-de-python" title="Permanent link">⚓︎</a></h1>
+<p>Il existe différentes manières d'écrire un programme en langage python. Tous permettent d'écrire le même fichier au format <code>PY</code> mais ces logiciels offrent des ajouts et un confort non négligeables parfois selon l'usage que l'on en a : affichage des contenus des variables, modules intégrés supplémentaires, coloration syntaxique, ... Un simple éditeur de textes suffit ! Bien que ce choix est assez personnel, dans le cadre de l'enseignement NSI, nous utiliserons essentiellement le logiciel <code>Thonny</code><sup id="fnref:thonny"><a class="footnote-ref" href="#fn:thonny">5</a></sup> mais libre à vous d'en tester d'autres à la maison : Edupython (sous windows)<sup id="fnref:edupython"><a class="footnote-ref" href="#fn:edupython">6</a></sup>, Python et idle<sup id="fnref:python"><a class="footnote-ref" href="#fn:python">7</a></sup>, notepad++ (sous windows)<sup id="fnref:notepadpp"><a class="footnote-ref" href="#fn:notepadpp">8</a></sup> ... Certains sites proposent également d'écrire les programmes en ligne, ce qui évite d'installer le moindre logiciel.  </p>
+<p>Edupython, Idle et Notepad++ sont disponible en version portable (utilisation sur clé USB par exemple, sans installation sur l'ordinateur).  </p>
+<h1 id="une-premiere-fonction">Une première fonction<a class="headerlink" href="#une-premiere-fonction" title="Permanent link">⚓︎</a></h1>
+<p>L'objectif de cette partie est d'établir un petit programme qui permette de calculer la distance parcourue par un sportif selon son temps et sa vitesse moyenne.<br />
+Ouvrir le logiciel Thonny :<br />
+<img alt="thonny" src="../NSI_1ere_02_BonnesPratiques_thonny.png" /><br />
+La première chose est d'afficher le contenu des variables : menu <em>View</em> puis cocher <em>Variables</em>.<br />
+Le temps que l'on y est, modifions quelques réglages : menu <em>Tools</em>, <em>Options...</em><br />
+Cocher <em>Highlight matching names</em>, <em>Highlight local variables</em>, et <em>Show line number</em>. Enfin, choisir <em>80</em> dans <em>Recommended maximum line lenght</em>.  La coloration syntaxique permettra de visualiser les variables, et un trait imaginaire vertical apparaîtra pour indiquer la limite recommandée pour écrire une ligne de code.  </p>
+<h2 id="utilisation-de-linvite-de-commande-shell">Utilisation de l'invite de commande (Shell)<a class="headerlink" href="#utilisation-de-linvite-de-commande-shell" title="Permanent link">⚓︎</a></h2>
+<p>Pour calculer la distance parcourue, il suffit d'utiliser la formule : <span class="arithmatex">\(D = V \times t\)</span> où <span class="arithmatex">\(D\)</span> est la distance, exprimée en mètres, <span class="arithmatex">\(V\)</span> est la vitesse moyenne, exprimée en <span class="arithmatex">\(m.s^{-1}\)</span> et <span class="arithmatex">\(t\)</span> est la durée du parcours, exprimée en secondes.<br />
+Calculons par exemple la distance parcourue par un cycliste allant en moyenne à <span class="arithmatex">\(8 m.s^{-1}\)</span> pendant <span class="arithmatex">\(2 h\)</span>, c'est à dire <span class="arithmatex">\(7 200 s\)</span>.<br />
+Dans la zone <code>Shell</code>, saisir :
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">vitesse</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">duree</span> <span class="o">=</span> <span class="mi">7200</span>
+</code></pre></div></td></tr></table></div>
+On observe dans la colonne de droite <em>Variables</em> le contenu des deux qui viennent d'être saisies.<br />
+Les espaces autour du signe '=' ne sont pas nécessaires mais permettent une meilleure lisibilité de la ligne de code. Pour les mêmes raisons, on appelle <em>vitesse</em> la vitesse au lieu de <em>v</em> par exemple.<br />
+Pour calculer la distance, il suffit de saisir :<br />
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">distance</span> <span class="o">=</span> <span class="n">vitesse</span> <span class="o">*</span> <span class="n">duree</span>  
+<span class="o">&gt;&gt;&gt;</span> <span class="n">distance</span>
+</code></pre></div></td></tr></table></div></p>
+<p><strong>A faire</strong>  </p>
+<p>Quelle est la distance parcourue par le coureur cycliste ?  </p>
+<p>   </p>
+<h2 id="ecrire-sous-forme-dune-fonction">Ecrire sous forme d'une fonction<a class="headerlink" href="#ecrire-sous-forme-dune-fonction" title="Permanent link">⚓︎</a></h2>
+<p>A chacune de ses sorties, le coureur cycliste doit donc saisir les trois lignes dans le Shell pour obtenir la distance parcourue. Evidemment, ça demande à chaque fois trois lignes de saisie pour le même calcul et de connaître la formule ! Afin d'automatiser cela, nous allons créer ce que l'on appelle une fonction. Celle-ci permettra d'automatiser la formule et pourra même être sauvegardée afin d'éviter de la saisir à chaque utilisation.  </p>
+<h3 id="saisie-de-la-fonction">Saisie de la fonction<a class="headerlink" href="#saisie-de-la-fonction" title="Permanent link">⚓︎</a></h3>
+<p>Dans le cadre <em>untitled</em>, saisir le code suivant :
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="ch">#! /usr/bin/python3</span>
+<span class="c1"># coding: utf-8</span>
+
+<span class="k">def</span> <span class="nf">calcul_distance</span><span class="p">(</span><span class="n">vitesse</span><span class="p">,</span> <span class="n">duree</span><span class="p">):</span>  
+  <span class="n">distance</span> <span class="o">=</span> <span class="n">vitesse</span> <span class="o">*</span> <span class="n">duree</span>  
+  <span class="k">return</span> <span class="n">distance</span>
+</code></pre></div></td></tr></table></div>
+La première ligne permet l'utilisation du programme en mode console sous Linux par exemple.<br />
+La seconde ligne permet d'indiquer le format d'encodage des caractères.<br />
+On notera que pour indiquer ce qui fait partie de la fonction est décalé d'au moins 4 espaces, c'est ce qu'on appelle <code>une indentation</code>. Sans elle, les lignes ne sont plus considérée comme faisant partie de la fonction, ce qui peut conduire à des erreurs.<br />
+Une fonction se termine de préférence toujours par <code>return</code>.  </p>
+<h3 id="sauvegarder-le-script">Sauvegarder le script<a class="headerlink" href="#sauvegarder-le-script" title="Permanent link">⚓︎</a></h3>
+<p>Quand on effectue un travail en informatique, la première chose à effectuer est de sauvegarder ! Aller dans le menu <em>File</em> puis <em>Save as...</em>, aller dans le dossier <code>/NSI/premiere</code> de votre espace de travail et choisir ensuite comme nom de fichier <code>NOM_Prenom_bonnes_pratiques.py</code>. Eviter les accents et remplacer les espace par le caractère '_' obtenu à l'aide de la touche '8'.  </p>
+<p>Avant d'utiliser notre fonction, il faut la faire reconnaître par l'interpréteur. Dans le menu <em>Run</em> choisir <em>Run current script</em> ou simplement, appuyer sur <em>F5</em>.<br />
+La fonction est disponible (elle apparaît à droite dans la liste des variables).</p>
+<h3 id="utiliser-notre-fonction">Utiliser notre fonction<a class="headerlink" href="#utiliser-notre-fonction" title="Permanent link">⚓︎</a></h3>
+<p>Dans la partie <em>Shell</em>, saisir :
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">calcul_distance</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">7200</span><span class="p">)</span>  
+</code></pre></div></td></tr></table></div>
+On obtient ainsi la distance parcourue attendue.  </p>
+<h3 id="exercice">Exercice<a class="headerlink" href="#exercice" title="Permanent link">⚓︎</a></h3>
+<p>Si l'on souhaite effectuer d'autres calculs de distance, il suffit de saisir <code>calcul_distance(..., ...)</code> en remplaçant les pointillés par la vitesse et le temps dans cet ordre. Il n'est pas utile avant d'appuyer de nouveau sur <em>F5</em>, la fonction étant toujours reconnue.<br />
+Pour les deux questions ci-dessous, écrire l'instruction à saisir dans la console puis indiquer la valeur renvoyée par la fonction.  </p>
+<ol>
+<li><em>Calculer de cette manière la distance parcourue par ce même cycliste pour une sortie à la même vitesse mais d'une durée de 4h.</em>  </li>
+</ol>
+<p>   </p>
+<ol>
+<li><em>Un coureur à pied s'aligne sur une course de 10 km. Grace à son entraînement, il estime sa vitesse moyenne de course à 2,8 <span class="arithmatex">\(m.s^{-1}\)</span>. Peut-il espérer faire cette course en moins d'une heure ? (répondre à la question en s'aidant de la fonction créée précédemment)</em>  </li>
+</ol>
+<p>   </p>
+<h2 id="documenter-dune-fonction">Documenter d'une fonction<a class="headerlink" href="#documenter-dune-fonction" title="Permanent link">⚓︎</a></h2>
+<p>L'intérêt de programmer des fonctions réside aussi dans le fait qu'elles puissent être utilisées dans un autre cadre, par un autre utilisateur car il est rare en programmation qu'un logiciel soit le fruit d'une seule personne.  Dans notre cas, on peut imaginer que notre fonction puisse être utilisée par un autre élève d'une autre classe par exemple. Comment savoir alors que dans notre fonction <code>calcul_distance</code>, il faille saisir en premier la vitesse ? Pour répondre à cette question, il faut écrire <strong>la documentation</strong> de la fonction. Pour y avoir accès, il suffit dans le Shell de saisir <code>help(calcul_distance)</code>. Essayez ! Evidemment, pour le moment, cela n'apporte pas grand chose comme info !  </p>
+<h3 id="decrire-la-fonction">Décrire la fonction<a class="headerlink" href="#decrire-la-fonction" title="Permanent link">⚓︎</a></h3>
+<p>La fonction s'appelle <code>calcul_distance</code> mais elle n'est pas assez explicite pour comprendre le cadre de son usage. Cela pourrait être un calcul de distance avec le théorème de Pythagore par exemple ...<br />
+Compléter votre fonction en ajoutant les lignes manquantes :<br />
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">calcul_distance</span><span class="p">(</span><span class="n">vitesse</span><span class="p">,</span> <span class="n">duree</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Cette fonction calcule la distance parcourue en fonction de la vitesse</span>
+<span class="sd">    moyenne et de la durée de parcours données en paramètres.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">distance</span> <span class="o">=</span> <span class="n">vitesse</span> <span class="o">*</span> <span class="n">duree</span>
+    <span class="k">return</span> <span class="n">distance</span>
+</code></pre></div></td></tr></table></div>
+La documentation s'écrit entre succession de trois apostrophes \' \' \'. Elle est écrite sous la première ligne qui définit la fonction. Elle ne sera pas lue lors de l’exécution de la fonction.<br />
+Dans un premier temps, la description est écrite en français, mais il faut garder en tête qu'elle est destinée au monde entier et donc devrait être écrite en anglais ! A l'avenir, n'hésitez pas à écrire dans la langue de Shakespeare dans vos documentations pour prendre de meilleures habitudes.  </p>
+<p>Saisir de nouveau <code>help(calcul_distance)</code> pour voir la nouvelle documentation de votre fonction. Penser à appuyer sur F5 avant pour que les modiciations soient prisent en compte.  </p>
+<h3 id="preciser-les-parametres">Préciser les paramètres<a class="headerlink" href="#preciser-les-parametres" title="Permanent link">⚓︎</a></h3>
+<p>Tout cela n'indique toujours pas l'ordre des paramètres et leurs contenus, même si leur nom est assez explicite !<br />
+Pour cela, il faut ajouter quels sont les paramètres de la fonction et préciser leur usage.<br />
+Compléter de nouveau votre fonction :<br />
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">calcul_distance</span><span class="p">(</span><span class="n">vitesse</span><span class="p">,</span> <span class="n">duree</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Cette fonction calcule la distance parcourue en fonction de la vitesse</span>
+<span class="sd">    moyenne et de la durée de parcours données en paramètres.</span>
+
+<span class="sd">    :param:</span>
+<span class="sd">    vitesse : (float) Vitesse moyenne de l&#39;objet.</span>
+<span class="sd">    duree : (float) Durée de parcours.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">distance</span> <span class="o">=</span> <span class="n">vitesse</span> <span class="o">*</span> <span class="n">duree</span>
+    <span class="k">return</span> <span class="n">distance</span>
+</code></pre></div></td></tr></table></div>
+Il n'y a pas de convention particulière pour la description des paramètres. Par exemple, on peut écrire <em>:param:</em> avant de les décrire.<br />
+<em>float</em> correspond au type du contenu de la variable. Dans le cas présent, comme il s'agit d'un nombre réel (nombre flottant en informatique), on indique cela. Pour un entier, on indiquerait <em>int</em>, pour un chaîne de caractères (string), on écrirait <em>str</em>, pour une liste d'éléments <em>list</em>, etc ...  </p>
+<p>Sauvegarder et exécuter le script. Vérifier les modifications prises en compte dans votre documentation en saisissant de nouveau <code>help(calcul_distance)</code> dans le Shell.  </p>
+<h3 id="preciser-ce-que-la-fonction-retourne">Préciser ce que la fonction retourne<a class="headerlink" href="#preciser-ce-que-la-fonction-retourne" title="Permanent link">⚓︎</a></h3>
+<p>Enfin, pour pouvoir exploiter la fonction dans un autre cadre, il est nécessaire d'indiquer également le type de donnée retournée par la fonction. Compléter votre documentation comme suit :<br />
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">calcul_distance</span><span class="p">(</span><span class="n">vitesse</span><span class="p">,</span> <span class="n">duree</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Cette fonction calcule la distance parcourue en fonction de la vitesse</span>
+<span class="sd">    moyenne et de la durée de parcours données en paramètres.</span>
+
+<span class="sd">    :param:</span>
+<span class="sd">    vitesse : (float) Vitesse moyenne de l&#39;objet.</span>
+<span class="sd">    duree : (float) Durée de parcours.</span>
+
+<span class="sd">    :renvoie:</span>
+<span class="sd">    (float)</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">distance</span> <span class="o">=</span> <span class="n">vitesse</span> <span class="o">*</span> <span class="n">duree</span>
+    <span class="k">return</span> <span class="n">distance</span>
+</code></pre></div></td></tr></table></div>
+On peut préciser également ce que renvoie la fonction, mais dans notre cas, c'est déjà indiqué dans la description de la fonction.<br />
+Vérifier les modifications via le Shell.  </p>
+<h3 id="autre-maniere-de-preciser-le-type-des-parametres-et-objet-renvoye">Autre manière de préciser le type des paramètres et objet renvoyé<a class="headerlink" href="#autre-maniere-de-preciser-le-type-des-parametres-et-objet-renvoye" title="Permanent link">⚓︎</a></h3>
+<p>Plutôt que de spécifier comme ci-dessus les types des paramètres et de l'objet retourné, il est possible sur la première ligne qui défini la fonction de préciser ces spécifications. Pour cela, il suffit de les préciser comme cela :<br />
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">calcul_distance</span><span class="p">(</span><span class="n">vitesse</span> <span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">duree</span> <span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span><span class="nb">float</span> <span class="p">:</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Cette fonction calcule la distance parcourue en fonction de la vitesse</span>
+<span class="sd">    moyenne et de la durée de parcours données en paramètres.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">distance</span> <span class="o">=</span> <span class="n">vitesse</span> <span class="o">*</span> <span class="n">duree</span>
+    <span class="k">return</span> <span class="n">distance</span>
+</code></pre></div></td></tr></table></div></p>
+<h3 id="verifier-les-preconditions">Vérifier les préconditions<a class="headerlink" href="#verifier-les-preconditions" title="Permanent link">⚓︎</a></h3>
+<p><strong>A faire</strong><br />
+Dans la console, saisir :<br />
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">calcul_distance</span><span class="p">(</span><span class="s1">&#39;bonjour&#39;</span><span class="p">,</span> <span class="s1">&#39;bravo&#39;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+Que ce passe-t-il ? Pourquoi ?  </p>
+<p>   </p>
+<p>   </p>
+<p>Afin d'éviter ce type de messages d'erreurs liés aux types des paramètres saisis par l'utilisateur, il est possible de vérifier les types des paramètres saisis. Pour cela, on utilise l'instruction <code>assert</code> de la manière suivante :<br />
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">calcul_distance</span><span class="p">(</span><span class="n">vitesse</span> <span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">duree</span> <span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span><span class="nb">float</span> <span class="p">:</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Cette fonction calcule la distance parcourue en fonction de la vitesse</span>
+<span class="sd">    moyenne et de la durée de parcours données en paramètres.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">vitesse</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">vitesse</span><span class="p">,</span> <span class="nb">float</span><span class="p">),</span> <span class="s2">&quot;Vous devez saisir un nombre&quot;</span>
+    <span class="n">distance</span> <span class="o">=</span> <span class="n">vitesse</span> <span class="o">*</span> <span class="n">duree</span>
+    <span class="k">return</span> <span class="n">distance</span>
+</code></pre></div></td></tr></table></div></p>
+<p><strong>A faire</strong>  </p>
+<p>1) Saisir de nouveau dans la console <code>calcul_distance('bonjour', 'bravo')</code>. Quel est cet fois le message d'erreur ?  </p>
+<p>  </p>
+<p>2) Ajouter une deuxième ligne avec l'instruction <code>assert</code> qui permet de vérifier la précondition du paramètre <code>duree</code>.  </p>
+<h3 id="dautres-elements">D'autres éléments<a class="headerlink" href="#dautres-elements" title="Permanent link">⚓︎</a></h3>
+<p>Dans la documentation, on peut ajouter d'autres éléments :  </p>
+<ul>
+<li>Les conditions d'utilisation :
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="o">...</span>
+    <span class="p">:</span><span class="n">CU</span><span class="p">:</span>
+    <span class="n">Aucune</span>
+    <span class="o">...</span>
+</code></pre></div></td></tr></table></div></li>
+<li>Les effets de bord, c'est-à-dire les modifications autre que les modifications locales (au sein de la fonction) :
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="o">...</span>
+    <span class="p">:</span><span class="n">Effet</span> <span class="n">de</span> <span class="n">bord</span><span class="p">:</span>
+    <span class="n">Aucune</span>
+    <span class="o">...</span>
+</code></pre></div></td></tr></table></div>
+Comme effet de bord, on peut souvent trouver l'affichage dans le Shell ou encore la modification d'une variable définie en dehors de la fonction (variable globale). Il faut <strong>éviter les effets de bord</strong>, sources de nombreux problèmes.  </li>
+</ul>
+<h2 id="utiliser-un-jeu-de-tests">Utiliser un jeu de tests<a class="headerlink" href="#utiliser-un-jeu-de-tests" title="Permanent link">⚓︎</a></h2>
+<p>Enfin, lorsque l'on écrit une fonction, il est toujours préférable d'illustrer la documentation par un ou plusieurs exemples. Ainsi, au moment de l’exécution, cela permet une autovérification et ainsi parfois soulever des erreurs.  </p>
+<h3 id="ajouter-des-exemples-tests">Ajouter des exemples tests<a class="headerlink" href="#ajouter-des-exemples-tests" title="Permanent link">⚓︎</a></h3>
+<h4 id="syntaxe">Syntaxe<a class="headerlink" href="#syntaxe" title="Permanent link">⚓︎</a></h4>
+<p>Pour ajouter des tests dans une fonction, il suffit d'ajouter les instructions précédées de <code>&gt;&gt;&gt;</code> et en-dessous, la réponse attendue (comme l'affichage dans le Shell) :<br />
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">calcul_distance</span><span class="p">(</span><span class="n">vitesse</span><span class="p">,</span> <span class="n">duree</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Cette fonction calcule la distance parcourue en fonction de la vitesse</span>
+<span class="sd">    moyenne et de la durée de parcours données en paramètres.</span>
+
+<span class="sd">    :param:</span>
+<span class="sd">    vitesse : (float) Vitesse moyenne de l&#39;objet.</span>
+<span class="sd">    duree : (float) Durée de parcours.</span>
+
+<span class="sd">    :renvoie:</span>
+<span class="sd">    (float)</span>
+
+<span class="sd">    :exemples:</span>
+<span class="sd">    &gt;&gt;&gt; calcul_distance(8, 7200)</span>
+<span class="sd">    57600</span>
+<span class="sd">    &gt;&gt;&gt; calcul_distance(1, 200)</span>
+<span class="sd">    200</span>
+<span class="sd">    &gt;&gt;&gt; calcul_distance(2, 3600) == 7200</span>
+<span class="sd">    True</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">distance</span> <span class="o">=</span> <span class="n">vitesse</span> <span class="o">*</span> <span class="n">duree</span>
+    <span class="k">return</span> <span class="n">distance</span>
+</code></pre></div></td></tr></table></div>
+Le dernier test est plus intéressant et se traduit par "Est-ce que calcul_distance(2, 3600) est égal à 7200", la réponse attendue étant "Vrai".  </p>
+<p><strong>A vous !</strong><br />
+Modifier les deux premiers tests selon le troisième exemple en utilisant <code>==</code>.  </p>
+<h4 id="verifier-les-tests">Vérifier les tests<a class="headerlink" href="#verifier-les-tests" title="Permanent link">⚓︎</a></h4>
+<p> </p>
+<p>Pour vérifier que la fonction renvoie bien les résultats attendus dans les tests, deux possibilités :</p>
+<ul>
+<li>l'une dans le Shell en saisissant : <code>import doctest</code> puis <code>doctest.testmod()</code>. Si les tests sont satisfaits, cela renvoie <em>TestResults(failed=0, attempted=0)</em> et cela signifie que tout va bien ! <strong>Faites-le !</strong></li>
+<li>la seconde, en fin de script en ajoutant après la dernière ligne :
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">calcul_distance</span><span class="p">(</span><span class="n">vitesse</span><span class="p">,</span> <span class="n">duree</span><span class="p">):</span>
+  <span class="o">...</span>
+  <span class="k">return</span> <span class="n">distance</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">doctest</span>
+    <span class="n">doctest</span><span class="o">.</span><span class="n">testmod</span><span class="p">(</span><span class="n">verbose</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+Enregistrer les modifications et observer le résultat : si la dernière ligne est <em>Test passed</em> c'est que les tests sont validés, sinon, il faut lire les lignes précédentes pour détecter les tests insatisfaits.  </li>
+</ul>
+<h4 id="remarques">Remarques<a class="headerlink" href="#remarques" title="Permanent link">⚓︎</a></h4>
+<ul>
+<li>Si des tests ne sont pas satisfaits, cela signifie uniquement que la fonction ne renvoie pas la réponse attendue dans le test. La source peut venir de la fonction, mais cela peut aussi parfois venir du test.</li>
+<li>A la place de <em>verbose = True</em>, on peut mettre <em>verbose = False</em> pour que le doctest soit moins bavard en cas de succès des vérifications.</li>
+<li>Les tests doivent parcourir tous les cas de figures possibles afin de vérifier la robustesse du code.</li>
+</ul>
+<h4 id="exercice_1">Exercice<a class="headerlink" href="#exercice_1" title="Permanent link">⚓︎</a></h4>
+<ol>
+<li>Modifier <em>verbose = True</em> en <em>verbose</em> = False_ pour observer les modifications.</li>
+<li>Modifier l'une des valeurs attendues par les trois tests pour observer l'affichage en cas d'erreurs.</li>
+</ol>
+<h1 id="resume-comment-ecrire-une-fonction">Résumé : comment écrire une fonction<a class="headerlink" href="#resume-comment-ecrire-une-fonction" title="Permanent link">⚓︎</a></h1>
+<p>Lorsque l'on écrit une fonction, il est préférable de la rédiger dans cet ordre :  </p>
+<ul>
+<li>Commencer par la création de la fonction (l'instruction <em>pass</em> permet d'indiquer à la fonction de ne rien faire) :
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">nom_de_la_fonction</span><span class="p">(</span><span class="n">param1</span><span class="p">,</span> <span class="n">param2</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>
+  <span class="k">pass</span>
+  <span class="k">return</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+  <span class="kn">import</span> <span class="nn">doctest</span>
+  <span class="n">doctest</span><span class="o">.</span><span class="n">testmod</span><span class="p">(</span><span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div></li>
+<li><strong>Ecrire la documentation complète avant même la première ligne de code</strong> : ce que fait la fonction, précision concernant les paramètres, les valeurs retournées, les conditions d'utilisation, les effets de bord, les tests.</li>
+<li>Remplacer <em>pass</em> par les lignes de code.</li>
+<li>Corriger le code pour que la fonction corresponde aux attentes et que les tests passent tous.  </li>
+</ul>
+<h1 id="pour-sentrainer">Pour s'entraîner ...<a class="headerlink" href="#pour-sentrainer" title="Permanent link">⚓︎</a></h1>
+<h2 id="perimetre-surface-et-volume-dobjets-usuels">Périmètre, surface et volume d'objets usuels<a class="headerlink" href="#perimetre-surface-et-volume-dobjets-usuels" title="Permanent link">⚓︎</a></h2>
+<p><em>Dans le même script, vous allez créer autant de fonctions que de formules. Les fonctions seront correctement documentées en suivant l'ordre des questions.</em>  </p>
+<ol>
+<li>Choisir une formule de calcul de périmètre, d'aire, de volume ...</li>
+<li>Ecrire la documentation complète de la fonction (doc et tests).</li>
+<li>Ecrire le code de la fonction pour qu'elle retourne ce qui est attendu.  </li>
+</ol>
+<p>Reproduire ce travail pour plusieurs formules.  </p>
+<p><strong>Remarque :</strong><br />
+Si besoin, le nombre <span class="arithmatex">\(\pi\)</span> s'obtient en important le module math (écrire <code>import math</code> avant les définitions de fonctions) puis, pour utiliser le nombre <span class="arithmatex">\(\pi\)</span>, il suffit d'écrire <code>math.pi</code><br />
+Par exemple :
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="k">def</span> <span class="nf">ma_fonction</span><span class="p">():</span>
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span>
+</code></pre></div></td></tr></table></div>
+Cela renvoie la valeur de <span class="arithmatex">\(2 \times \pi\)</span>.  </p>
+<h2 id="lance-dun-de">Lancé d'un dé<a class="headerlink" href="#lance-dun-de" title="Permanent link">⚓︎</a></h2>
+<p>Ecrire une fonction qui simule le lancé d'un dé.  </p>
+<p>   </p>
+<p>Pour obtenir un nombre entier au hasard, comme pour le module math, importer le module <code>random</code> puis utiliser la fonction <code>random.randint</code> ou <code>random.randrange</code> (Saisir <code>help(random.randint)</code> et <code>help(random.randrange)</code> par exemple pour accéder à la documentation de la fonction pour en connaître la syntaxe et l'usage).  </p>
+<h1 id="comment-cela-se-passe-t-il-dans-dautres-langages-de-programmation">Comment cela se passe-t-il dans d'autres langages de programmation ?<a class="headerlink" href="#comment-cela-se-passe-t-il-dans-dautres-langages-de-programmation" title="Permanent link">⚓︎</a></h1>
+<p>Calcul de la distance à partir de la vitesse et de la durée de parcours:  </p>
+<p>La variable <em>vitesse</em> et la variable <em>duree</em> contiennent les valeurs respectives de la vitesse et de la durée de parcours.  </p>
+<p>Voici la même fonction écrite dans différents langages de programmation, la documentation ayant été volontairement réduite :  </p>
+<h2 id="en-langage-naturel-ce-nest-pas-un-langage-de-programmation">En langage naturel (ce n'est pas un langage de programmation)<a class="headerlink" href="#en-langage-naturel-ce-nest-pas-un-langage-de-programmation" title="Permanent link">⚓︎</a></h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">fonction</span><span class="p">(</span><span class="n">vitesse</span><span class="p">,</span> <span class="n">duree</span><span class="p">)</span>  
+    <span class="n">d</span> <span class="o">&lt;-</span> <span class="n">vitesse</span> <span class="o">*</span> <span class="n">duree</span>
+    <span class="n">renvoyer</span> <span class="n">d</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="en-python">En python<a class="headerlink" href="#en-python" title="Permanent link">⚓︎</a></h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">calcul_distance</span><span class="p">(</span><span class="n">vitesse</span><span class="p">,</span> <span class="n">duree</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Cette fonction calcule la distance parcourue en fonction de la vitesse</span>
+<span class="sd">    moyenne et de la durée de parcours données en paramètres.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">vitesse</span> <span class="o">*</span> <span class="n">duree</span>
+    <span class="k">return</span> <span class="n">d</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="en-javascript">En javascript<a class="headerlink" href="#en-javascript" title="Permanent link">⚓︎</a></h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">calcul_distance</span><span class="p">(</span><span class="nx">vitesse</span><span class="p">,</span><span class="w"> </span><span class="nx">duree</span><span class="p">){</span>
+<span class="w">  </span><span class="cm">/*</span>
+<span class="cm">  Cette fonction calcule la distance parcourue en fonction de la vitesse</span>
+<span class="cm">  moyenne et de la durée de parcours données en paramètres.</span>
+<span class="cm">  */</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">vitesse</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">duree</span><span class="w"> </span><span class="p">;</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">d</span><span class="w"> </span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="en-c-ou-c">En C ou C++<a class="headerlink" href="#en-c-ou-c" title="Permanent link">⚓︎</a></h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">float</span><span class="w"> </span><span class="nf">calcul_distance</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">vitesse</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">duree</span><span class="p">){</span>
+<span class="w">  </span><span class="cm">/*</span>
+<span class="cm">  Cette fonction calcule la distance parcourue en fonction de la vitesse</span>
+<span class="cm">  moyenne et de la durée de parcours données en paramètres.</span>
+<span class="cm">  */</span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vitesse</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">duree</span><span class="w"> </span><span class="p">;</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="exercice_2">Exercice<a class="headerlink" href="#exercice_2" title="Permanent link">⚓︎</a></h2>
+<p>Dans un tableau à trois colonnes (python, javascript, C), écrire les différences et les points communs à la structure des fonctions ci-dessus dans les différents langages de programmation proposés.  </p>
+<p><strong>Source</strong>  </p>
+<p>C’est quoi un langage de programmation ?. <em>Culture informatique</em> [en ligne]. Page créée le 31 août 2017 [consultée le 19 août 2019]. <a href="https://www.culture-informatique.net/cest-quoi-langage-de-programmation/">https://www.culture-informatique.net/cest-quoi-langage-de-programmation/</a></p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:hist-info.org">
+<p>François GUILLIER. <em>Histoire de l'informatique</em> [en ligne]. 2016 [consulté le 18 juillet 2019]. <a href="https://histoire-informatique.org/grandes_dates/">histoire-informatique.org</a>&#160;<a class="footnote-backref" href="#fnref:hist-info.org" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:hist-info.online">
+<p>Serge ROSSI. <em>Histoire de l'informatique</em> [en ligne]. 20 novembre 2004 [consulté le 18 juillet 2019]. <a href="http://histoire.info.online.fr/">histoire.info.online.fr</a>&#160;<a class="footnote-backref" href="#fnref:hist-info.online" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:logopython">
+<p>Logo python (c) : <a href="https://www.python.org/static/img/python-logo.png">https://www.python.org/static/img/python-logo.png</a>&#160;<a class="footnote-backref" href="#fnref:logopython" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:algolfortran">
+<p>Familles Algol et Fortran : <a href="https://commons.wikimedia.org/wiki/File:Algol%26Fortran_family-by-Borkowski.svg">https://commons.wikimedia.org/wiki/File:Algol%26Fortran_family-by-Borkowski.svg</a>&#160;<a class="footnote-backref" href="#fnref:algolfortran" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:thonny">
+<p><a href="https://thonny.org/">Thonny</a>&#160;<a class="footnote-backref" href="#fnref:thonny" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:edupython">
+<p><a href="http://edupython.tuxfamily.org/">Edupython</a>&#160;<a class="footnote-backref" href="#fnref:edupython" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:python">
+<p><a href="https://www.python.org/">python</a>&#160;<a class="footnote-backref" href="#fnref:python" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:notepadpp">
+<p><a href="https://notepad-plus-plus.org/fr/">notepad++</a>&#160;<a class="footnote-backref" href="#fnref:notepadpp" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Retour en haut de la page
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Licence CC-BY-SA - Sébastien SAUVAGE
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/gricoo59" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/SebastienSauvage/Informatique_au_lycee" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.top", "navigation.instant", "header.autohide", "toc.follow", "toc.integrate"], "search": "../../../assets/javascripts/workers/search.db81ec45.min.js", "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.4b2c34cd.min.js"></script>
+      
+        <script src="../../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

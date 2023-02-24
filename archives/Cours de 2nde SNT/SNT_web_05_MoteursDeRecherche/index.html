@@ -1,0 +1,1782 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="['Sébastien SAUVAGE']">
+      
+      
+        <link rel="canonical" href="https://https:/sebastiensauvage.github.io/archives/Cours%20de%202nde%20SNT/SNT_web_05_MoteursDeRecherche/">
+      
+      
+        <link rel="prev" href="../SNT_web_04_NotionsJuridiques/">
+      
+      
+        <link rel="next" href="../progression/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.12">
+    
+    
+      
+        <title>Thème web - Chapitre 5 : Les moteurs de recherche - Informatique au lycée</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0d440cfe.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../../.." title="Informatique au lycée" class="md-header__button md-logo" aria-label="Informatique au lycée" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Informatique au lycée
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Thème web - Chapitre 5 : Les moteurs de recherche
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_3" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="brown" data-md-color-accent="blue-grey"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="teal"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_3">
+          
+            <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SebastienSauvage/Informatique_au_lycee" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    SebastienSauvage/Informatique_au_lycee
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Accueil
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link md-tabs__link--active">
+        Archives
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../liens/liens/" class="md-tabs__link">
+        Liens
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Informatique au lycée" class="md-nav__button md-logo" aria-label="Informatique au lycée" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Informatique au lycée
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SebastienSauvage/Informatique_au_lycee" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    SebastienSauvage/Informatique_au_lycee
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Accueil
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Archives
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Archives
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        Accueil - Archives
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+          Cours de 2nde SNT
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Cours de 2nde SNT
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SNT_donnees_01_DonneesBrutes_DonneesStructurees/" class="md-nav__link">
+        Thème Les donnees structurées et leur traitement - Chapitre 1 : Des données brutes aux données structurées
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SNT_donnees_02_Traitement_Donnees_Structurees/" class="md-nav__link">
+        Thème Les donnees structurées et leur traitement - Chapitre 2 : Traitement des données structurées
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SNT_donnees_03_Cloud/" class="md-nav__link">
+        Thème Les donnees structurées et leur traitement - Chapitre 3 : Le cloud
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SNT_internet_01_ArchitectureReseaux/" class="md-nav__link">
+        Thème Internet - Chapitre 1 : Architecture des réseaux
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SNT_internet_02_Protocoles_TCP_IP/" class="md-nav__link">
+        Thème Internet - Chapitre 2 : Protocoles TCP et IP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SNT_internet_02_Protocoles_TCP_IP_eleves/" class="md-nav__link">
+        Thème Internet - Chapitre 2 : Protocoles TCP et IP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SNT_internet_03_SimulationReseau/" class="md-nav__link">
+        Thème Internet - Chapitre 3 : Simulation d'un réseau à l'aide du logiciel Filius
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SNT_web_02_TP_PageWeb/" class="md-nav__link">
+        Thème web - Chapitre 2 : Créer une page web
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SNT_web_03_LeWeb/" class="md-nav__link">
+        Thème web - Chapitre 3 : Le Web
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SNT_web_04_NotionsJuridiques/" class="md-nav__link">
+        Thème web - Chapitre 4 : Notions juridiques
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Thème web - Chapitre 5 : Les moteurs de recherche
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Thème web - Chapitre 5 : Les moteurs de recherche
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#exercice-fonctionnement" class="md-nav__link">
+    Exercice : fonctionnement
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercice-utilisation-des-mots-cles" class="md-nav__link">
+    Exercice : Utilisation des mots clés
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercice-panorama-des-moteurs-de-recherche" class="md-nav__link">
+    Exercice : Panorama des moteurs de recherche
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../progression/" class="md-nav__link">
+        Progression de SNT
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_00_Sitographie/" class="md-nav__link">
+        web 00 Sitographie
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_01_Historique/" class="md-nav__link">
+        Thème web - Chapitre 1 : Historique du web
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+          Cours de Terminale NSI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Cours de Terminale NSI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/" class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_00_Epreuve_Bac/" class="md-nav__link">
+        Présentation des épreuves au baccalauréat
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_00_Progression/" class="md-nav__link">
+        Progressionde NSI en terminale
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_01_Recursivite/" class="md-nav__link">
+        Thème 1 - Chapitre 1 : Ecriture d'un nombre dans différentes bases
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_02_Modele_relationnel_eleves/" class="md-nav__link">
+        Thème 2 - Chapitre 1 : Modèle relationnel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_03_Modularite/" class="md-nav__link">
+        Thème 4 - Chapitre 2 : Modularité
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_04_Base_de_donnees_relationnelles/" class="md-nav__link">
+        Thème 2 - Chapitre 2 : Bases de donnée relationnelles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_05_Programmation_Objet/" class="md-nav__link">
+        Thème 1 - Chapitre 2 : La programmation orientée objet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_06_MiseAuPtPrgm_Bugs/" class="md-nav__link">
+        Thème 4 - Chapitre 5 : Mise au point de programmes et gestioins des bugs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_07_ListesPileFileDictionnaire/" class="md-nav__link">
+        Thème 1 - Chapitre 3 : Liste, pile, file et dictionnaire
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_08_ListesPileFileDictionnaire_TP/" class="md-nav__link">
+        Thème 1 - Chapitre 3 : Liste, pile, file et dictionnaire
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_09_Requetes_SQL/" class="md-nav__link">
+        Thème 2 - Chapitre 3 : Requêtes en langage SQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_10_Arbres/" class="md-nav__link">
+        Thème 1 - Chapitre 4 : Arbres
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_11_Processus/" class="md-nav__link">
+        Thème 3 - Chapitre 2 : Gestiondes processus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20Terminale%20NSI/NSI_Tale_12_Algo_arbres/" class="md-nav__link">
+        Thème 5 - Chapitre 1 : Algorithmes sur les arbres binaires et sur les ABR
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+          Cours de première NSI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Cours de première NSI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/" class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/00_Progression/" class="md-nav__link">
+        Progression en 1ère NSI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/01_Changement_de_bases/" class="md-nav__link">
+        Thème 1 - Chapitre 1 : Ecriture d'un nombre dans différentes bases
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/NSI_1ere_02_BonnesPratiques/" class="md-nav__link">
+        Thème 1 - Chapitre 2 : Bonnes pratiques en programmation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/NSI_1ere_03_Representation_des_entiers/" class="md-nav__link">
+        Thème 1 - Chapitre 2 : Représentation des entiers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/NSI_1ere_05_Representation_des_reels/" class="md-nav__link">
+        Thème 1 - Chapitre 3 : Représentation des réels
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/NSI_1ere_08_AlgebreDeBool/" class="md-nav__link">
+        Thème 1 - Chapitre 4 : Algèbre de Bool
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/NSI_1ere_09_EncodageCaracteres/" class="md-nav__link">
+        Thème 1 - Chapitre 5 : Encodage des caractères
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/NSI_1ere_11_puplets_tableaux/" class="md-nav__link">
+        Thème 2 - Chapitre 1 : p-uplets et tableaux
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cours%20de%20premi%C3%A8re%20NSI/NSI_1ere_13_Machine_debranchee/" class="md-nav__link">
+        Thème 5 - Chapitre 2 - Machine débranchée
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+          Liens
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Liens
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Liens/" class="md-nav__link">
+        Sites intéressants
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+          Projets de Terminale NSI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Projets de Terminale NSI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20Terminale%20NSI/NSI_Tale_Bubulle/" class="md-nav__link">
+        Projet : Bubulle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20Terminale%20NSI/NSI_Tale_Morpion/" class="md-nav__link">
+        Thème 1 - Chapitre 1 : Ecriture d'un nombre dans différentes bases
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20Terminale%20NSI/NSI_Tale_Pokedex/" class="md-nav__link">
+        Projet : Pokédex
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20Terminale%20NSI/NSI_Tale_Pygame/" class="md-nav__link">
+        Projet : Découverte de la bibliothèque Pygame
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20Terminale%20NSI/NSI_Tale_Pyxel/" class="md-nav__link">
+        Projet : Découverte de la bibliothèque Pyxel
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+          Projets de première NSI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Projets de première NSI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20premi%C3%A8re%20NSI/NSI_1ere_Bubulle/" class="md-nav__link">
+        Projet : Bubulle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Projets%20de%20premi%C3%A8re%20NSI/NSI_1ere_Pyxel/" class="md-nav__link">
+        Projet : Découverte de la bibliothèque Pyxel
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Liens
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Liens
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../liens/liens/" class="md-nav__link">
+        Liens externes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../liens/mkdocs/" class="md-nav__link">
+        MkDocs et Material for MkDocs
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+
+<p>\Huge \textbf{Thème 2 : Le web}\normalsize  </p>
+<p> </p>
+<p>\huge \textbf{Chapitre 5 : Les moteurs de recherche}\normalsize</p>
+<p> </p>
+<p>Internet est un réseau informatique mondial qui interconnecte des réseaux. Cette infrastructure permet de nombreux services et applications dont le web, qui l’a popularisé à partir des années 1990. Le web est un ensemble de pages associées par des liens hypertextes et lisibles par un navigateur.  </p>
+<p>   </p>
+<p>Le volume des données numériques dans le monde double tous les 18 mois (règle des trois V : vitesse, volume, variété). Il convient donc, notamment sur le web, d’<strong>organiser ces données</strong> dans l’intérêt :</p>
+<ul>
+<li>de l’utilisateur pour qu’il trouve les informations pertinentes quant à ses besoins,</li>
+<li>du producteur qui a priori souhaite la diffusion et la valorisation de son travail.</li>
+</ul>
+<p>Les ressources du web :</p>
+<ul>
+<li>ont été référencées dans un premier temps par des annuaires ou, de façon thématique, par des portails réalisés par des humains,</li>
+<li>puis sont apparus des outils automatisés : les moteurs de recherche.</li>
+</ul>
+<p>Un moteur de recherche est une application web qui permet de trouver des ressources (pages web, images, ...) à partir de requêtes (généralement sous forme de mots).  </p>
+<h1 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">⚓︎</a></h1>
+<h2 id="exercice-fonctionnement">Exercice : fonctionnement<a class="headerlink" href="#exercice-fonctionnement" title="Permanent link">⚓︎</a></h2>
+<p>Après quelques recherches éventuelles, répondre par oui ou non aux questions suivantes :  </p>
+<ol>
+<li>Un moteur de recherche explore le web après validation des critères de recherche. \dotfill</li>
+<li>Pour les mêmes mots clés, différents moteurs donnent les mêmes résultats. \dotfill</li>
+<li>Les résultats des moteurs de recherche sont subjectifs. \dotfill</li>
+<li>Les résultats des moteurs de recherche sont neutres. \dotfill</li>
+<li>Les algorithmes des moteurs de recherche évoluent. \dotfill</li>
+<li>Toutes les pages du web sont recensées par les moteurs de recherche. \dotfill</li>
+<li>Pour les mêmes mots clés et un même moteur, les résultats peuvent différer. \dotfill</li>
+<li>Certains résultats ont été « achetés ». \dotfill</li>
+<li>Tous les moteurs de recherche personnalisent les résultats. \dotfill</li>
+<li>Dans une bibliographie, on peut citer un moteur de recherche en tant que source de données. \dotfill</li>
+<li>Certains moteurs de recherche font appel à d’autres moteurs de recherche. \dotfill</li>
+</ol>
+<h2 id="exercice-utilisation-des-mots-cles">Exercice : Utilisation des mots clés<a class="headerlink" href="#exercice-utilisation-des-mots-cles" title="Permanent link">⚓︎</a></h2>
+<ol>
+<li>Un mot écrit en minuscule ou en majuscule donne les mêmes résultats. \dotfill</li>
+<li>Un mot, qu’il soit accentué ou non, donne les mêmes résultats. \dotfill</li>
+<li>L’operateur booléen ET est toujours choisi par défaut. \dotfill</li>
+<li>Il est conseillé de mettre les expressions entre guillemets. \dotfill</li>
+<li>Les résultats trouvés changent en fonction de l’ordre des mots. \dotfill</li>
+</ol>
+<h2 id="exercice-panorama-des-moteurs-de-recherche">Exercice : Panorama des moteurs de recherche<a class="headerlink" href="#exercice-panorama-des-moteurs-de-recherche" title="Permanent link">⚓︎</a></h2>
+<p><img alt="Carte Panorama" src="../SNT_web_05_CartePanorama.png" /><sup id="fnref:Panorama"><a class="footnote-ref" href="#fn:Panorama">1</a></sup> \hfill <img alt="Parts de marché des moteurs de recherche" src="../SNT_web_05_DiagrammePartsMarche.png" /><sup id="fnref:PartsMarche"><a class="footnote-ref" href="#fn:PartsMarche">2</a></sup>    </p>
+<ol>
+<li>Des « parts de marché » sont données pour les moteurs de recherche : quel est le marché associé ?<br />
+ <br />
+....................................................................................................................................  </li>
+<li>Quelle est l’importance de <em>Google</em> en tant que moteur de recherche ?<br />
+ <br />
+....................................................................................................................................  </li>
+</ol>
+<h1 id="fonctionnement-des-moteurs-de-recherche">Fonctionnement des moteurs de recherche<a class="headerlink" href="#fonctionnement-des-moteurs-de-recherche" title="Permanent link">⚓︎</a></h1>
+<p>Un moteur de recherche effectue principalement trois actions :  </p>
+<ul>
+<li><strong>l’exploration</strong> (<em>crawl</em>) permanente du web, en accès public, par des logiciels appelés robots d’indexation,</li>
+<li><strong>l’indexation</strong> des contenus explorés associe des mots clés à des contenus jugés pertinents,</li>
+<li><strong>la recherche</strong> répond à des requêtes en explorant l’index (déjà constitué, ce qui explique la rapidité des résultats : le moteur ne parcoure pas le web à chaque requête).</li>
+</ul>
+<p>Toutes les ressources ne sont pas référencées (le <em>darknet</em> et le <em>deepweb</em> ou web profond, par exemple les parties privées des sites).  </p>
+<h2 id="exercice-indexation-par-les-moteurs-de-recherche">Exercice : Indexation par les moteurs de recherche<a class="headerlink" href="#exercice-indexation-par-les-moteurs-de-recherche" title="Permanent link">⚓︎</a></h2>
+<ol>
+<li>Qu’est-ce qu’un index dans un document ?<br />
+ <br />
+....................................................................................................................................</li>
+<li>Une indexation de tous les mots d’un texte est-elle pertinente ?<br />
+ <br />
+....................................................................................................................................</li>
+<li><em>La recherche de termes dans un document PDF s’effectue par défaut par balayage de l’intégralité du texte du début à la fin (ce qui peut prendre du temps pour un long document).</em><br />
+<em>Un index peut-être constitué au préalable : il recensera les mots pertinents du document et leur emplacement dans une base de données. Les recherches s’effectueront ensuite dans cet index (plus court que le document) et seront donc plus rapides.</em><br />
+ <br />
+À titre d’exemple, on souhaite établir l’index des termes des deux paragraphes ci-dessus.<br />
+Souligner les termes à indexer ; relever une difficulté.<br />
+ <br />
+....................................................................................................................................</li>
+<li>Des moteurs de recherche indexent des images selon différents critères.</li>
+</ol>
+<p>a. En vous rendant sur le moteur de recherche <code>Qwant</code>, rechercher des images à l'aide du mot clé <code>web</code>, de <code>taille moyenne</code>, dans le <code>domaine public</code>, plutôt <code>jaunes</code>, et de type <code>photo</code>.<br />
+Que représente la première photo obtenue ?<br />
+ <br />
+....................................................................................................................................
+b. Indiquer pour chacun des cinq critères de sélection ci-dessous, s’il est fondé sur des métadonnées et/ou sur l’analyse du contenu de l’image :<br />
+La taille : \dotfill <br />
+. <br />
+La licence : \dotfill  <br />
+. <br />
+La période de publication : \dotfill <br />
+. <br />
+La couleur : \dotfill <br />
+. <br />
+Le type : \dotfill   </p>
+<h1 id="referencement-naturel">Référencement naturel<a class="headerlink" href="#referencement-naturel" title="Permanent link">⚓︎</a></h1>
+<p>Les résultats issus de la recherche dans l’index sont appelés <strong>résultats naturels</strong> (ou référencement naturel). Ces résultats sont classés selon les critères choisis par les concepteurs des algorithmes du moteur de recherche : ce <strong>classement des résultats</strong> est donc <strong>subjectif</strong> et non neutre (malgré son caractère automatique).
+Les résultats sont notés (selon une échelle logarithmique de 0 à 10 pour le <em>PageRank</em> de <em>Google</em>). Une ressource est supposée de qualité ou pertinente si elle est pointée par beaucoup de liens, les sites de provenance étant eux-mêmes notés selon leur réputation (<em>TrustRank</em> chez <em>Google</em>).  </p>
+<p><img alt="Page Rank" src="../SNT_web_05_Pagerank.png" /><sup id="fnref:PageRank"><a class="footnote-ref" href="#fn:PageRank">3</a></sup>   </p>
+<h2 id="exercice-enjeu-du-referencement">Exercice : Enjeu du référencement<a class="headerlink" href="#exercice-enjeu-du-referencement" title="Permanent link">⚓︎</a></h2>
+<p>L’accès à des sites web découle de trois méthodes :</p>
+<ul>
+<li>les liens externes (liens hypertextes en provenance d’un autre site)</li>
+<li>les accès directs (saisie directe de l’URL ou appel à un favori/marque-page)</li>
+<li>les moteurs de recherche</li>
+</ul>
+<p><img alt="Méthodes d'accès aux sites" src="../SNT_web_05_Methodes_acces.png" />    </p>
+<ol>
+<li>Ecrire une démarche éco-responsable pour accéder à un site régulièrement.<br />
+ <br />
+....................................................................................................................................</li>
+<li>Quel est l’enjeu du référencement par un moteur de recherche pour un site ?<br />
+ <br />
+....................................................................................................................................<br />
+ <br />
+....................................................................................................................................  </li>
+</ol>
+<p><em>Pour aller plus loin, un petit article sur la remise en question de la neutralité de Google comme moteur de recherche, publié en octobre 2016</em> :  </p>
+<p><em>https://www.numerama.com/tech/205099-lincident-entre-protonmail-et-google-ou-lenjeu-de-la-neutralite-des-moteurs-de-recherche.html</em>  </p>
+<h2 id="exercice-sur-internet-linvisible-propagande-des-algorithmes">Exercice : Sur Internet, l’invisible propagande des algorithmes<a class="headerlink" href="#exercice-sur-internet-linvisible-propagande-des-algorithmes" title="Permanent link">⚓︎</a></h2>
+<p><strong>There are no « regular results » on Google anymore (1:21)</strong> : <a href="https://youtu.be/PlVN5IGBnWQ">https://youtu.be/PlVN5IGBnWQ</a>  </p>
+<p>   </p>
+<p><em>Deux personnes opposées politiquement, l’une de droite, l’autre de gauche, lancent une recherche Google sur « BP ». La première reçoit, en tête de page, des informations sur les possibilités d’investir dans la British Petroleum, la seconde sur la dernière marée noire qu’a causée la compagnie pétrolière britannique [...] des réponses diamétralement opposées car elles ont été « filtrées » par Google selon le profil des internautes. [...]</em>  </p>
+<p><em>Cass R. Sunstein, professeur de droit à Harvard [...] craint qu’en proposant en priorité aux usagers du Web ce qu’ils aiment et pensent déjà, le Net les emprisonne dans un monde égocentré, qu’il les traite en consommateurs au lieu de les aider à se comporter en citoyens ouverts et pluralistes. [...]</em>  </p>
+<p><em>[...] D’après la théorie de la bulle filtrante, les algorithmes de Google sélectionnent les résultats présentés en fonction des internautes en s’appuyant sur 57 signaux différents : âge, sexe, dernières recherches, géolocalisation, navigateur utilisé, résolution de l’écran, services visités, fréquence des clics, raccourcis, etc. Et ce filtrage est encore plus développé [...] sur les réseaux sociaux. [...]</em>  </p>
+<p><em>Une étude de l’université britannique d’Oxford, menée en juin 2016 dans vingt-six pays auprès de 50 000 personnes, [le] confirme [...] : 51 % des internautes ont déclaré s’informer via les réseaux sociaux, qui constituent la première source de nouvelles pour 12 % d’entre eux – et 28 % chez les 18-24 ans.</em>  </p>
+<p><em>En nous informant de plus en plus auprès d’« amis » dont nous faisons circuler sans les discuter les posts, vidéos et hashtags – voire les trolls et les théories de la conspiration –, nous finissons par vivre, estime Eli Pariser (spécialiste du cyberespace), dans une prison mentale dorée où plus rien ne nous dérange. [...]</em>  </p>
+<p>\hfill <em>Frédéric Joignot, Le Monde, 15/09/2016</em>  </p>
+<ol>
+<li>Les résultats naturels sont-ils « naturels » ? Expliquer.<br />
+ <br />
+....................................................................................................................................<br />
+ <br />
+....................................................................................................................................  </li>
+<li>Les moteurs de recherche sont-ils des outils neutres et objectifs ? Expliquer.<br />
+ <br />
+....................................................................................................................................<br />
+ <br />
+....................................................................................................................................<br />
+ <br />
+....................................................................................................................................<br />
+ <br />
+....................................................................................................................................  </li>
+</ol>
+<p>Certains moteurs personnalisent les résultats en fonction du profil de l’internaute (57 signaux chez Google : âge, sexe, géolocalisation, historique de navigation, navigateur utilisé, résolution de l’écran, fréquence des clics, raccourcis). D’autres s’interdisent l’utilisation de ces données personnelles.  </p>
+<p>La personnalisation des résultats est aussi une exclusion de résultats censés ne pas nous convenir et nous enferme dans une bulle informationnelle filtrante, renforçant nos idées (et préjugés) au lieu de les ouvrir en étant confrontés à des idées opposées.  </p>
+<h1 id="enjeux-du-referencement">Enjeux du référencement<a class="headerlink" href="#enjeux-du-referencement" title="Permanent link">⚓︎</a></h1>
+<p>Un internaute accède à une ressource :  </p>
+<ul>
+<li>soit parce qu’il en connaît l’adresse (éventuellement stockée dans ses marque-pages),</li>
+<li>soit parce qu’elle lui a été fournie par un autre site qui la référence (fait un lien vers elle), les principaux sites de référencement étant les moteurs de recherche (puis les portails et annuaires).</li>
+</ul>
+<p>Le trafic d’un site dépend donc largement de son bon référencement. Il existe des méthodes et outils pour assurer un bon référencement naturel (sachant que les algorithmes des moteurs de recherche se modifient sans cesse pour contrer les techniques de détournement : liens croisés artificiels, bourrages de mots clés, ...).  </p>
+<p>Outre le référencement naturel, il existe un référencement payant consistant à acheter des mots-clés afin qu’un lien sponsorisé soit affiché (distinctement) en complément du référencement naturel.  </p>
+<h2 id="exercice">Exercice<a class="headerlink" href="#exercice" title="Permanent link">⚓︎</a></h2>
+<p><strong>Étude IFOP</strong>  </p>
+<p><em>Cette étude pointe [...] l’importance des liens sponsorisés dans l’utilisation des moteurs de recherche par les Français : 52 % des internautes qui utilisent Google cliqueraient sur les liens AdWords, et seulement 10 % rapportent ne jamais cliquer sur ces annonces. L’étude indique, par ailleurs, que 53 % des internautes désirant acheter un produit utiliseraient les liens Google AdWords pour le trouver.</em>
+<em>Les résultats concernant les perceptions des annonces AdWords sont encourageants, mais mettent en évidence quelques limites. On apprend par exemple que 36 % des utilisateurs de Google ne savent pas qu’il s’agit d’une publicité lorsqu’ils cliquent sur une de ces annonces. Parmi les 64 % d’internautes qui ont conscience de cliquer sur des publicités, 70 % estimeraient qu’elles correspondent à leurs besoins : un résultat plutôt positif, sauf si l’on considère que seulement 10 % sont entièrement satisfaits.</em>
+\hfill <em>www.frenchweb.fr, 19 juin 2013</em>  </p>
+<ol>
+<li>Quels sont les deux types de liens proposés par un moteur de recherche ?<br />
+ <br />
+....................................................................................................................................  </li>
+<li>Voici les résultats d’une étude menée en Grande-Bretagne en juillet 2016 (après la mise en place des labels verts) :<br />
+<img alt="Liens sponsorisés 1" src="../SNT_web_05_Ads_1.png" /> <img alt="Liens sponsorisés 2" src="../SNT_web_05_Ads_2.png" />  <br />
+Quelle part d’internautes n’ont pas conscience que certains liens sont sponsorisés ?
+ <br />
+....................................................................................................................................  </li>
+<li>L’optimisation du classement dans les résultats naturels d’un moteur est-il possible ? Expliquer.<br />
+ <br />
+....................................................................................................................................<br />
+ <br />
+....................................................................................................................................  </li>
+</ol>
+<p>\newpage</p>
+<h2 id="exercice-faire-une-campagne-de-reference-payant">Exercice : Faire une campagne de référence payant<a class="headerlink" href="#exercice-faire-une-campagne-de-reference-payant" title="Permanent link">⚓︎</a></h2>
+<p>Voici une campagne sous <em>Google Ads</em> (<a href="https://ads.google.com/intl/fr_fr/home/">https://ads.google.com/intl/fr_fr/home/</a>) :  </p>
+<p><img alt="Référencement 1" src="../SNT_web_05_Referencement_1.png" />  <img alt="Référencement 2" src="../SNT_web_05_Referencement_2.png" />    </p>
+<ol>
+<li>Combien me coûtera mensuellement l’annonce que je souhaite effectuer ?<br />
+ <br />
+....................................................................................................................................</li>
+<li>Vais-je payer 8€ chaque jour ?<br />
+ <br />
+....................................................................................................................................</li>
+<li>Comment le ciblage géographique par zone fonctionne-t-il ?<br />
+ <br />
+....................................................................................................................................</li>
+<li>À quoi reconnaîtra-t-on qu’il s’agit de référencement payant ?<br />
+ <br />
+....................................................................................................................................</li>
+<li>D’autres annonceurs pourraient-ils utiliser les mêmes mots clés ?<br />
+ <br />
+....................................................................................................................................</li>
+<li>Comment pourraient-ils être mieux placés que moi ?<br />
+ <br />
+....................................................................................................................................  </li>
+</ol>
+<p><strong>Explications <em>Google Adwords</em>, un référencement selon son budget (2:55)</strong> : <a href="https://youtu.be/da7TkcLXRdU">https://youtu.be/da7TkcLXRdU</a>  </p>
+<h1 id="modele-economique-des-moteurs-de-recherche">Modèle économique des moteurs de recherche<a class="headerlink" href="#modele-economique-des-moteurs-de-recherche" title="Permanent link">⚓︎</a></h1>
+<p>Les moteurs de recherche se financent principalement par :  </p>
+<ul>
+<li>le référencement payant (2/3 des revenus du moteur <em>Google</em>, plus de 50$ annuels par utilisateur),</li>
+<li>la vente de technologie aux organisations qui ont besoin de moteurs internes à leur système d’information.</li>
+</ul>
+<p>Un clic est une information pour le moteur de recherche qui présume que le résultat présenté était donc pertinent, cela permettre d’« améliorer » les résultats futurs. L’internaute apporte donc, bénévolement et sans le percevoir, de la valeur au moteur de recherche et sans contrepartie financière (mais avec une potentielle amélioration du service ?). On nomme cela <strong>le digital labor</strong>.</p>
+<p>\newpage</p>
+<h2 id="exercice-bruxelles-accuse-google-dabus-de-position-dominante">Exercice : Bruxelles accuse Google d’abus de position dominante<a class="headerlink" href="#exercice-bruxelles-accuse-google-dabus-de-position-dominante" title="Permanent link">⚓︎</a></h2>
+<p><strong>Article 1</strong>  </p>
+<p><em>[...] La Commission [européenne] craint que les utilisateurs de Google « ne voient pas nécessairement les résultats les plus pertinents en réponse à leurs requêtes ». [...]</em>  </p>
+<p><em>La trentaine de plaignants (dont Microsoft) qui accusent la multinationale de mettre davantage en avant ses services que les leurs dans les résultats de recherche des internautes sur son moteur [...]</em>  </p>
+<p><em>Le géant de l’Internet risque une amende pouvant aller jusqu’à 10 % de son chiffre d’affaires mondial (soit plus de 6 milliards d’euros). Mais ce ne serait pas le pire pour un groupe aussi riche (66 milliards de dollars de chiffre d’affaires en 2014, soit 62 milliards d’euros, pour 14 milliards de dollars de profits).</em>  </p>
+<p><em>La Commission pourrait surtout lui imposer des actions « correctives » de nature à transformer son modèle économique. « Peut-être une séparation radicale, dans le résultat des recherches, entre les liens sponsorisés et les autres résultats de recherche », suggère un bon connaisseur bruxellois du dossier. [...]</em>  </p>
+<p>\hfill <em>Cécile Ducourtieux, Le Monde, 15 avril 2015</em>  </p>
+<p>   </p>
+<p><strong>Article 2</strong>  </p>
+<p><em>Après sept longues années d’enquête, la Commission européenne sort le carton rouge contre Google. Le géant américain se voit condamné à une amende record, d’un montant de 2,42 milliards d’euros, dès mardi 27 juin [2017], pour abus de position dominante. [...]</em>  </p>
+<p><em>C’est le service en ligne Google Shopping (un comparateur de prix) que ciblent les services de la commissaire à la concurrence, Margrethe Vestager. [...] « Google a lancé des produits qui ont réellement modifié nos vies, pour autant, sa stratégie ne s’est pas juste au bénéfice des consommateurs. Google a abusé de sa position dominante en promouvant son propre service de comparateurs de prix, c’est illégal au regard des règles européenne anti trust » a estimé Margrethe Vestager, mardi. [...]</em>  </p>
+<p><em>Au début des années 2010, Google Shopping s’appelait Froogle et [...] faisait apparaître les produits les moins chers des marchands, allant lui-même chercher les bonnes réponses sur le Web. En 2012, Google rebaptise son service Google Shopping et y applique son modèle publicitaire classique [...] : les annonceurs paient pour faire remonter leurs produits, qui ne s’affichent que lorsqu’ils correspondent aux requêtes des internautes. L’espace n’est pas fermé aux autres comparateurs de prix, qui peuvent comme les marchands apparaître dans Google Shopping en mettant en avant des produits. Mais ils se sont plaints d’être moins bien traités que les marchands dans les résultats de recherche, de n’apparaitre qu’à partir de la 3ème ou 4ème page de recherches. [...]</em>  </p>
+<p><em>Au-delà de l’amende, qui pèse peu au regard des résultats du groupe en 2016 (80,4 milliards d’euros de chiffre d’affaires et 17,8 milliards d’euros de profits), ce sont les mesures correctives imposées à Google que vont scruter les spécialistes et les multiples plaignants du groupe. Habile, la commission a laissé à Google le soin de trouver ses propres solutions techniques pour « rentrer dans le rang » comme précisé par Mme Vestager.</em>  </p>
+<p><em>Seule condition à respecter : « l’égalité de traitement entre les services concurrents de comparaison de prix et son propre service ». [...]</em>  </p>
+<p>\hfill <em>Cécile Ducourtieux, Le Monde, 27 juin 2017</em>  </p>
+<p>   </p>
+<p><strong>Article 3</strong>  </p>
+<p><em>Condamné en juin [2017] à une amende record par Bruxelles pour abus de position dominante, Google a déposé un recours en annulation, a-t-on appris lundi 11 septembre [2017]. [...]</em>  </p>
+<p><em>L’examen de ce recours devrait prendre [deux ans] étant donné la complexité de l’affaire [...], a-t-on indiqué à la Cour de justice de l’UE. Ce recours n’est pas suspensif. [...] L’entreprise peut néanmoins [...] déposer l’argent auprès d’une banque sur un compte bloqué, jusqu’à ce qu’une décision tranche le différend. [...].</em>  </p>
+<p><em>Bruxelles a sur le feu deux autres cas d’abus de position dominante, pour lesquels il pourrait aussi sanctionner Google : Android, son système d’exploitation sur smartphone et AdSense, sa régie publicitaire.</em>  </p>
+<p>\hfill <em>Le Monde, 11 septembre 2017</em>  </p>
+<ol>
+<li>À qui la position dominante de Google nuit-elle ?<br />
+ <br />
+....................................................................................................................................  </li>
+<li>La position dominante de Google présente-t-elle des risques pour les internautes ? Expliquer.<br />
+ <br />
+....................................................................................................................................<br />
+ <br />
+....................................................................................................................................<br />
+ <br />
+....................................................................................................................................</li>
+</ol>
+<p>Cette affaire est toujours en cours :  </p>
+<p>Concernant <em>Google Shopping</em>, <em>Android</em> et <em>AdSense</em>, toutes propriétés de <em>Google</em>, des amendes respectives de 2,42, 4,3 et 1,5 milliards d’euros ont été prononcées en juin 2017, juillet 2018 et mars 2019. <em>Google</em> a fait appel de ces décisions.  </p>
+<p>Le 10 novembre 2021, la cours européenne de justice a rejeté l'appel concernant <em>Google Shopping</em>. Le 14 septembre 2022 la cours de justice européenne a rejeté l'appel de <em>Google</em> concernant <em>Android</em>, elle s'est contenté de diminué à 4,1 milliards d'euros le montant de la sanction.  </p>
+<h2 id="exercice-les-alternatives">Exercice : Les alternatives<a class="headerlink" href="#exercice-les-alternatives" title="Permanent link">⚓︎</a></h2>
+<p><em>Sur Qwant, 30 % des requêtes génèrent un affichage publicitaire et 4 % des internautes cliquent dessus. « Au final, chaque internaute nous rapporte 12 € par an. [...] », se félicite [Eric Léandri, son fondateur].</em>  </p>
+<p><em>Lancé en 2013, Qwant n’a cessé de croître grâce à un positionnement clair sur la protection des données personnelles. « Nous ne pistons pas des utilisateurs, nous ne conservons aucune donnée, même pas l’adresse IP. Pas besoin de savoir si vous êtes gay, de droite ou malade pour vous donner les réponses de l’Internet ».</em>  </p>
+<p><em>Si Qwant est assez solide pour espérer atteindre 5 à 10 % du marché de la recherche en ligne dans les trois prochaines années, c’est aussi parce qu’il est indépendant de Google. Si, pour l’affichage de la publicité, il dépend de Bing [...], le moteur affirme qu’il possède son propre robot d’indexation du Web et son algorithme de recherche à lui. Les « vrais » moteurs de recherche se comptent sur les doigts des mains : [...] Google, Bing, Yahoo !, Baidu (Chine), Naver (Corée du Sud), Yandex (Russie) et Seznam (République tchèque). [...] Du coup, en France et ailleurs, tous les moteurs alternatifs [(Ecogine, Ecosia, ...) utilisent la technologie] de Google, Bing et Yahoo !. [...] Une recherche sur ces moteurs les enrichit aussi (Google facture 750 $/an pour 150 000 requêtes annuelles et il touche une partie des revenus publicitaires générés par les clics des internautes).</em>  </p>
+<p><em>[Les moteurs à visée écologique (redistribution d’une partie des recettes dans des projets environnementaux) consomment leur propre énergie, qui n’aurait pas lieu d’être en faisant les requêtes directement sur Google ... Ces moteurs investissent dans des programmes de compensation (et se donnent ainsi un droit à polluer ?).]</em>  </p>
+<p>\hfill <em>Que Choisir n°557, Avril 2017, p 22-23</em>  </p>
+<p>Certains moteurs de recherche conservent des informations sur :</p>
+<ul>
+<li>les dates de toutes vos visites,</li>
+<li>tous les mots-clés que vous entrez,</li>
+<li>tous les liens sur lesquels vous cliquez.</li>
+</ul>
+<p>... pendant une durée minimum de 6 mois.  </p>
+<p>Comment éviter les risques mis en évidence auparavant ?<br />
+ <br />
+....................................................................................................................................<br />
+ <br />
+....................................................................................................................................  </p>
+<p>   </p>
+<p><em>Pour aller plus loin :</em>  </p>
+<p><em>https://www.1ere-position.fr/blog/10-meilleurs-moteurs-de-recherche-alternatifs-google/</em>  </p>
+<p><em>https://www.clubic.com/telecharger/actus-logiciels/article-843987-1-google-qwant-duckduckgo-comparatif-6-moteurs-recherche.html</em>  </p>
+<h1 id="progres-technique">Progrès technique<a class="headerlink" href="#progres-technique" title="Permanent link">⚓︎</a></h1>
+<p>Les moteurs de recherche progressent pour :</p>
+<ul>
+<li>indexer tous types de contenus (pas seulement textuels),</li>
+<li>interpréter la sémantique des termes (savoir distinguer « jaguar » en tant qu’animal ou en tant que voiture, sélectionner un article sur la « récolte du blé en France » en réponse à une question sur la « culture des céréales en Europe », ...),</li>
+<li>permettre les requêtes en langage naturel (poser une question) et fournir une réponse plutôt qu’une liste de ressources y
+répondant.</li>
+</ul>
+<h2 id="exercice-dereferencement">Exercice : Déréférencement<a class="headerlink" href="#exercice-dereferencement" title="Permanent link">⚓︎</a></h2>
+<p><strong>2010</strong> : Un internaute espagnol demande à l’autorité espagnole de protection des données la suppression de deux articles concernant ses anciennes dettes, et à <em>Google</em> de désindexer ces articles (qu’il n’apparaissent plus dans les résultats de recherche).  </p>
+<p>L’affaire est finalement renvoyée vers la cour de justice de l’UE (CJUE).  </p>
+<p><strong>2014</strong> : La CJUE consacre le droit à l’oubli en indiquant qu’un moteur de recherche est responsable du traitement consistant à fournir des résultats et qu’à ce titre il doit appliquer le droit à l’oubli et déréférencer des articles lorsqu’il y a un intérêt légitime du demandeur (des exceptions peuvent toutefois être admises pour des personnes jouant un rôle public et si l’intérêt du
+public l’emporte).  </p>
+<p><em>Google</em> met à disposition en mai un formulaire de demande de déréférencement.  </p>
+<p><strong>déc 2014</strong> : <em>Google</em> a reçu environ 150 000 demandes dans l’UE , concernant 500 000 résultats de recherche. Environ 40 % des demandes ont été satisfaites ; par exemple :</p>
+<ul>
+<li>une victime d’agression a pu obtenir la disparition des liens vers des articles évoquant cette agression, afin de faciliter sa « reconstruction »,</li>
+<li>l’auteur d’un délit dont la condamnation a été rendue publique lui n’a pas obtenu gain de cause, du moins tant que sa condamnation reste récente.</li>
+</ul>
+<p>Selon la loi du 29 juillet 1881 sur la liberté de la presse, les articles en eux-mêmes peuvent rester en ligne s’ils n’ont pas été jugés diffamatoires (une éventuelle plainte doit être déposée dans les 3 mois suivant leur publication) ; ils peuvent parfois faire l’objet d’un droit de réponse.  </p>
+<p><strong>2015</strong> : En mai, <strong>la CNIL</strong> met en demeure <em>Google</em> de procéder au déréférencement sur toutes ses extensions (un lien qui a disparu sur les extensions européennes peut rester visible sur google.com). Le recours gracieux de <em>Google</em> est rejeté en septembre, la société s’expose à des sanctions.  </p>
+<p><strong>2016</strong> : En janvier, <em>Google</em> propose d’étendre le déréférencement sur toutes les extensions européennes de son moteur et un filtrage géographique de référencement sur le moteur du pays du plaignant.  </p>
+<p>En mars, le CNIL considérant que les résultats sont toujours accessibles (notamment à partir du « .com ») et que le déréférencement ne limite pas la liberté d’expressions (il ne supprime pas des contenus) a prononcé une sanction de 100 000 euros à l’encontre de <em>Google</em> qui n’a pas répondu à ses demandes.</p>
+<p><strong>Le règlement européen sur le protection des données personnelles (RGPD)</strong> entré en vigueur en 2018 permet un droit à l’effacement et une procédure de droit à l’oubli accélérée pour les mineurs.  </p>
+<ol>
+<li>Quels droit et liberté semblent ici « s’opposer » ? Quels sont les intérêts en opposition ?<br />
+ <br />
+....................................................................................................................................<br />
+ <br />
+....................................................................................................................................<br />
+ <br />
+....................................................................................................................................<br />
+ <br />
+....................................................................................................................................</li>
+<li>Quelles sont les limites de la procédure de déréférencement ?<br />
+<em>Aide pour répondre :</em><br />
+<a href="https://www.cnil.fr/fr/le-dereferencement-dun-contenu-dans-un-moteur-de-recherche">https://www.cnil.fr/fr/le-dereferencement-dun-contenu-dans-un-moteur-de-recherche</a><br />
+ <br />
+....................................................................................................................................<br />
+ <br />
+....................................................................................................................................<br />
+ <br />
+....................................................................................................................................<br />
+ <br />
+....................................................................................................................................  </li>
+</ol>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:Panorama">
+<p><strong>Sources</strong> : <a href="https://www.resoneo.com/wp-content/uploads/ancien/2014/07/Carte_infographie_part-trafics-moteurs-de-recherche.jpg">https://www.resoneo.com/wp-content/uploads/ancien/2014/07/Carte_infographie_part-trafics-moteurs-de-recherche.jpg</a> et <a href="https://gs.statcounter.com/#search_engine-ww-monthly-201406-201406-bar">https://gs.statcounter.com/#search_engine-ww-monthly-201406-201406-bar</a>&#160;<a class="footnote-backref" href="#fnref:Panorama" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:PartsMarche">
+<p><strong>Source</strong> : <a href="https://www.netmarketshare.com">https://www.netmarketshare.com</a>&#160;<a class="footnote-backref" href="#fnref:PartsMarche" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:PageRank">
+<p><strong>Source</strong> : <a href="https://en.wikipedia.org/wiki/File:PageRanks-Example.jpg">https://en.wikipedia.org/wiki/File:PageRanks-Example.jpg</a>&#160;<a class="footnote-backref" href="#fnref:PageRank" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Retour en haut de la page
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Licence CC-BY-SA - Sébastien SAUVAGE
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/gricoo59" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/SebastienSauvage/Informatique_au_lycee" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.top", "navigation.instant", "header.autohide", "toc.follow", "toc.integrate"], "search": "../../../assets/javascripts/workers/search.db81ec45.min.js", "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.4b2c34cd.min.js"></script>
+      
+        <script src="../../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
