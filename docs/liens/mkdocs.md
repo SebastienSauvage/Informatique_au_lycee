@@ -12,6 +12,10 @@ MkDocs : [https://www.mkdocs.org/](https://www.mkdocs.org/)
 
 Material for MkDocs : [https://squidfunk.github.io/mkdocs-material/](https://squidfunk.github.io/mkdocs-material/)  
 
+## Créer un site de A à Z
+
+De Jupyter à Mkdocs : [https://ens-fr.gitlab.io/mkdocs/](https://ens-fr.gitlab.io/mkdocs/)
+
 ## Vidéo tuto
 
 Créer son site avec MkDocs : [https://www.youtube.com/watch?v=w2MJBYxlJog](https://www.youtube.com/watch?v=w2MJBYxlJog)  
