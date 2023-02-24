@@ -43,9 +43,9 @@ theme:
     # Bulle info pour revenir en haut de la page lors d'un scroll vers le haut
     - navigation.top
     # ?
-    - navigation.instant
+#    - navigation.instant
     # Cache l'entête automatiquement avec les scroll descendant
-    - header.autohide
+#    - header.autohide
 
     # Concerne la "Table Of Content"
     - toc.follow
@@ -115,8 +115,8 @@ markdown_extensions:
       permalink: ⚓︎
       toc_depth: 3
 
-plugins:
-  - search
+#plugins:
+#  - search
 #  - macros
 
 # Date des dernières mise-à-jour
