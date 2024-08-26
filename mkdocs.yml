@@ -65,7 +65,7 @@ extra:
       link: https://twitter.com/gricoo59
     # Github
     - icon: fontawesome/brands/github 
-      link: https://github.com/SebastienSauvage/Informatique_au_lycee
+      link: https://github.com/SebastienSauvage/SebastienSauvage.github.io
     # Facebook
 #    - icon: fontawesome/brands/facebook 
 #      link: https://fosstodon.org/@squidfunk
@@ -79,9 +79,9 @@ extra:
 copyright: Licence CC-BY-SA - Sébastien SAUVAGE
 
 # Définir le lien vers le git source
-repo_url: https://github.com/SebastienSauvage/Informatique_au_lycee
+repo_url: https://github.com/SebastienSauvage/SebastienSauvage.github.io
 # Nom du git source
-repo_name: SebastienSauvage/Informatique_au_lycee
+repo_name: SebastienSauvage/SebastienSauvage.github.io
 
 
 markdown_extensions:
