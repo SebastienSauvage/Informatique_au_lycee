@@ -1,0 +1,187 @@
+site_name: Hack 'N' Code
+site_url: https://hackncode.ovh
+repo_url: https://github.com/SebastienSauvage/hackncode
+docs_dir: docs
+
+### Configuration d'une licence
+# Information de droit d'auteur qui s'affiche dans le pied de page pour toutes les pages du site
+copyright: >
+    Documents partagés par <a href="https://hackncode.ovh" target="_blank">Sébastien SAUVAGE</a> sous licence <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr" target="_blank">CC BY-SA 4.0</a>
+#    <br> Illustrations par <a href="https://undraw.co/" target="_blank">UnDraw</a>
+
+extra_css:
+  - stylesheets/extra.css
+
+theme:
+  name: material
+
+  language: fr
+  font: false
+  logo: images/logo_lycee_TabIcon.png
+  favicon: images/logo_lycee_TabIcon.png
+
+  palette:
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default 
+      primary: brown
+      accent: blue grey
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: teal
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+
+  features:
+    # Pour ne pas mettre à jour toute la page quand on clique sur un lien local
+    - navigation.instant
+    # Pour avoir une barre de progression de chargement de page
+    - navigation.instant.progress
+    # Pour développer toute l'arborescence du site
+    #- navigation.expand
+    # ???
+    - navigation.instant.preview
+    # Pour que l'URL tienne compte de l'ancre du lien
+    - navigation.tracking
+    # Barre de navigation
+    - navigation.tabs
+    # Barre de navigation en sticky
+    - navigation.tabs.sticky
+    # Menu avec des sections et non un menu déroulant
+    #- navigation.sections
+    # Menu détaillé automatiquement
+    #- navigation.expand
+    # Réduit automatiquement les menus ouverts avant
+    - navigation.prune
+    # Cache la page index.md du menu
+    - navigation.indexes
+    # Table des matières visible (à droite)
+    #- toc.follow
+    # Table des matières intégrée dans le menu
+    - toc.integrate
+    # Bouton pour retourner au début de la page quand on scrolle
+    - navigation.top
+    # Cacher automatiquement l'entête
+    #- header.autohide
+    # Afficher le pied de page pour aller de chapitre en chapitre
+    #- navigation.footer
+
+
+plugins:
+  # Ajout de la barre de recherche (présente par défaut)
+  - search
+  # Permet la recherche en offline après un téléchargement du site
+  - offline
+  # - tags:
+  #   tags_file: tags.md # fichier qui contiendra les 
+
+extra:
+  # Demande d'acceptation, refus ou choix des cookies
+  consent:
+    title: Accord lié aux cookies
+    description: L'utilisation des cookies permet de reconnaître vos visites répétées et vos préférences, ainsi que de mesurer la fréquentation du site et vérifier si les utilisateurs trouvent ce qu'ils recherchent. Avec votre consentement, vous nous aidez à améliorer le site.
+    actions:
+      - accept
+      - reject
+      - manage
+    cookies:
+      analytics:
+        name: Google Analytics
+        checked: false
+      github:
+        name: GitHub
+        checked: false
+  # Paramétrage du cookie google analytics
+  analytics:
+    provider: google
+    property: GTM-MNPJCDGZ # code récupéré après avoir créé un compte sur Google-Analytics
+    # Pour ajouter deux émoticons content/triste pour un feedback sur chaque page
+    # feedback:
+    #   title: Was this page helpful?
+    #   ratings:
+    #     - icon: material/emoticon-happy-outline
+    #       name: This page was helpful
+    #       data: 1
+    #       note: >-
+    #         Thanks for your feedback!
+    #     - icon: material/emoticon-sad-outline
+    #       name: This page could be improved
+    #       data: 0
+    #       note: >- 
+    #         Thanks for your feedback! Help us improve this page by
+    #         using our <a href="..." target="_blank" rel="noopener">feedback form</a>.
+  # Ajout de liens vers des réseaux sociaux
+  # Retrait du "Made with Material for Mkdocs"
+  generator: false
+  social:
+    # Mastodonte
+#    - icon: fontawesome/brands/mastodon 
+#      link: https://fosstodon.org/@squidfunk
+    # Discord
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/Xnuefuzw
+      name: Rejoindre le serveur Hack N Code sur Discord
+    # Linkedin
+    - icon: fontawesome/brands/linkedin 
+      link: https://www.linkedin.com/in/sebastien-sauvage-611a77203/
+      name: Me suivre sur Linkedin
+    # Twitter
+    - icon: fontawesome/brands/x-twitter
+      link: https://twitter.com/gricoo59
+      name: Me suivre sur X
+    # Mail
+#    - icon: fontawesome/solid/paper-plane
+#      link: mailto:sebastien.sauvage@ac-lille.fr
+#      name: Me contacter par mail
+    # Github
+    - icon: fontawesome/brands/github 
+      link: https://github.com/SebastienSauvage/SebastienSauvage.github.io
+      name: Sources du présent site
+    # Facebook
+#    - icon: fontawesome/brands/facebook 
+#      link: https://fosstodon.org/@squidfunk
+    # Instagram
+#    - icon: fontawesome/brands/instagram 
+#      link: https://fosstodon.org/@squidfunk
+
+markdown_extensions:
+  - toc:
+      # Générer automatique une table des matière du document
+      permalink: true
+      # Donner un titre autre que Table of contents
+      title: "Contenu de la page"
+      # Pour afficher une marque de paragraphe à côté de l'ancre quand on clique sur l'un des liens de la table des matières
+      permalink: false
+      # Texte affiché quand on survol l'ancre d'un des paragraphe
+      #permalink_title: Anchor link to this section for reference
+      # Profondeur de la table des matières
+      toc_depth: 2
+
+# nav:
+#   - "Accueil":
+#     - index.md
+#   - "SNT en seconde":
+#     - "Premier chapitre": 01_SNT/Informatique_embarquee_et_objets_connectes/chapitre1.md
+#   - "Spé NSI en première":
+#     - index.md
+#     - "Chapitre1" : 02_1NSI/1_representation_des_donnees_types_et_valeurs_de_base/chapitre1.md
+#     - "Chap2" : 02_1NSI/1_representation_des_donnees_types_et_valeurs_de_base/chapitre2.md
+#  - "Spé NSI en terminale": TNSI
+#  - "Annales du bac": Annales_bac
+#  - "Grand oral": Grand_oral
+#  - "Orientation": Orientation
+#  - "Documents officiels": Docs_officiels
+#  - "Liens": Liens
+#  - "A propos": A_propos
+#  - ... | regex=^(?:(?!_REM.md).)*$
