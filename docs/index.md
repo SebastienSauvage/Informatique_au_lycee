@@ -13,7 +13,7 @@ Ce site est tout d'abord destiné à mes élèves qui ont ainsi accès à l'ense
 
 ## Menu
 
-- **Liens** : quelques liens sur des sujets abordés sur ce site.
+- **Liens externes** : quelques liens sur des sujets abordés sur ce site.
 
 ## En construction ...
 
@@ -30,5 +30,9 @@ Ce site est tout d'abord destiné à mes élèves qui ont ainsi accès à l'ense
 - **Le Rimbaud CTF** : CTF organisé pour les élèves du lycée, mais pas uniquement eux. La première version aura lieu en décembre 2024.
 - **A propos** : petit mot de présentation.  
 
+## Sources des documents
+
+L'ensemble des sources des documents proposés sur ce site est disponible sur [GitHub](https://github.com/SebastienSauvage/hackncode) et sur [la forge des communs numériques éducatifs](https://forge.apps.education.fr/sebastien_sauvage/hack-n-code)  
+
 ## Licence
-L'ensemble des documents proposés sont sous licence CC-BY-SA.    
+L'ensemble des documents proposés sont sous [licence CC-BY-SA](https://creativecommons.org/licenses/by-sa/4.0/deed.fr).    

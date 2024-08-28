@@ -6,7 +6,7 @@ keywords: [MkDocs, Material for MkDocs, liens, web]
 ---
 # MkDocs et Material for MkDocs
 
-Dans le cadre de la mise en ligne de ce site, quelques liens qui m'ont été très utiles pour me faciliter la tâche. `MkDocs` ainsi que `MkDocs-Material` permettent la création très simple d'un site tel que celui-ci à partir de document Markdown.  
+Dans le cadre de la mise en ligne de ce site, quelques liens qui m'ont été très utiles pour me faciliter la tâche. `MkDocs` ainsi que `MkDocs-Material` permettent la création très simple d'un site tel que celui-ci à partir de documents Markdown.  
 
 ## Sites principaux
 
